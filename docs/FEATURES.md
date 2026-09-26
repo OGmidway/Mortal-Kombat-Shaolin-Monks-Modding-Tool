@@ -45,7 +45,7 @@ Checked means implemented for supported data. **Experimental** means the workflo
 - [x] Supported clip decoding and investigated root/rotation corrections.
 - [x] One clip or a bank in individual numbered folders.
 - [x] **Character + animation** exports for Blender/native editing.
-- [x] **Animation only (Godot 4)** without repeated geometry/textures.
+- [x] **Animation only (GLB)** without repeated geometry/textures.
 - [x] Selected-clip/full-bank details, hex and ASCII strings.
 - [x] **Experimental:** edited types 1, 3, 6 and supported type-11 revision 2.
 - [x] Use Blender timing for supported length/key changes.

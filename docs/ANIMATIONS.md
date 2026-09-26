@@ -20,7 +20,7 @@ If a standing clip is upside down or distorted, verify the model/profile/bank co
 | Mode | Contains | Use |
 |---|---|---|
 | **Character + animation** | Rigged character, supported textures/materials, one animation and native companions | Blender editing and native game return |
-| **Animation only (Godot 4)** | Skeleton definition and one animation; no character mesh, textures, materials or repeated native snapshots | Separate libraries on one exported character |
+| **Animation only (GLB)** | Skeleton definition and one animation; no character mesh, textures, materials or repeated native snapshots | Separate libraries on one exported character |
 
 Animation-only retains the skeleton definition because track paths need it. The visible character geometry is not duplicated.
 

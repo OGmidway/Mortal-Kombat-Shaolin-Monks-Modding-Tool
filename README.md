@@ -25,7 +25,7 @@ This is an independent, experimental modding tool. The best-tested workflows use
 ## 2. Download and open
 
 1. Open **[Releases](https://github.com/OGmidway/Mortal-Kombat-Shaolin-Monks-Modding-Tool/releases/latest)**.
-2. Download **MKSM-Studio-0.24.0-win-x64.zip** (or the newest equivalent Windows ZIP).
+2. Download **MKSM-Studio-0.24.1-win-x64.zip** (or the newest equivalent Windows ZIP).
 3. Extract the entire ZIP into a regular folder you can write to, such as `Documents/MKSM Studio`. Do not run it from inside the ZIP.
 4. Double-click **MKSM Studio.exe**, recognizable by its gold dragon icon.
 5. Click **Open game ISO** and select your Shaolin Monks PS2 ISO.
@@ -58,7 +58,7 @@ Checked items are implemented for supported data. They do not mean every game re
 - [x] Export rigged GLB characters organized by texture, with UVs and weights.
 - [x] Play and scrub supported native animation clips on the selected rig.
 - [x] Save one clip or an organized bank of individual clip folders.
-- [x] Export animation-only GLBs for Godot 4.
+- [x] Export animation-only GLBs without repeated character geometry.
 - [x] Return supported Blender character and animation edits to native resources.
 - [x] Stage changes in a saved project and rebuild a separate ISO.
 - [x] Relocate supported rebuilt resources when their file size grows or shrinks.

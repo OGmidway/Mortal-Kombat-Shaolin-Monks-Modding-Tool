@@ -8,7 +8,7 @@ Select the original character in Studio and export a rigged GLB. Import it into 
 
 ## 2. Export separate clips
 
-Open Animation Lab for **that same character/rig**. Choose **Animation only (Godot 4)**, select the FPS and use Save clip or Save all clips. Copy desired GLBs into your Godot project. The character mesh is not repeated per animation.
+Open Animation Lab for **that same character/rig**. Choose **Animation only (GLB)**, select the FPS and use Save clip or Save all clips. Copy desired GLBs into your Godot project. The character mesh is not repeated per animation.
 
 ## 3. Import each as a library
 

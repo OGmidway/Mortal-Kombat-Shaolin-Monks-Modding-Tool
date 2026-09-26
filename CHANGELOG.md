@@ -1,5 +1,11 @@
 # Release notes
 
+## 0.24.1 — Clearer animation export name
+
+- Renames **Animation only (Godot 4)** to **Animation only (GLB)**.
+- Updates the tooltip, export progress messages and accompanying guide heading.
+- The format, exported skeleton/animation data and Blender add-on are unchanged. Godot remains a documented import example.
+
 ## 0.24.0 — Public distribution and in-app updates
 
 - Startup/manual update checks and New update available for a newer verified release.
