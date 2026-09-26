@@ -1,0 +1,16 @@
+# Documentation repository. Upload binary assets through Releases.
+*.exe
+*.dll
+*.pdb
+*.zip
+*.iso
+*.wad
+*.wai
+*.glb
+*.bin
+*.dpapi
+*.pem
+source/
+work/
+bin/
+obj/
