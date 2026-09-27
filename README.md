@@ -22,9 +22,11 @@ You do not need to mount or unpack the ISO to begin. You do need your own game f
 
 This is an independent, experimental modding tool. The best-tested workflows use the researched **USA PS2 revision**. Support for one resource or revision does not establish support for every version of the game.
 
-## 2. Current release: 0.25.4
+## 2. Current release: 0.25.5
 
-**New in 0.25.4:** transfer exact hex ranges without resizing files, including animation clips/banks. Replace supported rigid weapons/objects through Blender or copy another game model with its textures. Blender Bridge **0.23** adds a dedicated weapon/object export button. The animation-import and character fixes from 0.25.3 and 0.25.2 remain included.
+**Fixed in 0.25.5:** the **Import weapon / object…** button now appears for rigid models such as 0121 and 0443, in both normal and Advanced modes.
+
+**Included from 0.25.4:** transfer exact hex ranges without resizing files, including animation clips/banks. Replace supported rigid weapons/objects through Blender or copy another game model with its textures. Blender Bridge **0.23** adds a dedicated weapon/object export button. The animation-import and character fixes from 0.25.3 and 0.25.2 remain included.
 
 **Character replacement milestone:** after the 0.25.2 mesh fix, Kratos replacing Reptile **6732** was reported fully visible and moving in-game. The fix is part of the shared importer, so other compatible replacements use the same workflow. This does not guarantee an untested CJ or other model will need no preparation.
 
@@ -33,7 +35,7 @@ This is an independent, experimental modding tool. The best-tested workflows use
 ## 3. Download and open
 
 1. Open **[Releases](https://github.com/OGmidway/Mortal-Kombat-Shaolin-Monks-Modding-Tool/releases/latest)**.
-2. Download **MKSM-Studio-0.25.4-win-x64.zip** (or the newest equivalent Windows ZIP).
+2. Download **MKSM-Studio-0.25.5-win-x64.zip** (or the newest equivalent Windows ZIP).
 3. Extract the entire ZIP into a regular folder you can write to, such as `Documents/MKSM Studio`. Do not run it from inside the ZIP.
 4. Double-click **MKSM Studio.exe**, recognizable by its gold dragon icon.
 5. Click **Open game ISO** and select your Shaolin Monks PS2 ISO.

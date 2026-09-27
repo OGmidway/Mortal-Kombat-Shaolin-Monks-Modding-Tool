@@ -2,6 +2,17 @@
 
 [Current download](https://github.com/OGmidway/Mortal-Kombat-Shaolin-Monks-Modding-Tool/releases/latest) · [Previous builds](docs/PREVIOUS_BUILDS.md) · [Roadmap](docs/ROADMAP.md) · [Validation](docs/VALIDATION.md)
 
+## 0.25.5 — Missing weapon import button
+
+Fixes the missing **Import weapon / object…** toolbar button on rigid models, including **0121** and **0443**. The old visibility rule only showed the action for skinned characters.
+
+- Shows the correct action for rigid models in normal and Advanced modes.
+- Keeps unsupported object layouts disabled with an explanation.
+- Retains character import and hides model actions when selecting textures.
+- Verified the actual rendered toolbar and clicked it to open the weapon workshop; seven UI checks passed. No native import/build format changes.
+
+Update inside Studio with **Check for updates → Install update**, reopen your ISO, and select **0121**. The button is above the 3D preview, beside **Import Blender edits…**. Blender Bridge **0.23** remains current.
+
 ## 0.25.4 — Hex transfer and weapon/object editing
 
 - Adds **Transfer hex data…** to the main Advanced Hex tab and Animation Lab. Copy from game resources/files, reuse the current bytes, or paste hex. Select exact offsets or one-based 16-byte lines; destination length stays unchanged.

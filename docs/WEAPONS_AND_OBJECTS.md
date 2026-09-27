@@ -2,7 +2,7 @@
 
 [Home](../README.md) · [Blender character guide](MODELS_AND_BLENDER.md) · [Projects and ISO building](PROJECTS_AND_TESTING.md)
 
-**0.25.4** adds a dedicated rigid-object workshop. A weapon with no skeleton does not need character weights or an armature. The first replacement compiler supports fully decoded, unskinned **type-0** native geometry. Other static layouts can still use the existing mapped shape/UV editing route where supported.
+Use **0.25.5 or later**. Version 0.25.4 introduced the rigid-object workshop but accidentally hid its toolbar button on rigid models; 0.25.5 fixes its visibility. A weapon with no skeleton does not need character weights or an armature. The first replacement compiler supports fully decoded, unskinned **type-0** native geometry. Other static layouts can still use the existing mapped shape/UV editing route where supported.
 
 ## 1. Copy another weapon already in the game
 

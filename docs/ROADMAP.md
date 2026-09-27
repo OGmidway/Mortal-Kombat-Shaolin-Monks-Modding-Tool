@@ -2,7 +2,7 @@
 
 [Home](../README.md) · [Current features](FEATURES.md) · [Validation](VALIDATION.md) · [Previous builds](PREVIOUS_BUILDS.md)
 
-This is the work list through **0.25.4**, not a release schedule. Checked milestones are delivered for the supported data. Unchecked items need implementation, research or further testing; they are not hidden features you can unlock with a setting.
+This is the work list through **0.25.5**, not a release schedule. Checked milestones are delivered for the supported data. Unchecked items need implementation, research or further testing; they are not hidden features you can unlock with a setting.
 
 ## 1. Delivered foundation
 
@@ -28,6 +28,8 @@ This is the work list through **0.25.4**, not a release schedule. Checked milest
 | 0.25.3 | Choose a Blender action, import newly authored keys, recover missing metadata only against a verified complete rig, explain active high precision | Supplied Kabal GLB passed preview/project/ISO checks; its new motion still needs in-game testing. |
 
 | 0.25.4 | Same-size hex transfer; rigid weapon/object workshop; Blender Bridge 0.23 object export | Animation/texture/project/UI checks, 18 rigid-resource round trips, actual Blender added-topology/material return and native weapon-copy ISO readback; weapon gameplay still pending. |
+
+| 0.25.5 | Show the weapon/object import button for rigid models in normal and Advanced modes | Actual toolbar visibility/click/selection checks; no native format changes. |
 
 ## 3. Next: reliability and practical editing
 
@@ -65,7 +67,7 @@ Resource relocation already allows supported files to grow or shrink. General 40
 
 ## 6. Documentation and release history
 
-- [x] Current feature checklist, beginner workflows and troubleshooting through 0.25.4.
+- [x] Current feature checklist, beginner workflows and troubleshooting through 0.25.5.
 - [x] Separate record of tool checks and reported gameplay outcomes.
 - [x] Previous Builds index for published older releases.
 - [x] Archive index maintenance during release packaging; existing downloads and signatures remain in their original releases.

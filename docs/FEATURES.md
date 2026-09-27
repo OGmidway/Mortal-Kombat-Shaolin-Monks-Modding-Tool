@@ -2,7 +2,7 @@
 
 [Home](../README.md) · [Roadmap](ROADMAP.md) · [Validation](VALIDATION.md) · [Previous builds](PREVIOUS_BUILDS.md)
 
-Current application: **0.25.4**. Checked means implemented for supported data. **Experimental** means the workflow exists but needs preview and game testing. Unchecked items are not promised by this release.
+Current application: **0.25.5**. Checked means implemented for supported data. **Experimental** means the workflow exists but needs preview and game testing. Unchecked items are not promised by this release.
 
 ## 1. Opening and finding resources
 
