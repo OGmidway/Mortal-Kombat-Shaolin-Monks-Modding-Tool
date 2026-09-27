@@ -37,7 +37,7 @@ For manual recovery, close Studio and extract the desired complete release into 
 | Cannot replace EXE | Close other instances, use a writable normal folder or extract a fresh full release. |
 | No newer version | Latest verified release is the same or older; no reinstall needed. |
 | Newer updater required | Download/extract the complete Windows ZIP manually. |
-| Build & play unavailable | Open an ISO source and stage supported edits. |
+| Build ISO unavailable | Open a game ISO or extracted game folder and wait for any active operation to finish. Zero edits are allowed. Folder sources ask for the matching original ISO. |
 | Model invisible/incomplete | Fit view; check Surfaces, Extra meshes, texture selection and Transparency. |
 | Animation twists/flips | Verify original model, bank, profile and clip; record IDs if reproducible. |
 | Blender return rejected | Use the correct shape/replacement/animation path and preserve companions/rig identities. |

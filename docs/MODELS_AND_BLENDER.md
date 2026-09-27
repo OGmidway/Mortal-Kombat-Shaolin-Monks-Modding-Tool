@@ -47,8 +47,8 @@ Use this for proportion corrections, moving existing vertices or UV adjustments 
 4. Use supported original material identities and native texture dimensions/layouts.
 5. Choose **Save Replacement for Studio** in the bridge.
 6. Select the original character in Studio and choose **Import character…**, then **1. Choose character…**.
-7. Review the rebuilt native preview and reported limits. Use **3. Add to project** to stage the character and textures together; **Save native copies…** is available for standalone output.
-8. Save the project and **Build & play…**. Test the actual character in gameplay.
+7. Review the rebuilt native preview and reported limits. Successful imports automatically stage the character and textures together; **Save native copies…** is available for standalone output.
+8. Choose **Build ISO…**, then **Build ISO only** or **Build & boot in PCSX2**. Save the project if you want to keep the edits for a later session. Test the actual character in gameplay.
 
 The compiler creates native skin batches and quantizes weights/positions. It supports up to four influences per vertex and four distinct bones per triangle in this workflow. Different topology can work within supported constraints. Unsupported material, coordinate or rig layouts are rejected with an explanation.
 

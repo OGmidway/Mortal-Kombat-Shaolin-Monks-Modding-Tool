@@ -20,7 +20,7 @@ The application includes its .NET runtime. Internet access is needed for updates
 5. Wait for the collection to load. Choose a category or enter a file number in search.
 6. Click a resource to see its preview and available actions.
 
-**Open folder** is for already extracted game files. ISO building needs an ISO source, so start from the ISO for Build & play.
+**Open folder** is for already extracted game files. When you choose **Build ISO…**, select the matching original ISO when prompted. Your staged folder edits will be included.
 
 ## Understanding the screen
 

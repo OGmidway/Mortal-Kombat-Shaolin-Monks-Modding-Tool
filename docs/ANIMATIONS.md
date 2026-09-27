@@ -52,9 +52,9 @@ The number is the one-based source-bank position. The internal original name sta
 6. Enable **Use Blender timing** for intentional length/key timing changes; otherwise retain native timing.
 7. Choose **Higher precision** for an eligible packed clip if needed, then **Import edited clip…**.
 8. Play/scrub the native result and inspect reported quantization/mesh differences.
-9. Choose **Add animation to project**, save the project and build a new ISO. **Save native bank** writes a standalone replacement and compatibility report instead.
+9. For a bank opened from the game, a successful edited import is automatically added to the project. Close the lab and choose **Build ISO…**. Save the project to keep the edits for later. **Save native bank** writes a standalone replacement and compatibility report instead.
 
-Importing into the lab is a preview step. **Add animation to project** stages the edit for ISO building. Commit/save intended edits before closing the lab.
+Game-backed imports are staged automatically after native validation. No-change imports preserve the bank without adding an edit. Standalone banks loaded from disk have no assumed game destination: use **Save native bank**, then **Replace game file…** on the correct resource. **Add animation to project** remains available for any pending game-backed edit.
 
 ## Native limits and higher precision
 

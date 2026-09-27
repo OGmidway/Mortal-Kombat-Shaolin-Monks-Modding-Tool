@@ -1,5 +1,16 @@
 # Release notes
 
+## 0.24.3 — Build ISO fixes
+
+- **Build ISO…** is available after opening a game, even with no edits or selected resource.
+- **Build ISO only** saves without PCSX2; **Build & boot in PCSX2** remains a separate option.
+- Zero edits produce a byte-for-byte unchanged ISO copy.
+- Extracted-folder sessions can build using their matching original ISO.
+- Current staged edits are included without requiring a project save first. Validated character/texture imports and game-backed animation imports are staged automatically.
+- Corrects the glowing author name to **Z mods**.
+- Preserves source matching, output protection and replacement read-back checks.
+
+
 ## 0.24.2 — Zmods author credit
 
 - Adds **Zmods** to the centered author credits with the same looping gold glow and shimmer.
