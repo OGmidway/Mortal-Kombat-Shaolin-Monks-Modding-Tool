@@ -2,7 +2,7 @@
 
 [Home](../README.md) · [Features](FEATURES.md) · [Roadmap](ROADMAP.md) · [Release notes](../CHANGELOG.md)
 
-This page records the evidence behind the current documentation, through **0.25.3**. It separates automated/tool checks from reported gameplay. A working preview, a byte-correct ISO and a working character in gameplay establish different things.
+This page records the evidence behind the current documentation, through **0.25.4**. It separates automated/tool checks from reported gameplay. A working preview, a byte-correct ISO and a working character in gameplay establish different things.
 
 ## Confirmed and reported gameplay
 
@@ -16,6 +16,8 @@ This page records the evidence behind the current documentation, through **0.25.
 
 | Area | Checked | What this does not establish |
 |---|---|---|
+| Hex transfer, 0.25.4 | 41 range/UI checks including the main object action; exact offsets/scopes, line boundaries, invalid input, overlap, unchanged file length and surrounding bytes, real animation preview/project/undo, texture writes, stale edit rejection and ISO bank readback. | Meaning or runtime safety of arbitrary user-chosen bytes; no pointer repair or retargeting. |
+| Rigid objects, 0.25.4 | 28 object checks, including 18 supported resources rebuilt with matching triangle counts; actual Blender 4.2.22 added topology/material image return; WPF workshop; 0443 → 0121 plus 0442 → 0120 copied byte-for-byte, saved/reloaded and read back from ISO. | Gameplay validation of grip, culling, lighting or weapon behavior; support for all static formats. |
 | Character rendering fix, 0.25.2 | Retail palette dispatch/draw-gate behavior; corrected 5,165-triangle replacement in 57 accepted batches; original skeleton preservation; 118 untouched original model files retained; packaged EXE build and exact model/texture readback from ISO. | Unlimited mesh size or every native draw path/revision. |
 | Animation import, 0.25.3 | 30 checks using a supplied three-action Blender GLB: take selection, complete rig verification without custom metadata, new lengths, unchanged neighboring clips, actual WPF preview/staging, project reopen, existing bridge/high-precision imports and rejection of incompatible skeletons. Final EXE import and ISO bank readback matched. | A gameplay test of the new Kabal motion or automatic retargeting. |
 | Native bank imports, 0.24.5 | 29 checks covering a supplied Scorpion idle bank, reload/project persistence, mapped channel growth, explicit override and ISO readback. | Compatibility of arbitrary mismatched bone channels. |

@@ -37,3 +37,5 @@ An editor-compatible file is not automatically a valid game replacement. Use the
 Enable **Advanced tools** for native metadata, hexadecimal bytes and readable strings. These help investigate headers, offsets and names. Not every number is a size or a safe field to change. Validated import support does not mean arbitrary binary edits will load.
 
 Animation Lab has its own **Advanced tools** tab, clip/bank scope, hex search and strings view. Use the bank directory for clip names.
+
+In **0.25.4**, choose **Transfer hex data…** from either Hex view to overwrite a specific byte range using a file, another game resource, the current resource or pasted bytes. Review before applying. Resource length stays unchanged. See [Hex transfer](HEX_TRANSFER.md) for offsets, line ranges, validation and project staging.

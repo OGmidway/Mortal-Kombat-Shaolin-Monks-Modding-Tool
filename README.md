@@ -22,9 +22,9 @@ You do not need to mount or unpack the ISO to begin. You do need your own game f
 
 This is an independent, experimental modding tool. The best-tested workflows use the researched **USA PS2 revision**. Support for one resource or revision does not establish support for every version of the game.
 
-## 2. Current release: 0.25.3
+## 2. Current release: 0.25.4
 
-**New in 0.25.3:** choose the Blender action to import, replace all old keyframes with custom motion, bring in the new frame range, and recover missing custom metadata only when the complete original rig can be verified. Type-11 clips now show **Higher precision (already active)**.
+**New in 0.25.4:** transfer exact hex ranges without resizing files, including animation clips/banks. Replace supported rigid weapons/objects through Blender or copy another game model with its textures. Blender Bridge **0.23** adds a dedicated weapon/object export button. The animation-import and character fixes from 0.25.3 and 0.25.2 remain included.
 
 **Character replacement milestone:** after the 0.25.2 mesh fix, Kratos replacing Reptile **6732** was reported fully visible and moving in-game. The fix is part of the shared importer, so other compatible replacements use the same workflow. This does not guarantee an untested CJ or other model will need no preparation.
 
@@ -33,12 +33,12 @@ This is an independent, experimental modding tool. The best-tested workflows use
 ## 3. Download and open
 
 1. Open **[Releases](https://github.com/OGmidway/Mortal-Kombat-Shaolin-Monks-Modding-Tool/releases/latest)**.
-2. Download **MKSM-Studio-0.25.3-win-x64.zip** (or the newest equivalent Windows ZIP).
+2. Download **MKSM-Studio-0.25.4-win-x64.zip** (or the newest equivalent Windows ZIP).
 3. Extract the entire ZIP into a regular folder you can write to, such as `Documents/MKSM Studio`. Do not run it from inside the ZIP.
 4. Double-click **MKSM Studio.exe**, recognizable by its gold dragon icon.
 5. Click **Open game ISO** and select your Shaolin Monks PS2 ISO.
 
-The Windows x64 runtime is included. Blender and PCSX2 are optional, separate applications. Download **MKSM-Blender-Bridge-0.22.zip** separately for the Blender editing workflow.
+The Windows x64 runtime is included. Blender and PCSX2 are optional, separate applications. Download **MKSM-Blender-Bridge-0.23.zip** separately for the Blender editing workflow.
 
 **Use the Windows download under release Assets.** GitHub's automatic **Source code (zip/tar.gz)** downloads contain this documentation repository, not the application.
 
@@ -53,6 +53,8 @@ The Windows x64 runtime is included. Blender and PCSX2 are optional, separate ap
 | Export a character with its skeleton, weights, textures and UVs | [Models and Blender](docs/MODELS_AND_BLENDER.md) |
 | Replace character geometry or make shape edits | [Models and Blender](docs/MODELS_AND_BLENDER.md#returning-a-character-to-the-game) |
 | Play/export clips, import a new Blender action, or replace a native BIN bank | [Animation Lab](docs/ANIMATIONS.md) |
+| Replace a weapon/object, including 0443 over 0121 | [Weapons and objects](docs/WEAPONS_AND_OBJECTS.md) |
+| Copy or write specific hex byte ranges | [Hex transfer](docs/HEX_TRANSFER.md) |
 | Use separate animations on one character in Godot 4 | [Godot guide](docs/GODOT.md) |
 | Replace music/voices and set native ADX loop points | [Audio workshop](docs/AUDIO.md) |
 | Replace an image or inspect native files | [Textures, audio and inspection](docs/ASSETS_AND_INSPECTION.md) |
@@ -77,6 +79,8 @@ Checked items are implemented for supported data. They do not mean every game re
 - [x] Verify complete original rigs when Blender exports omit MKSM custom metadata.
 - [x] Import native animation BIN banks, choose standalone-bank destinations and inspect animation hex/strings.
 - [x] Convert eligible packed animation to higher precision; identify clips already using it.
+- [x] Copy/write chosen hex bytes or 16-byte lines without changing the destination resource size.
+- [x] Experimental rigid weapon/object replacement with Blender GLB, or game-model/texture copying.
 - [x] Replace supported ADX audio, set exact loop points and rebuild its sound collection.
 - [x] Stage edits automatically in supported import workflows and save/reopen a project.
 - [x] Build a separate ISO, with optional PCSX2 boot, even when no changes were made.

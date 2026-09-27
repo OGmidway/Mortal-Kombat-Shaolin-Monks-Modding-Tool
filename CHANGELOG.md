@@ -2,6 +2,17 @@
 
 [Current download](https://github.com/OGmidway/Mortal-Kombat-Shaolin-Monks-Modding-Tool/releases/latest) · [Previous builds](docs/PREVIOUS_BUILDS.md) · [Roadmap](docs/ROADMAP.md) · [Validation](docs/VALIDATION.md)
 
+## 0.25.4 — Hex transfer and weapon/object editing
+
+- Adds **Transfer hex data…** to the main Advanced Hex tab and Animation Lab. Copy from game resources/files, reuse the current bytes, or paste hex. Select exact offsets or one-based 16-byte lines; destination length stays unchanged.
+- Reviews before/after bytes, validates available native structures, rejects invalid/stale changes, and stages game-linked edits for ISO building. Standalone animation edits refresh preview; patched native copies include a transfer report.
+- Adds **Import weapon / object…** for fully decoded unskinned type-0 models. Copy an existing game model and texture set, or rebuild a Blender GLB with new vertices/triangles, normals, UVs and supported material images.
+- Preserves native rigid attachment/transform records and rebuilds local bounds. Collision, hitboxes, attacks and character rigs are not authored by this workflow.
+- Adds **Save Weapon / Object for Studio** in the separate **Blender Bridge 0.23** download. Existing character and animation workflows remain available.
+- Adds step-by-step hex and weapon guides, including **0443 tiger-hook sword → 0121 kama**, with **0442 → 0120** textures. Archives 0.25.3 in Previous Builds.
+
+Validated with actual Blender export, 18 supported rigid-resource round trips, WPF preview/staging, project save/reopen, byte-range failure cases and ISO resource readback. New weapon behavior and arbitrary hex edits still require gameplay testing. File resizing through hex editing is intentionally unsupported.
+
 ## Documentation refresh after 0.25.3
 
 - Updates the overview, completed-feature hierarchy, roadmap, validation record and troubleshooting through 0.25.3.

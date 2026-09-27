@@ -20,7 +20,7 @@ GLB carries the editable rig, mesh, weights and UVs. The native companion is the
 
 ## Install the optional bridge
 
-Download **MKSM-Blender-Bridge-0.22.zip** from Releases and extract `io_mksm_studio.py`. Install it through Blender's add-on preferences and enable MKSM Studio. The exact menu varies by Blender version; the bridge was tested with Blender 4.2. Open the 3D Viewport sidebar's **MKSM** panel.
+Download **MKSM-Blender-Bridge-0.23.zip** from Releases and extract `io_mksm_studio.py`. Install it through Blender's add-on preferences and enable MKSM Studio. The exact menu varies by Blender version; the bridge was tested with Blender 4.2. Open the 3D Viewport sidebar's **MKSM** panel.
 
 Use **Open Studio GLB** there. The bridge retains mappings/companions needed for native return. Keep a `.blend` working copy alongside the original export.
 
@@ -84,3 +84,7 @@ This workflow imports new texture artwork and UV mapping; it does not provide ge
 - **Collapse/twisting:** check rest pose and transferred weights. Matching names alone do not make skeletons equivalent.
 - **Shape import rejects topology:** choose the replacement workflow for intentional topology changes.
 - **Valid rebuild fails in-game:** record the resource ID and failure point; reduce complexity and compare against an unmodified baseline.
+
+## Weapons and rigid objects
+
+Use **Import weapon / object…** for supported unskinned type-0 models. The new Blender Bridge **0.23** has **Save Weapon / Object for Studio**. This path can rebuild topology without a character armature, or copy an existing game model and its textures. See [Weapons and objects](WEAPONS_AND_OBJECTS.md) for the 0443-over-0121 workflow and current limits.

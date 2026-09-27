@@ -2,7 +2,7 @@
 
 [Home](../README.md) · [Current features](FEATURES.md) · [Validation](VALIDATION.md) · [Previous builds](PREVIOUS_BUILDS.md)
 
-This is the work list through **0.25.3**, not a release schedule. Checked milestones are delivered for the supported data. Unchecked items need implementation, research or further testing; they are not hidden features you can unlock with a setting.
+This is the work list through **0.25.4**, not a release schedule. Checked milestones are delivered for the supported data. Unchecked items need implementation, research or further testing; they are not hidden features you can unlock with a setting.
 
 ## 1. Delivered foundation
 
@@ -27,11 +27,15 @@ This is the work list through **0.25.3**, not a release schedule. Checked milest
 | 0.25.2 | Replacement-character draw batches corrected | Kratos replacing Reptile 6732 was reported fully visible and moving in-game. This is one confirmed replacement, not certification of every model. |
 | 0.25.3 | Choose a Blender action, import newly authored keys, recover missing metadata only against a verified complete rig, explain active high precision | Supplied Kabal GLB passed preview/project/ISO checks; its new motion still needs in-game testing. |
 
+| 0.25.4 | Same-size hex transfer; rigid weapon/object workshop; Blender Bridge 0.23 object export | Animation/texture/project/UI checks, 18 rigid-resource round trips, actual Blender added-topology/material return and native weapon-copy ISO readback; weapon gameplay still pending. |
+
 ## 3. Next: reliability and practical editing
 
 - [ ] Collect reproducible character/animation failures with Studio version, game revision, resource IDs and chosen import mode.
 - [ ] Expand gameplay checks across more replacement characters, including transitions, damage and attachments.
 - [ ] Verify the newly imported Kabal actions in gameplay and record the result.
+- [ ] Verify 0443 over 0121 in gameplay, including grip/orientation and weapon use.
+- [ ] Extend rigid rebuilding beyond decoded unskinned type-0 parts; investigate collision/hitbox authoring separately.
 - [ ] Improve diagnostics for difficult weights, unsupported tracks and model/animation source mismatches.
 - [ ] Make complicated material/texture preparation easier while retaining the original native identities.
 - [ ] Expand round-trip coverage across additional Blender versions and user export settings.
@@ -61,7 +65,7 @@ Resource relocation already allows supported files to grow or shrink. General 40
 
 ## 6. Documentation and release history
 
-- [x] Current feature checklist, beginner workflows and troubleshooting through 0.25.3.
+- [x] Current feature checklist, beginner workflows and troubleshooting through 0.25.4.
 - [x] Separate record of tool checks and reported gameplay outcomes.
 - [x] Previous Builds index for published older releases.
 - [x] Archive index maintenance during release packaging; existing downloads and signatures remain in their original releases.

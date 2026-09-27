@@ -2,7 +2,7 @@
 
 [Home](../README.md) · [Roadmap](ROADMAP.md) · [Validation](VALIDATION.md) · [Previous builds](PREVIOUS_BUILDS.md)
 
-Current application: **0.25.3**. Checked means implemented for supported data. **Experimental** means the workflow exists but needs preview and game testing. Unchecked items are not promised by this release.
+Current application: **0.25.4**. Checked means implemented for supported data. **Experimental** means the workflow exists but needs preview and game testing. Unchecked items are not promised by this release.
 
 ## 1. Opening and finding resources
 
@@ -40,6 +40,18 @@ Current application: **0.25.3**. Checked means implemented for supported data. *
 - [ ] Arbitrary new bones, hierarchies or replacement rigs.
 - [ ] Unlimited meshes or removal of PS2 runtime limits.
 - [ ] Full gameplay certification of arbitrary imported characters.
+
+### Weapons and rigid objects (0.25.4)
+
+- [x] Dedicated **Import weapon / object** workshop for supported unskinned type-0 geometry.
+- [x] Copy another supported game model ID and its selected texture set into the destination slots.
+- [x] Blender Bridge 0.23 weapon/object export without an armature.
+- [x] **Experimental:** rebuild new vertices, triangles, normals, UVs and same-dimension material images; retain native attachment records and rebuild local bounds.
+- [x] Review before staging, save/reload projects and rebuild ISO.
+- [ ] All rigid/level/attachment encodings; collision, hitbox and weapon behavior editing.
+- [ ] Gameplay confirmation of the new weapon workflows.
+
+See [Weapons and objects](WEAPONS_AND_OBJECTS.md) for the **0443 → 0121** example.
 
 ## 4. Animation Lab
 
@@ -88,6 +100,10 @@ See [Audio workshop](AUDIO.md) for conversion, loop placement and supported form
 - [x] Native metadata, hex and readable strings for supported resources.
 - [x] Animation Lab's own Advanced tools tab with selected-clip/full-bank scope.
 - [x] Native resource extraction, stored-byte saving and resource index export.
+- [x] Same-size hex overwrite from a file, game resource, current destination or pasted hex.
+- [x] Byte offsets or one-based 16-byte line ranges, selected animation clip/full-bank scopes, before/after review and paged results.
+- [x] Available native format validation, project staging/undo and patched-copy export with a transfer report.
+- [ ] Hex insertion/deletion, automatic pointer repair or bone retargeting.
 - [ ] Complete meaning/editing support for every unknown record.
 
 ## 8. Projects, rebuilding and testing

@@ -93,3 +93,7 @@ Whole-frame poses are evaluated; arbitrary subframe authoring is not captured. P
 ## Inspect the bytes
 
 Enable **Advanced tools** inside Animation Lab. Choose selected clip or full bank, then details, hex or ASCII strings. Clip names live in the bank directory, so inspect the full bank to find them. Imported edits refresh the bytes. This is inspection, not an unrestricted hex patch editor.
+
+## Transfer specific native animation bytes
+
+Animation Lab → **Advanced tools → Hex → Transfer hex data…** supports a selected clip or the full bank. A reviewed valid overwrite refreshes the preview and stages a game-linked bank. A standalone bank can be edited in preview, then saved as native BIN or assigned to a destination. See [Hex transfer](HEX_TRANSFER.md); copying bytes does not retarget bones or add animation slots.
