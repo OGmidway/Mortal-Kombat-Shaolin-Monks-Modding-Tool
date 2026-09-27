@@ -24,9 +24,9 @@ This is an independent, experimental modding tool. The best-tested workflows use
 
 ## 2. Current release: 0.25.6
 
-**New to character swaps? [Start with the simple Blender guide](docs/CHARACTER_START_HERE.md).** [Blender Bridge 0.24.1](https://github.com/OGmidway/Mortal-Kombat-Shaolin-Monks-Modding-Tool/releases/download/v0.25.6/MKSM-Blender-Bridge-0.24.1.zip) adds numbered steps, plain button names and clear export directions inside Blender. Install the add-on separately; Studio remains 0.25.6. This is an interface/help patch, not a fix for character loading freezes.
+**New to character swaps? [Start with the simple Blender guide](docs/CHARACTER_START_HERE.md).** [Blender Bridge 0.25.0](https://github.com/OGmidway/Mortal-Kombat-Shaolin-Monks-Modding-Tool/releases/download/v0.25.6/MKSM-Blender-Bridge-0.25.0.zip) adds **Set up game textures (keep more detail)**. Automatic mode uses multiple original slots; choose two or three atlases if you want fewer textures. Original weights stay unchanged, and textures used by kept native meshes are protected. Install the add-on separately; Studio remains 0.25.6.
 
-**New in 0.25.6 + Blender Bridge 0.24:** **Prepare Character for MKSM** automates opaque character material preparation. Select your weighted donor meshes in Blender; the bridge makes copies, lays out UVs, bakes base colors into one native-size atlas and assigns the destination material. **Save Prepared Character for Studio** exports those copies without including the old body. [Follow the steps](docs/MODELS_AND_BLENDER.md#automatic-material-preparation).
+**Texture preparation:** the new helper copies/resizes existing color images and preserves their UV layouts when they fit separate slots. It packs image rectangles and remaps copied UVs when combining textures; it replaces the old one-atlas bake. [Follow the steps](docs/CHARACTER_START_HERE.md#4-make-the-textures-ready). This does not raise native texture limits or resolve the separate Liu Kang loading-freeze investigation.
 
 The weapon/object visibility fix, hex transfer, animation imports and character draw-batch fixes remain included. Automatic preparation is experimental: review native palette conversion, seams, texture detail and any shared attachment textures, then test in-game.
 
@@ -42,7 +42,7 @@ The weapon/object visibility fix, hex transfer, animation imports and character 
 4. Double-click **MKSM Studio.exe**, recognizable by its gold dragon icon.
 5. Click **Open game ISO** and select your Shaolin Monks PS2 ISO.
 
-The Windows x64 runtime is included. Blender and PCSX2 are optional, separate applications. Download **MKSM-Blender-Bridge-0.24.1.zip** separately for the Blender editing workflow.
+The Windows x64 runtime is included. Blender and PCSX2 are optional, separate applications. Download **MKSM-Blender-Bridge-0.25.0.zip** separately for the Blender editing workflow.
 
 **Use the Windows download under release Assets.** GitHub's automatic **Source code (zip/tar.gz)** downloads contain this documentation repository, not the application.
 
@@ -80,7 +80,7 @@ Checked items are implemented for supported data. They do not mean every game re
 - [x] Save one clip or an organized bank of individual clip folders.
 - [x] Export animation-only GLBs without repeated character geometry.
 - [x] Return supported Blender character geometry, UVs, weights and material images through native import.
-- [x] Automatically prepare opaque character atlases/UVs on copies in Blender Bridge 0.24.
+- [x] Prepare opaque character textures on copies using multiple native slots or fewer atlases in Blender Bridge 0.25.0.
 - [x] Validate replacement geometry against the researched three-bone-per-triangle/draw-batch limit.
 - [x] Import newly authored animation keys, choose between GLB actions and use a new duration.
 - [x] Verify complete original rigs when Blender exports omit MKSM custom metadata.

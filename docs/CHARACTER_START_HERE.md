@@ -4,7 +4,7 @@
 
 Example: replace Reptile with Cyrax. Start with **Reptile's original MKSM export**. Put the new Cyrax body on **Reptile's game skeleton**.
 
-Use **Blender Bridge 0.24.1** with **MKSM Studio 0.25.6 or later**. [Download the Bridge](https://github.com/OGmidway/Mortal-Kombat-Shaolin-Monks-Modding-Tool/releases/download/v0.25.6/MKSM-Blender-Bridge-0.24.1.zip).
+Use **Blender Bridge 0.25.0** with **MKSM Studio 0.25.6 or later**. [Download the Bridge](https://github.com/OGmidway/Mortal-Kombat-Shaolin-Monks-Modding-Tool/releases/download/v0.25.6/MKSM-Blender-Bridge-0.25.0.zip).
 
 ## First: install the Bridge
 
@@ -14,7 +14,7 @@ Use **Blender Bridge 0.24.1** with **MKSM Studio 0.25.6 or later**. [Download th
 4. Enable **MKSM Studio Bridge**. Restart Blender if the old buttons remain.
 5. In the 3D Viewport, press **N**. Click the **MKSM** tab.
 
-The panel should say **MKSM Bridge 0.24.1 - Start here**. Studio's EXE updater does not install Blender add-ons. Install this download in Blender separately.
+The panel should say **MKSM Bridge 0.25.0 - Start here**. Studio's EXE updater does not install Blender add-ons. Install this download in Blender separately.
 
 ## 1. Get the ORIGINAL game character
 
@@ -71,19 +71,26 @@ Apply the new mesh's Location, Rotation and Scale before material preparation. K
 
 Choose one route.
 
-### A. One-texture helper — experimental
+### A. Automatic textures — keep more detail
 
-Use this for an opaque body. It does not transfer weights or increase the game's texture resolution.
+**Already using the right game materials and image sizes? Skip this step.** Do not squeeze a working multi-texture character into one image.
 
-1. Select **only the new body meshes**.
-2. Click **Make one game texture (experimental)**.
-3. Wait. The Bridge makes copies and packs their colors into one original-size game texture.
-4. Click **Check texture result**.
-5. Look at the prepared body in Material Preview. If it is black, blurry or wrong, **stop and fix the materials**. Do not export a broken result.
+1. Save a backup `.blend`. Finish weight transfer and remove the **old body meshes** from this working scene. Keep the original skeleton, dragon and other needed extras.
+2. Select **only your NEW body meshes**. Leave the dragon and other kept parts unselected.
+3. Leave **Game textures = 0**. This means automatic: use the available game texture slots for better detail.
+4. Click **Set up game textures (keep more detail)**.
+5. Click **Check texture result**. Look at the copied body in Material Preview.
+6. Select that prepared body **AND the dragon/other needed extras**. Continue to the export step below.
 
-Original meshes remain in the scene. The selected new source meshes are hidden; prepared copies are selected. A small game texture can lose detail. Automatic baking still has problem cases. Use the manual route if the result is wrong.
+**Want two or three atlases?** Set **Game textures** to **2** or **3** before setup. The helper combines source images only when needed. It adjusts the copied UVs to match; it does not unwrap the body again or change bone weights.
 
-This helper is **body-only**. Extra skinned parts, such as Liu Kang's dragon, need to be included through the selected-mesh export below. Parts sharing a texture may need manual material work.
+Automatic is usually the better choice for quality. For the saved Liu Kang test scene, automatic kept **five body textures**, with the dragon's separate texture protected. All five body images were already 128 × 128, so they needed no reduction. Other characters can have different slot counts and dimensions.
+
+**What stays safe:** original source meshes are kept and hidden; working copies are selected. Game textures used by unselected original meshes, including hidden extras, are reserved. A repeated setup recognizes its own previous backup meshes. If all slots are reserved, remove only the old reference body after saving a backup; do not delete the skeleton or required extras.
+
+**Supported:** opaque sRGB image textures connected directly to Principled Base Color, with Image Texture extension **Repeat**, and solid base colors. Negative/repeating UV coordinates are handled during packing. Mixed/procedural colors and Mapping nodes need to be baked/applied first. Normal maps and other modern shader effects are not included.
+
+This uses the original game's slots and image dimensions. It does not create unlimited slots or raise texture resolution. Fewer atlases can still lose detail. Studio also converts images to the game's palette format. Review the result and test the rebuilt ISO.
 
 ### B. Manual materials — keep separate game texture slots
 
@@ -99,7 +106,7 @@ Renaming a new material does not give it the original game's material informatio
 
 ### Normal route: GLB
 
-**Used the one-texture helper, and only need its prepared body?** Click **Export prepared body (.glb)**. This exports the latest prepared body and game skeleton.
+**Used the texture helper, and only need its prepared body?** Click **Export prepared body (.glb)**. This exports the latest prepared body and game skeleton.
 
 **Used manual materials, or need extra skinned parts?**
 

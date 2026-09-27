@@ -2,7 +2,7 @@
 
 [Home](../README.md) · [Animations](ANIMATIONS.md) · [Build an ISO](PROJECTS_AND_TESTING.md)
 
-**Want the short, step-by-step version? [Start here: put a new character in the game](CHARACTER_START_HERE.md).** Blender Bridge **0.24.1** uses simpler labels and numbered sections. This technical guide retains some older button names: **Open Studio GLB** is now **Open original MKSM model (.glb)**; **Prepare Character for MKSM** is **Make one game texture (experimental)**; **Save Prepared Character for Studio** is **Export prepared body (.glb)**; the manual replacement button is **Export selected character (.glb)**.
+**Want the short, step-by-step version? [Start here: put a new character in the game](CHARACTER_START_HERE.md).** Blender Bridge **0.25.0** uses simpler labels and numbered sections. This technical guide retains some older button names: **Open Studio GLB** is now **Open original MKSM model (.glb)**; **Prepare Character for MKSM** is **Set up game textures (keep more detail)**; **Save Prepared Character for Studio** is **Export prepared body (.glb)**; the manual replacement button is **Export selected character (.glb)**.
 
 ## Export a character
 
@@ -22,7 +22,7 @@ GLB carries the editable rig, mesh, weights and UVs. The native companion is the
 
 ## Install the optional bridge
 
-Download **MKSM-Blender-Bridge-0.24.1.zip** from Releases and extract `io_mksm_studio.py`. Install it through Blender's add-on preferences and enable MKSM Studio. Open the 3D Viewport sidebar's **MKSM** panel. This wording update was checked by importing an original character and exporting selected meshes in Blender 5.2.2; that check does not establish gameplay compatibility for arbitrary replacements.
+Download **MKSM-Blender-Bridge-0.25.0.zip** from Releases and extract `io_mksm_studio.py`. Install it through Blender's add-on preferences and enable MKSM Studio. Open the 3D Viewport sidebar's **MKSM** panel. Multi-texture preparation was checked on the saved Liu Kang scene in Blender 5.2.2 with five, three and two body textures, including native compilation in Studio 0.25.6. These checks do not establish gameplay compatibility.
 
 Use **Open Studio GLB** there. The bridge retains mappings/companions needed for native return. Keep a `.blend` working copy alongside the original export.
 
@@ -74,32 +74,18 @@ A good Studio preview is necessary but not sufficient: test movement, attacks, a
 
 ## Automatic material preparation
 
-Use **Studio 0.25.6** with the separate **Blender Bridge 0.24** download. This replaces the manual material-count/image-size/UV-layout work for supported **opaque base-color** character meshes. Weight transfer and alignment still happen first.
+Use **Studio 0.25.6** with **Blender Bridge 0.25.0**. [Follow the simple texture steps](CHARACTER_START_HERE.md#4-make-the-textures-ready).
 
-1. In Studio, select the destination character, load the correct texture set, then **Save for Blender…**. Keep the GLB and native companions together.
-2. In Blender's MKSM sidebar, use **Open Studio GLB**. Import your replacement, align it, and transfer/clean up weights onto the original armature. Keep the original bones and rest pose.
-3. Apply the donor's object transforms and non-armature modifiers. Keep its original textured materials and UVs. The donor needs one Armature modifier targeting the Studio rig.
-4. Select **only your replacement meshes**. Click **Prepare Character for MKSM**. Baking can take time on large meshes; wait for completion.
-5. Inspect the selected objects in **MKSM Prepared Character**, using Material Preview. If the original reference body overlaps, hide that body in the Outliner or use Blender's Local View on the selected prepared meshes. Source meshes remain in the scene; preparation hides the selected donors in the viewport without changing their geometry, materials or UVs.
-6. Open **Preparation Report**. It shows the native atlas size/material and warns if the texture is shared with attachments. The full report is also saved as a Blender text data-block. Save a `.blend` working file to keep the packed atlas and prepared copies.
-7. Click **Save Prepared Character for Studio**. This exports only the latest prepared copies plus the original rig; it does not include other hidden character bodies.
-8. In Studio, select the same destination, choose **Import character… → 1. Choose character…**, and load that GLB with **Import GLB material images** enabled. Review the rebuilt native colors/model, then build a separate ISO and test it in-game.
+- **Game textures = 0:** use available native slots as needed. Keep one source image per slot when enough are available. Shared source images are deduplicated, and existing valid native slot assignments are preferred.
+- **Game textures = 2 or 3:** limit the texture count. Combine source image rectangles, with edge padding, into existing native-size slots. Remap the copied UVs into those rectangles. Negative/repeating source UVs are sampled over their used domain.
+- Separate-image slots retain source UVs. Images are resized only when necessary to match the native slot dimensions. The helper does not run a new body unwrap or a Cycles bake.
+- Original source geometry/materials/UVs remain untouched. Copied positions, topology, weights, transforms and native part mapping remain unchanged. Copied vertex-color attributes are removed so they do not multiply the new color images in GLB.
+- Unselected native meshes reserve their used texture slots, including skinned extras and hidden meshes. Original static attachments in the template also reserve their slots. Save a backup and remove the old reference body after weight transfer; keep the original skeleton and required extras. Omitted/deleted extras cannot be discovered from the scene, so start with a complete original export.
+- **Check texture result** lists output slots, dimensions and source-image groups. Full details are stored in a Blender text block. Errors roll back temporary copies/materials/images. Repeated preparation recognizes its prior backup meshes.
+- Only opaque Principled Base Color with a directly connected sRGB Image Texture (Repeat extension), or solid base color, is supported. Apply Mapping transforms to UVs and bake complex/procedural shaders first. Other material effects are not recreated.
+- Export the prepared body with every required skinned extra using **Export selected character (.glb)**. The body-only export still omits other meshes.
 
-### What the automatic step does
-
-- Finds the largest textured body slot in the original destination GLB and retains its native material ID and image dimensions. You do not need to create the original number of textures manually.
-- Packs new UV islands across the selected meshes and bakes their base colors into one atlas. Image textures and solid base colors are supported; base-color node inputs are evaluated by Blender's bake engine.
-- Keeps source image sampling on its original UV layer during the bake. Prepared copies get the atlas as their export UV0, with the image packed into the GLB.
-- Keeps the original skeleton and prepared vertex positions, topology and weights. Does not silently remove bone influences. The existing three-bone-per-triangle check still applies.
-- Leaves original source geometry/materials intact. If preparation fails, temporary copies/images/materials are removed and render settings are restored. Repeating preparation creates another set; the dedicated export button uses the newest set.
-
-### Limits to review
-
-- This first version uses **one existing native-size atlas**, so a detailed donor can lose texture detail. It does not increase native texture resolution or remove PS2 limits. Studio still performs native palette conversion; review its preview after import.
-- Only opaque materials with a Principled BSDF directly connected to Material Output are accepted. A linked Alpha input or Alpha below 1 is rejected. Normal maps, metallic/roughness, emission and other modern shader effects are not recreated as native game materials.
-- **Attachments or extra meshes sharing the chosen native texture keep their original UVs.** The report flags texture sharing found in the template export. Those parts can need manual texture/material work; inspect them in Studio, including hidden/extra surfaces. Export omitted surfaces cannot be checked by the Blender helper.
-- Preparation does not fit the donor to the rig, transfer weights, repair animation or certify a game-ready character. Test the rebuilt ISO. The original manual replacement path remains available for special materials or multiple carefully authored native textures.
-- This preparation button handles skinned characters; use the separate weapon/object workflow for rigid models.
+This fits the existing slot count and dimensions; it does not add native texture records, enlarge the game's memory budgets, transfer weights, or fix loading freezes. Fewer/smaller textures can lose detail. Studio performs native palette conversion. Test the rebuilt game.
 
 ## Textures and UVs on a replacement
 
