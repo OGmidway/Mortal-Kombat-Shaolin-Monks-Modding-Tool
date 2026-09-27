@@ -1,5 +1,18 @@
 # Release notes
 
+## 0.25.0 — Audio replacement and native ADX loops
+
+- Adds **Replace audio & set loop points…** to the Audio tab.
+- Imports PCM/float WAV and supported native ADX, matching the destination track's sample rate and channel count.
+- Writes exact loop start/end points into native ADX, with seconds/sample inputs, waveform markers, intro-once playback and a three-pass loop preview.
+- Rebuilds mapped AFS sound collections for longer or shorter tracks while preserving neighboring payloads, names and order.
+- Includes audio edits in project save/load, track restore, bank undo, and ISO builds. Reopening a track previews its staged version.
+- Saves standalone native ADX with loop metadata. Recovered banks without a mapped live resource ID support export but are clearly excluded from automatic ISO installation.
+- Corrects ADX decoding to honor original predictor histories and coefficient truncation.
+- Preserves native audio bytes when unchanged; eligible aligned loop edits avoid recompression.
+
+Validated against an independent ADX decoder, original game headers, project/UI round trips and a rebuilt USA ISO. Runtime sound-event timing and music transitions still need gameplay testing. [Audio guide](docs/AUDIO.md).
+
 ## 0.24.5 — Native idle import and bone-count option
 
 - Fixes native-bank imports that add channels already defined by the verified destination game rig, including Scorpion idle body/face channels.

@@ -61,9 +61,12 @@ Checked means implemented for supported data. **Experimental** means the workflo
 - [x] Supported native texture preview and image export.
 - [x] Same-dimension PNG replacement, palette conversion and supported smaller texture levels.
 - [x] Supported audio preview/export.
+- [x] WAV/ADX replacement with conversion to the original sample rate and channels.
+- [x] Native ADX loop start/end in seconds or samples; intro-once and repeated-section preview.
+- [x] Longer/shorter track replacement in mapped AFS collections, project persistence and ISO rebuilding.
 - [x] Native details, hex and strings.
 - [ ] General texture resizing or tested 4096 × 4096 in-game textures.
-- [ ] Complete native audio authoring/reinsertion.
+- [ ] Installation of recovered AFS banks without mapped live resource IDs; other sound-bank formats. See [Audio workshop](AUDIO.md).
 - [ ] Editable support for every unknown resource.
 
 ## 6. Projects, rebuilding and testing

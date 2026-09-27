@@ -25,7 +25,7 @@ This is an independent, experimental modding tool. The best-tested workflows use
 ## 2. Download and open
 
 1. Open **[Releases](https://github.com/OGmidway/Mortal-Kombat-Shaolin-Monks-Modding-Tool/releases/latest)**.
-2. Download **MKSM-Studio-0.24.5-win-x64.zip** (or the newest equivalent Windows ZIP).
+2. Download **MKSM-Studio-0.25.0-win-x64.zip** (or the newest equivalent Windows ZIP).
 3. Extract the entire ZIP into a regular folder you can write to, such as `Documents/MKSM Studio`. Do not run it from inside the ZIP.
 4. Double-click **MKSM Studio.exe**, recognizable by its gold dragon icon.
 5. Click **Open game ISO** and select your Shaolin Monks PS2 ISO.
@@ -44,7 +44,8 @@ The Windows x64 runtime is included. Blender and PCSX2 are optional, separate ap
 | Replace character geometry or make shape edits | [Models and Blender](docs/MODELS_AND_BLENDER.md#returning-a-character-to-the-game) |
 | Play, export or edit animation clips | [Animation Lab](docs/ANIMATIONS.md) |
 | Use separate animations on one character in Godot 4 | [Godot guide](docs/GODOT.md) |
-| Replace an image or export music and voices | [Textures, audio and inspection](docs/ASSETS_AND_INSPECTION.md) |
+| Replace music/voices and set native ADX loop points | [Audio workshop](docs/AUDIO.md) |
+| Replace an image or inspect native files | [Textures, audio and inspection](docs/ASSETS_AND_INSPECTION.md) |
 | Save edits, rebuild an ISO and launch PCSX2 | [Projects and game testing](docs/PROJECTS_AND_TESTING.md) |
 | Install a newer version from inside the app | [Updates and troubleshooting](docs/UPDATES_AND_HELP.md) |
 
@@ -60,6 +61,7 @@ Checked items are implemented for supported data. They do not mean every game re
 - [x] Save one clip or an organized bank of individual clip folders.
 - [x] Export animation-only GLBs without repeated character geometry.
 - [x] Return supported Blender character and animation edits to native resources.
+- [x] Replace supported ADX audio, set exact loop points and rebuild its sound collection.
 - [x] Stage changes in a saved project and rebuild a separate ISO.
 - [x] Relocate supported rebuilt resources when their file size grows or shrinks.
 - [x] Check GitHub for newer signed updates and install/relaunch from the app.

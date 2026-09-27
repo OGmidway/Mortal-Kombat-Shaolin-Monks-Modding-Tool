@@ -21,7 +21,7 @@ Some materials use alpha for effects. Compare with Transparency disabled if opac
 
 Select **Music & voices**, choose a supported resource, and use its audio controls. **Save audio…** exports supported decoded audio. Formats, sample rates and compression vary; unknown entries may need more research.
 
-There is no complete native audio replacement/encoding workflow yet. Renaming a WAV/MP3 as a native sound file does not convert it.
+Choose **Replace audio & set loop points…** to import WAV/ADX, convert to the original game sample rate and channels, and choose a specific section to loop. **Apply to project** repacks the mapped containing bank and includes it in the next ISO build. Longer and shorter sounds are supported. See the [complete audio workshop guide](AUDIO.md) for exact loop placement, preview, supported formats and recovered-bank limitations.
 
 ## Exported files versus stored bytes
 
