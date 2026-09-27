@@ -1,8 +1,8 @@
 # Feature checklist and current boundaries
 
-[Home](../README.md)
+[Home](../README.md) · [Roadmap](ROADMAP.md) · [Validation](VALIDATION.md) · [Previous builds](PREVIOUS_BUILDS.md)
 
-Checked means implemented for supported data. **Experimental** means the workflow exists but needs preview and game testing. Unchecked items are not promised by this release.
+Current application: **0.25.3**. Checked means implemented for supported data. **Experimental** means the workflow exists but needs preview and game testing. Unchecked items are not promised by this release.
 
 ## 1. Opening and finding resources
 
@@ -33,14 +33,15 @@ Checked means implemented for supported data. **Experimental** means the workflo
 - [x] Shape/UV return with original topology, weights and mapping retained.
 - [x] **Experimental:** replacement topology/weights compiled around original skeleton/material constraints.
 - [x] Native model and supported material-image replacement packages.
-- [x] Input validation and preview before staging.
+- [x] Input validation and native preview; supported character/model-image imports stage together.
+- [x] Three-bone draw batching and triangle checks in the shared replacement compiler (0.25.2).
+- [x] Reject incompatible rebuilt batches in native import and before ISO writing; preserve byte-exact original records.
+- [x] One prepared Kratos/Reptile replacement reported working in-game. See [validation scope](VALIDATION.md).
 - [ ] Arbitrary new bones, hierarchies or replacement rigs.
 - [ ] Unlimited meshes or removal of PS2 runtime limits.
 - [ ] Full gameplay certification of arbitrary imported characters.
 
 ## 4. Animation Lab
-
-- [x] Reimport edited native `.bin` banks directly into the selected game bank, preserving native bytes and automatically staging them for ISO building.
 
 - [x] Bank discovery and recovered game-linked profiles.
 - [x] Play, pause, scrub, loop, FPS selection and skeleton/textured preview.
@@ -50,38 +51,61 @@ Checked means implemented for supported data. **Experimental** means the workflo
 - [x] **Animation only (GLB)** without repeated geometry/textures.
 - [x] Selected-clip/full-bank details, hex and ASCII strings.
 - [x] **Experimental:** edited types 1, 3, 6 and supported type-11 revision 2.
-- [x] Use Blender timing for supported length/key changes.
+- [x] Delete old keys and author new motion on the original rig; import supported new lengths and whole-frame keys.
+- [x] Select the intended take from a GLB containing multiple actions; match Blender FPS in the import dialog (0.25.3).
+- [x] Recover missing Custom Properties only after complete, unique bone-name/hierarchy/bind-pose verification.
+- [x] Show explicit import/staging errors and identify the selected action in the result.
+- [x] Native type-11 clips display **Higher precision (already active)**; other disabled cases explain why.
+- [x] Reimport native `.bin` banks and automatically stage them in the selected game resource.
+- [x] Choose a game destination for standalone loaded banks; retained staged edits appear after reload.
+- [x] Accept channel growth within verified game mappings; optional **Ignore bone-count difference** for explicit experiments, without retargeting.
 - [x] **Experimental:** higher-precision eligible type-6 edits on verified USA profiles, with matching ISO compatibility patch.
 - [ ] Automatic retargeting between arbitrary rigs/rest poses.
 - [ ] Complete event/camera, transition and world-motion equivalence.
 - [ ] All encodings or arbitrary subframe authoring.
 
-## 5. Textures, audio and inspection
+## 5. Textures
 
 - [x] Supported native texture preview and image export.
 - [x] Same-dimension PNG replacement, palette conversion and supported smaller texture levels.
-- [x] Supported audio preview/export.
-- [x] WAV/ADX replacement with conversion to the original sample rate and channels.
-- [x] Native ADX loop start/end in seconds or samples; intro-once and repeated-section preview.
-- [x] Longer/shorter track replacement in mapped AFS collections, project persistence and ISO rebuilding.
-- [x] Native details, hex and strings.
 - [ ] General texture resizing or tested 4096 × 4096 in-game textures.
-- [ ] Installation of recovered AFS banks without mapped live resource IDs; other sound-bank formats. See [Audio workshop](AUDIO.md).
-- [ ] Editable support for every unknown resource.
 
-## 6. Projects, rebuilding and testing
+## 6. Audio and native loops
+
+- [x] Supported audio preview/export.
+- [x] WAV-to-ADX encoding and native ADX import at the destination rate/channel count.
+- [x] Native loop endpoints in seconds or samples; intro-once and repeated-section preview.
+- [x] Longer/shorter track replacement inside mapped AFS collections while preserving neighboring tracks.
+- [x] Project persistence, individual track restore, bank undo and ISO rebuilding.
+- [x] Standalone native ADX export with supported loop metadata.
+- [ ] Installation of recovered AFS banks without mapped live resource IDs; other sound-bank formats.
+- [ ] Automatic adjustment of game events/cutscenes to a longer sound.
+
+See [Audio workshop](AUDIO.md) for conversion, loop placement and supported formats.
+
+## 7. Advanced inspection
+
+- [x] Native metadata, hex and readable strings for supported resources.
+- [x] Animation Lab's own Advanced tools tab with selected-clip/full-bank scope.
+- [x] Native resource extraction, stored-byte saving and resource index export.
+- [ ] Complete meaning/editing support for every unknown record.
+
+## 8. Projects, rebuilding and testing
 
 - [x] Stage, save/load, undo and restore original resource.
 - [x] Project/source validation.
 - [x] Supported native replacements can grow/shrink in byte size.
 - [x] Rebuild archive placement into a separate ISO.
+- [x] Build ISO only or build and boot; no emulator required to save an ISO.
+- [x] Zero-edit builds produce an unchanged ISO copy.
+- [x] Use current staged edits without first saving a project.
 - [x] Verify installed resource bytes.
 - [x] Launch selected PCSX2 with a separate test profile.
 - [ ] Automatic proof of correct behavior throughout gameplay.
 
 A bigger archive entry and greater in-game capacity are different issues. Relocation solves where the bytes go. It does not expand PS2 memory, texture hardware or internal buffers. Larger character imports must still fit format and practical runtime limits.
 
-## 7. Distribution and updates
+## 9. Distribution and updates
 
 - [x] Self-contained Windows x64 EXE without application source/PDBs.
 - [x] Gold dragon EXE/window icon; red/black/gold interface.
@@ -89,11 +113,14 @@ A bigger archive entry and greater in-game capacity are different issues. Reloca
 - [x] Higher-version checks, signed manifests and payload validation.
 - [x] In-app download, install and relaunch.
 - [x] Temporary previous-EXE backup and recovery for failed startup; automatic old-build cleanup after confirmed successful startup.
-- [x] Separate Blender bridge download.
-- [ ] Guarantee that a compiled executable cannot be reverse-engineered.
+- [x] Separate Blender bridge download (0.22 remains compatible with 0.25.3 workflows).
+- [x] Centered looping gold author credits for OGmidway, RelaxDirk and Z mods.
+- [x] Previous Builds index, with automatic release-packaging maintenance.
+
+The core source is private; a compiled executable cannot guarantee protection against reverse engineering.
 
 ## Validation scope
 
-Historical checks covered 115 decoded skinned resources through Blender round trips and 91 recovered USA animation profiles for selected export/native paths. Actual Godot AnimationLibrary playback covered three rigs/six clips. These are specific checks, not every clip or gameplay situation.
+The [validation record](VALIDATION.md) distinguishes historic corpus checks, current automated/UI/ISO checks, and reported gameplay. The Kratos replacement now has an in-game success report. The newly imported Kabal motion has preview/project/ISO verification; its gameplay test remains pending.
 
-This release adds updater and packaging checks. Its release notes identify current checks. A reproducible failing file ID/clip is more useful than assuming every character uses one layout.
+A working resource is not proof of every game revision, rig, encoding or gameplay situation. Use the [roadmap](ROADMAP.md) for the unfinished work and include specific resource IDs when reporting a problem.

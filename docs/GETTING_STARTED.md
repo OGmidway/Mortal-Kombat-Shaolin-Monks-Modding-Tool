@@ -40,7 +40,7 @@ Hold **Ctrl** to select multiple resources. Use **Export selected files…** for
 
 - Drag to orbit; Shift-drag to pan; scroll to zoom.
 - **Fit view** brings the geometry back into view.
-- **Fly around** enables a free camera. Use WASD and right-mouse look; the viewer displays its controls. **Stop flying** or **Esc** returns to normal viewing.
+- **Fly around** enables a free camera. Use WASD and right-mouse look; the viewer displays its controls. **Q/E** move down/up, **Shift** moves faster, and the wheel adjusts flight speed. **Stop flying** or **Esc** returns to normal viewing.
 - **Surfaces…** hides walls, isolates a material or reveals geometry behind another surface.
 - **Textures**, **Transparency**, **Outline view**, **Extra meshes** and **Show bones** change the preview.
 
@@ -57,3 +57,7 @@ Raw positions is a research control. Leave it off for normal use. The viewer tra
 | New modded ISO | A separately built image containing project changes. Test this in PCSX2. |
 
 Exporting a GLB does not install it into the game. Importing/staging the supported native edit and building a new ISO completes that workflow.
+
+## Where to go next
+
+Use [Models and Blender](MODELS_AND_BLENDER.md) for character replacement, [Animation Lab](ANIMATIONS.md) for custom actions/native banks, and [Audio](AUDIO.md) for WAV-to-ADX replacement and loops. [Features](FEATURES.md) lists current support; [Roadmap](ROADMAP.md) lists remaining work. [Previous builds](PREVIOUS_BUILDS.md) retains older downloads.

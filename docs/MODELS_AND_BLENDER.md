@@ -12,6 +12,12 @@
 
 Use the **rigged GLB** for skeletons, skin weights and animation. OBJ is useful for simple static geometry but cannot carry this rigged workflow.
 
+### Getting the untouched native original
+
+Start from the original ISO with no model replacement staged (or restore that resource first). **Save for Blender…** writes the editable `.glb`, a `.original.pme2` native snapshot and `.mksm.json` mapping. When available, `.original.pme2.textures.bin` preserves the selected native texture set. Keep them together. A snapshot exported after staging edits represents that current model, so keep a separate untouched source export.
+
+GLB carries the editable rig, mesh, weights and UVs. The native companion is the game-format reference; a GLB or OBJ cannot simply be renamed to BIN and installed.
+
 ## Install the optional bridge
 
 Download **MKSM-Blender-Bridge-0.22.zip** from Releases and extract `io_mksm_studio.py`. Install it through Blender's add-on preferences and enable MKSM Studio. The exact menu varies by Blender version; the bridge was tested with Blender 4.2. Open the 3D Viewport sidebar's **MKSM** panel.
@@ -60,7 +66,15 @@ Different topology can work within supported constraints. Unsupported material, 
 
 Original rigid attachments are preserved by character rebuilding; use the shape path for their supported position/UV changes. Triangles in a mapped grouped object cannot cross distinct original native rig groups.
 
+**In-game milestone:** Kratos replacing Reptile model **6732**, with texture set **6731**, was reported fully visible and running in-game after this fix. These IDs describe that test, not every character's pairing. The compiler fix applies generally to supported replacements; CJ or another character still needs its own weight/material preparation and game test.
+
 A good Studio preview is necessary but not sufficient: test movement, attacks, attachments and transitions in-game. Increase complexity gradually.
+
+## Textures and UVs on a replacement
+
+Replacement GLB UV0 and supported embedded base-color images can accompany the mesh. Map materials to the chosen original character's native texture slots and use the destination image dimensions. Different materials sharing one native texture slot must use the same image. Bake unsupported material effects and texture transforms into the image/UVs first.
+
+This workflow imports new texture artwork and UV mapping; it does not provide general native texture resizing or arbitrary modern shader materials. See [texture editing](ASSETS_AND_INSPECTION.md).
 
 ## Common problems
 

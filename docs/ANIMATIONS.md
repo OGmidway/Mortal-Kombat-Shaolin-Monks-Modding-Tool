@@ -1,6 +1,6 @@
 # Animation Lab
 
-[Home](../README.md) · [Godot 4](GODOT.md) · [Blender setup](MODELS_AND_BLENDER.md)
+[Home](../README.md) · [Godot 4](GODOT.md) · [Blender setup](MODELS_AND_BLENDER.md) · [Validation](VALIDATION.md) · [Roadmap](ROADMAP.md)
 
 ## Play on the original rig
 
@@ -71,6 +71,14 @@ This replaces the **whole selected bank**, preserving imported native bytes. The
 Unknown clips can be retained unchanged. A BIN identical to the current bank adds no new edit. Required higher-precision compatibility markers remain intact and are detected by the ISO builder.
 
 **Load bank file…** opens a standalone preview. To install that loaded bank, click **Add animation to project**, choose its matching original game bank, then click **Add bank to project**. Once staged, the button says **Bank added to project**; it is already included in the next build. Selecting another clip or changing playback controls does not edit the game. Test imported banks in gameplay after rebuilding.
+
+## Preview, replacement and additional animations
+
+- Selecting another clip, playing it, changing preview FPS or ticking Loop does **not** replace an animation in the game.
+- **Import edited clip…** replaces the selected existing clip with the chosen Blender take. It can contain completely new motion; the source skeleton must still match.
+- **Import native bank (.bin)…** replaces a whole existing bank. Clip names/order and supported structure are checked. **Load bank file…** alone is a preview until you assign/stage it.
+- Putting another character's bank in a destination does not automatically retarget its bones. **Ignore bone-count difference** does not solve a wrong bone order or bind pose.
+- Creating extra native clip slots and changing the game's references to use them is not implemented by these replacement controls. See the [roadmap](ROADMAP.md).
 
 ## Native limits and higher precision
 

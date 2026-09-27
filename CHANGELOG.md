@@ -1,5 +1,14 @@
 # Release notes
 
+[Current download](https://github.com/OGmidway/Mortal-Kombat-Shaolin-Monks-Modding-Tool/releases/latest) · [Previous builds](docs/PREVIOUS_BUILDS.md) · [Roadmap](docs/ROADMAP.md) · [Validation](docs/VALIDATION.md)
+
+## Documentation refresh after 0.25.3
+
+- Updates the overview, completed-feature hierarchy, roadmap, validation record and troubleshooting through 0.25.3.
+- Records the reported in-game success of the corrected Kratos/Reptile replacement; leaves the newly imported Kabal action's gameplay result pending.
+- Adds Previous Builds with release/download links and automatic index refresh during release packaging. Existing assets and update signatures are retained.
+- This is a website/documentation update; the application remains 0.25.3.
+
 ## 0.25.3 — Blender animation re-import
 
 - Adds an action/take selector when importing a GLB, so Blender files with several saved actions can replace the intended clip. The importer never silently chooses the first take in a multi-animation file.
@@ -18,7 +27,7 @@ Validated using a supplied three-action Blender GLB, original and high-precision
 - Checks native character packages, native model replacements, and staged edits before writing an ISO. Unchanged original records are preserved.
 - Adds the limit to the character workshop and Blender guide. Skeletons, textures and UVs are retained by this batching fix.
 
-Validated against the game's palette dispatch and draw gate, the failing replacement, a corrected 5,165-triangle replacement, and 118 original native model files. This resolves an identified draw rejection; complete gameplay compatibility remains to be tested for each character.
+Validated against the game's palette dispatch and draw gate, the failing replacement, a corrected 5,165-triangle replacement, and 118 original native model files. This resolves an identified draw rejection; complete gameplay compatibility remains to be tested for each character. **Subsequent maintainer report:** the corrected Kratos replacement for Reptile 6732 is fully visible and moving in-game; this confirms that replacement, not all possible imports.
 
 **Existing replacements:** update Studio, return to the original character's source export, then re-import your replacement GLB. Adjust weights if a triangle exceeds the limit. Old incompatible `.mksmcharacter` packages must be rebuilt; installing the update does not repair an existing ISO automatically. The Blender bridge is unchanged; point it at the updated Studio EXE when building a native package.
 

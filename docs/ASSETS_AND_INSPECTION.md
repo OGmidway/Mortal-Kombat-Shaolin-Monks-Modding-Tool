@@ -36,4 +36,4 @@ An editor-compatible file is not automatically a valid game replacement. Use the
 
 Enable **Advanced tools** for native metadata, hexadecimal bytes and readable strings. These help investigate headers, offsets and names. Not every number is a size or a safe field to change. Validated import support does not mean arbitrary binary edits will load.
 
-Animation Lab has its own Advanced tools switch, clip/bank scope, hex search and strings view. Use the bank directory for clip names.
+Animation Lab has its own **Advanced tools** tab, clip/bank scope, hex search and strings view. Use the bank directory for clip names.

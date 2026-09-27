@@ -43,4 +43,8 @@ A successful rebuild establishes that supported bytes were installed and passed 
 
 For characters, test standing, movement, attacks, damage, attachments and transitions. For animations, test transitions into/out of the clip. For textures, compare distances, effects and lighting. Use an unmodified baseline.
 
+Fresh-boot the new ISO for the first check. An old emulator save state can retain model/audio/animation data loaded from an earlier build.
+
 Record source revision, original IDs, edit type and failure point. Test one change at a time to identify the cause.
+
+See [reported gameplay and technical checks](VALIDATION.md) for the results already established. Switching preview animations, loop/FPS controls or visible surfaces alone does not replace a game animation; import and stage the intended native edit first.
