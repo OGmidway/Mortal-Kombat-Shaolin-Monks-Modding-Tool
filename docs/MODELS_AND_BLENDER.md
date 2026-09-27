@@ -2,6 +2,8 @@
 
 [Home](../README.md) · [Animations](ANIMATIONS.md) · [Build an ISO](PROJECTS_AND_TESTING.md)
 
+**Want the short, step-by-step version? [Start here: put a new character in the game](CHARACTER_START_HERE.md).** Blender Bridge **0.24.1** uses simpler labels and numbered sections. This technical guide retains some older button names: **Open Studio GLB** is now **Open original MKSM model (.glb)**; **Prepare Character for MKSM** is **Make one game texture (experimental)**; **Save Prepared Character for Studio** is **Export prepared body (.glb)**; the manual replacement button is **Export selected character (.glb)**.
+
 ## Export a character
 
 1. Open your ISO and select a character resource.
@@ -20,7 +22,7 @@ GLB carries the editable rig, mesh, weights and UVs. The native companion is the
 
 ## Install the optional bridge
 
-Download **MKSM-Blender-Bridge-0.24.zip** from Releases and extract `io_mksm_studio.py`. Install it through Blender's add-on preferences and enable MKSM Studio. The exact menu varies by Blender version; the bridge was tested with Blender 4.2. Open the 3D Viewport sidebar's **MKSM** panel.
+Download **MKSM-Blender-Bridge-0.24.1.zip** from Releases and extract `io_mksm_studio.py`. Install it through Blender's add-on preferences and enable MKSM Studio. Open the 3D Viewport sidebar's **MKSM** panel. This wording update was checked by importing an original character and exporting selected meshes in Blender 5.2.2; that check does not establish gameplay compatibility for arbitrary replacements.
 
 Use **Open Studio GLB** there. The bridge retains mappings/companions needed for native return. Keep a `.blend` working copy alongside the original export.
 

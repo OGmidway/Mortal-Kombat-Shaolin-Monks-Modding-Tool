@@ -24,6 +24,8 @@ This is an independent, experimental modding tool. The best-tested workflows use
 
 ## 2. Current release: 0.25.6
 
+**New to character swaps? [Start with the simple Blender guide](docs/CHARACTER_START_HERE.md).** [Blender Bridge 0.24.1](https://github.com/OGmidway/Mortal-Kombat-Shaolin-Monks-Modding-Tool/releases/download/v0.25.6/MKSM-Blender-Bridge-0.24.1.zip) adds numbered steps, plain button names and clear export directions inside Blender. Install the add-on separately; Studio remains 0.25.6. This is an interface/help patch, not a fix for character loading freezes.
+
 **New in 0.25.6 + Blender Bridge 0.24:** **Prepare Character for MKSM** automates opaque character material preparation. Select your weighted donor meshes in Blender; the bridge makes copies, lays out UVs, bakes base colors into one native-size atlas and assigns the destination material. **Save Prepared Character for Studio** exports those copies without including the old body. [Follow the steps](docs/MODELS_AND_BLENDER.md#automatic-material-preparation).
 
 The weapon/object visibility fix, hex transfer, animation imports and character draw-batch fixes remain included. Automatic preparation is experimental: review native palette conversion, seams, texture detail and any shared attachment textures, then test in-game.
@@ -40,7 +42,7 @@ The weapon/object visibility fix, hex transfer, animation imports and character 
 4. Double-click **MKSM Studio.exe**, recognizable by its gold dragon icon.
 5. Click **Open game ISO** and select your Shaolin Monks PS2 ISO.
 
-The Windows x64 runtime is included. Blender and PCSX2 are optional, separate applications. Download **MKSM-Blender-Bridge-0.24.zip** separately for the Blender editing workflow.
+The Windows x64 runtime is included. Blender and PCSX2 are optional, separate applications. Download **MKSM-Blender-Bridge-0.24.1.zip** separately for the Blender editing workflow.
 
 **Use the Windows download under release Assets.** GitHub's automatic **Source code (zip/tar.gz)** downloads contain this documentation repository, not the application.
 
@@ -48,6 +50,7 @@ The Windows x64 runtime is included. Blender and PCSX2 are optional, separate ap
 
 | I want to… | Start here |
 |---|---|
+| Follow simple steps to put a new character in-game | [Character swaps: start here](docs/CHARACTER_START_HERE.md) |
 | Learn the interface and camera controls | [Getting started](docs/GETTING_STARTED.md) |
 | See what works now | [Feature checklist](docs/FEATURES.md) |
 | See completed milestones and remaining tasks | [Roadmap](docs/ROADMAP.md) |
