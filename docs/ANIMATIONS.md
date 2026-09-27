@@ -46,13 +46,15 @@ The number is the one-based source-bank position. The internal original name sta
 
 1. Export **Character + animation** from a current Studio release.
 2. Use the separate bridge's **Open Studio GLB**. It reads the companion manifest and sets the action/range.
-3. Edit the original armature's action. Keep bones/hierarchy, frame 0 start and matching FPS. Bone scale/shear is unsupported.
-4. Choose **Save Edited Animation for Studio**; export one active action.
-5. Return to the same Studio model, bank, original clip and FPS.
-6. Enable **Use Blender timing** for intentional length/key timing changes; otherwise retain native timing.
-7. Choose **Higher precision** for an eligible packed clip if needed, then **Import edited clip…**.
-8. Play/scrub the native result and inspect reported quantization/mesh differences.
+3. Edit the original armature's action. You may delete **all original keyframes** and create your own animation. Keep the original bones, names, hierarchy and bind pose, start at frame 0, and keep FPS consistent. Bone scale/shear is unsupported.
+4. Prefer **Save Edited Animation for Studio** in the bridge. Standard Blender GLB export also works when its complete skin/bind data remains intact. Enable **Custom Properties** to retain the original metadata; when it is missing, Studio verifies the entire rig before recovering its mapping.
+5. Return to the same Studio model, bank and destination clip. Choose **Higher precision** first for an eligible packed clip if needed, then **Import edited clip…**.
+6. In **Choose animation to import**, select your new action. A Blender GLB can contain the original idle plus other actions; choose the one you actually edited. For multiple takes, Studio requires an explicit choice.
+7. Set the **FPS used when exporting from Blender**. Leave **Use this take's length and new keyframes** checked for newly authored motion or duration changes. Uncheck it only to edit the original stored poses. A selected take replaces one destination clip, not the whole bank.
+8. Play/scrub the native result. The status identifies the imported take and destination; a failed import produces an explicit message. No-change imports also explain that another action may need selecting.
 9. For a bank opened from the game, a successful edited import is automatically added to the project. Close the lab and choose **Build ISO…**. Save the project to keep the edits for later. **Save native bank** writes a standalone replacement and compatibility report instead.
+
+Metadata recovery is not retargeting. Bone names alone are insufficient: every bone, its parent and its inverse bind matrix must uniquely match the selected original rig. Keep **Character + animation** exports for this workflow so skin/bind information is present. A GLB with another character's skeleton or missing bind data must be corrected/re-exported.
 
 Game-backed imports are staged automatically after native validation. No-change imports preserve the bank without adding an edit. Standalone banks loaded from disk have no assumed game destination: save the edited bank, select its matching game bank in the Animation bank list, then use **Import native bank (.bin)…**. **Replace game file…** on the correct resource remains available. **Add animation to project** remains available for any pending game-backed edit.
 
@@ -73,6 +75,8 @@ Unknown clips can be retained unchanged. A BIN identical to the current bank add
 ## Native limits and higher precision
 
 Editing supports decoded types 1, 3, 6 and type-11 revision 2 within validated layouts. Type 3 is root-translation-only. Type 6 has coarse packed rotations and bounded root positions. Eligible edited type-6 clips can convert to higher precision on verified USA profiles whose root channel maps only to bone 0.
+
+**Higher precision (already active)** means a selected type-11 clip already uses the finer native format. No extra conversion is needed; new imports retain it automatically. The disabled checkbox does not mean animation import is disabled. For other disabled cases, hover over the control for the reason; conversion requires a verified compatible game profile.
 
 That conversion requires the matching game compatibility patch. Studio detects its native marker and includes the supported patch during ISO building. It does not remove other engine limits; unsupported executable revisions cannot be treated as equivalent.
 

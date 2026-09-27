@@ -1,5 +1,15 @@
 # Release notes
 
+## 0.25.3 — Blender animation re-import
+
+- Adds an action/take selector when importing a GLB, so Blender files with several saved actions can replace the intended clip. The importer never silently chooses the first take in a multi-animation file.
+- Supports completely new keyframes and a new duration on the original rig. The import dialog offers the take's length/new keys and matching Blender FPS.
+- Recovers missing Blender Custom Properties only when the complete skin uniquely matches the selected native bone names, hierarchy and inverse bind matrices. Changed or ambiguous skeletons remain rejected.
+- Labels native type-11 clips **Higher precision (already active)**. Eligible type-6 conversion remains available; other disabled cases have explanatory tooltips.
+- Shows import failures in a dialog and identifies the imported action in the result. Project-staging failures are reported instead of appearing successful.
+
+Validated using a supplied three-action Blender GLB, original and high-precision bridge exports, the Animation Lab preview, project save/reopen and native ISO readback. New motion still needs its own in-game test. The character mesh fix from 0.25.2 is retained.
+
 ## 0.25.2 — Character mesh draw compatibility
 
 - Fixes character rebuilding that put replacement geometry into four-bone batches. The researched USA character draw path skips these batches, even though Studio can preview them.
