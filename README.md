@@ -4,7 +4,7 @@
 
 # Mortal Kombat Shaolin Monks Modding Tool by OG Midway
 
-**MKSM Studio — by OGmidway & RelaxDirk**
+**MKSM Studio — by OGmidway, RelaxDirk & Zmods**
 
 Explore the game. Work with its characters and animations. Build a separate modded ISO to test your changes.
 
@@ -25,7 +25,7 @@ This is an independent, experimental modding tool. The best-tested workflows use
 ## 2. Download and open
 
 1. Open **[Releases](https://github.com/OGmidway/Mortal-Kombat-Shaolin-Monks-Modding-Tool/releases/latest)**.
-2. Download **MKSM-Studio-0.24.1-win-x64.zip** (or the newest equivalent Windows ZIP).
+2. Download **MKSM-Studio-0.24.2-win-x64.zip** (or the newest equivalent Windows ZIP).
 3. Extract the entire ZIP into a regular folder you can write to, such as `Documents/MKSM Studio`. Do not run it from inside the ZIP.
 4. Double-click **MKSM Studio.exe**, recognizable by its gold dragon icon.
 5. Click **Open game ISO** and select your Shaolin Monks PS2 ISO.
@@ -78,7 +78,7 @@ This public repository contains documentation and release downloads. **The main 
 
 ## 6. Credits and support
 
-**Tool authors: OGmidway & RelaxDirk.** See [Credits and notices](docs/CREDITS.md) for research references, runtime licenses and dragon artwork attribution.
+**Tool authors: OGmidway, RelaxDirk & Zmods.** See [Credits and notices](docs/CREDITS.md) for research references, runtime licenses and dragon artwork attribution.
 
 For a useful bug report, include the tool version, game region/revision, resource ID, steps to reproduce, and exact error. Share a screenshot or text report where helpful; do not upload an ISO, BIOS or extracted game archive. See [support details](docs/UPDATES_AND_HELP.md#reporting-a-problem).
 

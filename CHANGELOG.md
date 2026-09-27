@@ -1,5 +1,11 @@
 # Release notes
 
+## 0.24.2 — Zmods author credit
+
+- Adds **Zmods** to the centered author credits with the same looping gold glow and shimmer.
+- Updates application author metadata and public credits.
+- Existing export, animation and editing behavior is unchanged.
+
 ## 0.24.1 — Clearer animation export name
 
 - Renames **Animation only (Godot 4)** to **Animation only (GLB)**.

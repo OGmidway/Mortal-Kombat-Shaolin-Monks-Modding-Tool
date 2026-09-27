@@ -4,9 +4,9 @@
 
 ## Tool authors
 
-**OGmidway & RelaxDirk**
+**OGmidway, RelaxDirk & Zmods**
 
-Presented as **Mortal Kombat Shaolin Monks Modding Tool by OG Midway**, with both tool authors credited in the application and documentation.
+Presented as **Mortal Kombat Shaolin Monks Modding Tool by OG Midway**, with all three tool authors credited in the application and documentation.
 
 ## Research references
 
