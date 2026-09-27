@@ -1,5 +1,13 @@
 # Release notes
 
+## 0.24.5 — Native idle import and bone-count option
+
+- Fixes native-bank imports that add channels already defined by the verified destination game rig, including Scorpion idle body/face channels.
+- Adds **Ignore bone-count difference**, OFF by default, for explicit native-bank experiments. This does not retarget bones or bypass bank/clip structural checks.
+- Keeps **Bank added to project** visible when a staged bank is reloaded or Animation Lab reopens.
+- Shows an explicit message when a native import is rejected, so a failed import cannot be mistaken for a saved edit.
+
+
 ## 0.24.4 — Native animation bank import
 
 - Adds **Import native bank (.bin)…** directly to Animation Lab.

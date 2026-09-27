@@ -64,7 +64,9 @@ Game-backed imports are staged automatically after native validation. No-change 
 4. Studio validates the bank, previews it and automatically adds the replacement to your project.
 5. Close the lab and choose **Build ISO…**. Save the project if you want to retain the edits for another session.
 
-This replaces the **whole selected bank**, preserving imported native bytes. The animation names and slot order must match the destination, and changed clips must have a supported layout and the original bone-channel count. Unknown clips can be retained unchanged. A BIN identical to the current bank adds no new edit. Required higher-precision compatibility markers remain intact and are detected by the ISO builder.
+This replaces the **whole selected bank**, preserving imported native bytes. The animation names and slot order must match the destination, and changed clips must have a supported layout. Different bone-channel counts are allowed when they fit the verified destination game-bank profile. For deliberate experiments, **Ignore bone-count difference** bypasses that count/profile restriction. It defaults to OFF, does not retarget bones, and does not bypass native structure or clip-name/order validation. Wrong channel mappings can distort animation or fail in-game.
+
+Unknown clips can be retained unchanged. A BIN identical to the current bank adds no new edit. Required higher-precision compatibility markers remain intact and are detected by the ISO builder.
 
 **Load bank file…** opens a standalone preview. To install that loaded bank, click **Add animation to project**, choose its matching original game bank, then click **Add bank to project**. Once staged, the button says **Bank added to project**; it is already included in the next build. Selecting another clip or changing playback controls does not edit the game. Test imported banks in gameplay after rebuilding.
 
