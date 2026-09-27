@@ -40,6 +40,8 @@ Checked means implemented for supported data. **Experimental** means the workflo
 
 ## 4. Animation Lab
 
+- [x] Reimport edited native `.bin` banks directly into the selected game bank, preserving native bytes and automatically staging them for ISO building.
+
 - [x] Bank discovery and recovered game-linked profiles.
 - [x] Play, pause, scrub, loop, FPS selection and skeleton/textured preview.
 - [x] Supported clip decoding and investigated root/rotation corrections.

@@ -8,7 +8,7 @@ Begin with one recognizable change, such as a supported texture recolor. Confirm
 
 ## 1. Stage and save
 
-Supported texture, shape and native replacements enter the editing project. Validated character imports (including their textures) and edited animation clips loaded from the game also enter the project automatically. Banks loaded as standalone files must be saved and imported into their correct game resource; Studio does not guess their destination. Camera, visibility and other preview settings do not change the native game.
+Supported texture, shape and native replacements enter the editing project. Validated character imports (including their textures) and edited animation clips loaded from the game also enter the project automatically. For an edited native `.bin`, select its matching game bank in Animation Lab and choose **Import native bank (.bin)…**. Banks loaded as standalone previews have no assumed destination. Camera, visibility and other preview settings do not change the native game.
 
 **Save project…** writes a `.mksmproject`. **Open project…** validates it against the source game. The project is the edit collection, not an ISO. Use **Undo last change** for the selected resource or **Restore original** to remove its staged edit. **Export edited files…** saves standalone native copies. Save before closing/updating.
 

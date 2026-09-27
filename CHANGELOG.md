@@ -1,5 +1,15 @@
 # Release notes
 
+## 0.24.4 — Native animation bank import
+
+- Adds **Import native bank (.bin)…** directly to Animation Lab.
+- Imports an edited native bank into the selected game bank and stages it automatically for ISO rebuilding, without GLB conversion.
+- Preserves native bytes and higher-precision compatibility markers.
+- Validates clip names/order, changed clip layouts and bone-channel counts. Failed imports retain existing project edits.
+- Enables **Add animation to project** for standalone loaded banks, with an explicit game-bank destination picker.
+- Shows **Bank added to project** after automatic staging, explaining why no second Add is needed.
+
+
 ## 0.24.3 — Build ISO fixes
 
 - **Build ISO…** is available after opening a game, even with no edits or selected resource.

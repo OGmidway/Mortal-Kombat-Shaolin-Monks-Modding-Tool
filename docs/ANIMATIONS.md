@@ -54,7 +54,19 @@ The number is the one-based source-bank position. The internal original name sta
 8. Play/scrub the native result and inspect reported quantization/mesh differences.
 9. For a bank opened from the game, a successful edited import is automatically added to the project. Close the lab and choose **Build ISO…**. Save the project to keep the edits for later. **Save native bank** writes a standalone replacement and compatibility report instead.
 
-Game-backed imports are staged automatically after native validation. No-change imports preserve the bank without adding an edit. Standalone banks loaded from disk have no assumed game destination: use **Save native bank**, then **Replace game file…** on the correct resource. **Add animation to project** remains available for any pending game-backed edit.
+Game-backed imports are staged automatically after native validation. No-change imports preserve the bank without adding an edit. Standalone banks loaded from disk have no assumed game destination: save the edited bank, select its matching game bank in the Animation bank list, then use **Import native bank (.bin)…**. **Replace game file…** on the correct resource remains available. **Add animation to project** remains available for any pending game-backed edit.
+
+## Reimport an edited native BIN bank
+
+1. Save your edited bank in native `.bin` format. **Save native bank…** in Animation Lab writes this format; no GLB conversion is required.
+2. Select its original destination in the **Animation bank** list.
+3. Choose **Import native bank (.bin)…** and select your edited `.bin`.
+4. Studio validates the bank, previews it and automatically adds the replacement to your project.
+5. Close the lab and choose **Build ISO…**. Save the project if you want to retain the edits for another session.
+
+This replaces the **whole selected bank**, preserving imported native bytes. The animation names and slot order must match the destination, and changed clips must have a supported layout and the original bone-channel count. Unknown clips can be retained unchanged. A BIN identical to the current bank adds no new edit. Required higher-precision compatibility markers remain intact and are detected by the ISO builder.
+
+**Load bank file…** opens a standalone preview. To install that loaded bank, click **Add animation to project**, choose its matching original game bank, then click **Add bank to project**. Once staged, the button says **Bank added to project**; it is already included in the next build. Selecting another clip or changing playback controls does not edit the game. Test imported banks in gameplay after rebuilding.
 
 ## Native limits and higher precision
 
