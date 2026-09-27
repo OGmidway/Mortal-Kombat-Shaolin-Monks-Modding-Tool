@@ -25,7 +25,7 @@ This is an independent, experimental modding tool. The best-tested workflows use
 ## 2. Download and open
 
 1. Open **[Releases](https://github.com/OGmidway/Mortal-Kombat-Shaolin-Monks-Modding-Tool/releases/latest)**.
-2. Download **MKSM-Studio-0.25.1-win-x64.zip** (or the newest equivalent Windows ZIP).
+2. Download **MKSM-Studio-0.25.2-win-x64.zip** (or the newest equivalent Windows ZIP).
 3. Extract the entire ZIP into a regular folder you can write to, such as `Documents/MKSM Studio`. Do not run it from inside the ZIP.
 4. Double-click **MKSM Studio.exe**, recognizable by its gold dragon icon.
 5. Click **Open game ISO** and select your Shaolin Monks PS2 ISO.

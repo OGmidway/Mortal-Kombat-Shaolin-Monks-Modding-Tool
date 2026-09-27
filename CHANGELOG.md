@@ -1,5 +1,17 @@
 # Release notes
 
+## 0.25.2 — Character mesh draw compatibility
+
+- Fixes character rebuilding that put replacement geometry into four-bone batches. The researched USA character draw path skips these batches, even though Studio can preview them.
+- Automatically groups compatible replacement triangles into batches using at most three bones, preserving their weights.
+- Rejects triangles that themselves reference more than three bones, with the mesh name and triangle number. Studio does not silently remove influences.
+- Checks native character packages, native model replacements, and staged edits before writing an ISO. Unchanged original records are preserved.
+- Adds the limit to the character workshop and Blender guide. Skeletons, textures and UVs are retained by this batching fix.
+
+Validated against the game's palette dispatch and draw gate, the failing replacement, a corrected 5,165-triangle replacement, and 118 original native model files. This resolves an identified draw rejection; complete gameplay compatibility remains to be tested for each character.
+
+**Existing replacements:** update Studio, return to the original character's source export, then re-import your replacement GLB. Adjust weights if a triangle exceeds the limit. Old incompatible `.mksmcharacter` packages must be rebuilt; installing the update does not repair an existing ISO automatically. The Blender bridge is unchanged; point it at the updated Studio EXE when building a native package.
+
 ## 0.25.1 — Remove old builds after updating
 
 - Deletes updater-created previous-version EXEs after the new application confirms successful startup.

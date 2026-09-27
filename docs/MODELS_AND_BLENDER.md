@@ -50,7 +50,13 @@ Use this for proportion corrections, moving existing vertices or UV adjustments 
 7. Review the rebuilt native preview and reported limits. Successful imports automatically stage the character and textures together; **Save native copies…** is available for standalone output.
 8. Choose **Build ISO…**, then **Build ISO only** or **Build & boot in PCSX2**. Save the project if you want to keep the edits for a later session. Test the actual character in gameplay.
 
-The compiler creates native skin batches and quantizes weights/positions. It supports up to four influences per vertex and four distinct bones per triangle in this workflow. Different topology can work within supported constraints. Unsupported material, coordinate or rig layouts are rejected with an explanation.
+The compiler creates native skin batches and quantizes weights/positions. **Each triangle may reference at most three different bones across all three corners.** Studio automatically groups compatible triangles into three-bone batches without changing their weights. For example, a triangle whose corners collectively use pelvis, thigh and calf is supported; adding a foot bone makes four, even if no individual vertex has four influences.
+
+If a triangle exceeds this limit, Studio reports the mesh name and triangle number. Review the triangle's vertex groups in Blender, remove unnecessary influences deliberately, normalize the remaining weights, and export again. Limiting each vertex to three influences alone does not guarantee that a whole triangle uses only three bones. Keep an untouched Blender copy before adjusting weights.
+
+Earlier versions treated four storage slots as four-bone rendering support. The researched USA character draw routine skips that batch type, causing replacement bodies to disappear even with a correct Studio preview. Update to **0.25.2 or later**, then re-import the replacement GLB against the original character source and build a new ISO. Existing incompatible native packages must be rebuilt. Native imports and ISO preflight now check for this problem, while retaining unchanged original records. Updating Studio does not modify ISOs already built.
+
+Different topology can work within supported constraints. Unsupported material, coordinate or rig layouts are rejected with an explanation. If using the Blender bridge's native-package export, point its Studio executable setting to the updated EXE.
 
 Original rigid attachments are preserved by character rebuilding; use the shape path for their supported position/UV changes. Triangles in a mapped grouped object cannot cross distinct original native rig groups.
 
@@ -60,6 +66,7 @@ A good Studio preview is necessary but not sufficient: test movement, attacks, a
 
 - **Wrong texture:** check the original texture set and preserve native material slots.
 - **Missing surfaces:** check Surfaces and Extra meshes before exporting.
+- **Body appears in Studio but disappears in-game:** update to 0.25.2 or later, rebuild the replacement from its GLB with compatible weights, and build a fresh ISO. Old four-bone packages are not repaired by previewing them.
 - **Collapse/twisting:** check rest pose and transferred weights. Matching names alone do not make skeletons equivalent.
 - **Shape import rejects topology:** choose the replacement workflow for intentional topology changes.
 - **Valid rebuild fails in-game:** record the resource ID and failure point; reduce complexity and compare against an unmodified baseline.
