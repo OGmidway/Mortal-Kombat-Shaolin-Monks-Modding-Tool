@@ -2,7 +2,7 @@
 
 [Home](../README.md) · [Current features](FEATURES.md) · [Validation](VALIDATION.md) · [Previous builds](PREVIOUS_BUILDS.md)
 
-This is the work list through **0.25.5**, not a release schedule. Checked milestones are delivered for the supported data. Unchecked items need implementation, research or further testing; they are not hidden features you can unlock with a setting.
+This is the work list through **0.25.6**, not a release schedule. Checked milestones are delivered for the supported data. Unchecked items need implementation, research or further testing; they are not hidden features you can unlock with a setting.
 
 ## 1. Delivered foundation
 
@@ -26,10 +26,9 @@ This is the work list through **0.25.5**, not a release schedule. Checked milest
 | 0.25.1 | Old updater-created EXEs removed after successful startup | Recovery remains available if startup fails; GitHub release downloads remain available. |
 | 0.25.2 | Replacement-character draw batches corrected | Kratos replacing Reptile 6732 was reported fully visible and moving in-game. This is one confirmed replacement, not certification of every model. |
 | 0.25.3 | Choose a Blender action, import newly authored keys, recover missing metadata only against a verified complete rig, explain active high precision | Supplied Kabal GLB passed preview/project/ISO checks; its new motion still needs in-game testing. |
-
 | 0.25.4 | Same-size hex transfer; rigid weapon/object workshop; Blender Bridge 0.23 object export | Animation/texture/project/UI checks, 18 rigid-resource round trips, actual Blender added-topology/material return and native weapon-copy ISO readback; weapon gameplay still pending. |
-
 | 0.25.5 | Show the weapon/object import button for rigid models in normal and Advanced modes | Actual toolbar visibility/click/selection checks; no native format changes. |
+| 0.25.6 | Automatic opaque character atlas/UV preparation in Blender Bridge 0.24; copies and prepared-only export | Three destination rigs tested through Blender/native package return; source geometry/weights retained. Shared attachment textures and gameplay need review. |
 
 ## 3. Next: reliability and practical editing
 
@@ -39,7 +38,8 @@ This is the work list through **0.25.5**, not a release schedule. Checked milest
 - [ ] Verify 0443 over 0121 in gameplay, including grip/orientation and weapon use.
 - [ ] Extend rigid rebuilding beyond decoded unskinned type-0 parts; investigate collision/hitbox authoring separately.
 - [ ] Improve diagnostics for difficult weights, unsupported tracks and model/animation source mismatches.
-- [ ] Make complicated material/texture preparation easier while retaining the original native identities.
+- [x] Automate opaque character base-color/UV preparation into a native-size atlas, with original material identity and source copies.
+- [ ] Extend preparation to multiple atlases, transparent/special materials and shared attachment UVs; improve texture-detail controls.
 - [ ] Expand round-trip coverage across additional Blender versions and user export settings.
 
 The mesh fix is in the shared importer. A CJ replacement would use the same original-rig, weight-transfer, material and ISO workflow as Kratos; a CJ result has not been verified here.
@@ -67,7 +67,7 @@ Resource relocation already allows supported files to grow or shrink. General 40
 
 ## 6. Documentation and release history
 
-- [x] Current feature checklist, beginner workflows and troubleshooting through 0.25.5.
+- [x] Current feature checklist, beginner workflows and troubleshooting through 0.25.6.
 - [x] Separate record of tool checks and reported gameplay outcomes.
 - [x] Previous Builds index for published older releases.
 - [x] Archive index maintenance during release packaging; existing downloads and signatures remain in their original releases.

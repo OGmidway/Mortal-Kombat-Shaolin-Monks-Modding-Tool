@@ -22,11 +22,11 @@ You do not need to mount or unpack the ISO to begin. You do need your own game f
 
 This is an independent, experimental modding tool. The best-tested workflows use the researched **USA PS2 revision**. Support for one resource or revision does not establish support for every version of the game.
 
-## 2. Current release: 0.25.5
+## 2. Current release: 0.25.6
 
-**Fixed in 0.25.5:** the **Import weapon / object…** button now appears for rigid models such as 0121 and 0443, in both normal and Advanced modes.
+**New in 0.25.6 + Blender Bridge 0.24:** **Prepare Character for MKSM** automates opaque character material preparation. Select your weighted donor meshes in Blender; the bridge makes copies, lays out UVs, bakes base colors into one native-size atlas and assigns the destination material. **Save Prepared Character for Studio** exports those copies without including the old body. [Follow the steps](docs/MODELS_AND_BLENDER.md#automatic-material-preparation).
 
-**Included from 0.25.4:** transfer exact hex ranges without resizing files, including animation clips/banks. Replace supported rigid weapons/objects through Blender or copy another game model with its textures. Blender Bridge **0.23** adds a dedicated weapon/object export button. The animation-import and character fixes from 0.25.3 and 0.25.2 remain included.
+The weapon/object visibility fix, hex transfer, animation imports and character draw-batch fixes remain included. Automatic preparation is experimental: review native palette conversion, seams, texture detail and any shared attachment textures, then test in-game.
 
 **Character replacement milestone:** after the 0.25.2 mesh fix, Kratos replacing Reptile **6732** was reported fully visible and moving in-game. The fix is part of the shared importer, so other compatible replacements use the same workflow. This does not guarantee an untested CJ or other model will need no preparation.
 
@@ -35,12 +35,12 @@ This is an independent, experimental modding tool. The best-tested workflows use
 ## 3. Download and open
 
 1. Open **[Releases](https://github.com/OGmidway/Mortal-Kombat-Shaolin-Monks-Modding-Tool/releases/latest)**.
-2. Download **MKSM-Studio-0.25.5-win-x64.zip** (or the newest equivalent Windows ZIP).
+2. Download **MKSM-Studio-0.25.6-win-x64.zip** (or the newest equivalent Windows ZIP).
 3. Extract the entire ZIP into a regular folder you can write to, such as `Documents/MKSM Studio`. Do not run it from inside the ZIP.
 4. Double-click **MKSM Studio.exe**, recognizable by its gold dragon icon.
 5. Click **Open game ISO** and select your Shaolin Monks PS2 ISO.
 
-The Windows x64 runtime is included. Blender and PCSX2 are optional, separate applications. Download **MKSM-Blender-Bridge-0.23.zip** separately for the Blender editing workflow.
+The Windows x64 runtime is included. Blender and PCSX2 are optional, separate applications. Download **MKSM-Blender-Bridge-0.24.zip** separately for the Blender editing workflow.
 
 **Use the Windows download under release Assets.** GitHub's automatic **Source code (zip/tar.gz)** downloads contain this documentation repository, not the application.
 
@@ -53,6 +53,7 @@ The Windows x64 runtime is included. Blender and PCSX2 are optional, separate ap
 | See completed milestones and remaining tasks | [Roadmap](docs/ROADMAP.md) |
 | See what was tested in the tool versus in-game | [Validation record](docs/VALIDATION.md) |
 | Export a character with its skeleton, weights, textures and UVs | [Models and Blender](docs/MODELS_AND_BLENDER.md) |
+| Automatically prepare opaque character materials/UVs | [Automatic material preparation](docs/MODELS_AND_BLENDER.md#automatic-material-preparation) |
 | Replace character geometry or make shape edits | [Models and Blender](docs/MODELS_AND_BLENDER.md#returning-a-character-to-the-game) |
 | Play/export clips, import a new Blender action, or replace a native BIN bank | [Animation Lab](docs/ANIMATIONS.md) |
 | Replace a weapon/object, including 0443 over 0121 | [Weapons and objects](docs/WEAPONS_AND_OBJECTS.md) |
@@ -76,6 +77,7 @@ Checked items are implemented for supported data. They do not mean every game re
 - [x] Save one clip or an organized bank of individual clip folders.
 - [x] Export animation-only GLBs without repeated character geometry.
 - [x] Return supported Blender character geometry, UVs, weights and material images through native import.
+- [x] Automatically prepare opaque character atlases/UVs on copies in Blender Bridge 0.24.
 - [x] Validate replacement geometry against the researched three-bone-per-triangle/draw-batch limit.
 - [x] Import newly authored animation keys, choose between GLB actions and use a new duration.
 - [x] Verify complete original rigs when Blender exports omit MKSM custom metadata.

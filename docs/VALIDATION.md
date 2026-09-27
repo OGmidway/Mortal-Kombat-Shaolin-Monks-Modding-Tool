@@ -2,7 +2,7 @@
 
 [Home](../README.md) · [Features](FEATURES.md) · [Roadmap](ROADMAP.md) · [Release notes](../CHANGELOG.md)
 
-This page records the evidence behind the current documentation, through **0.25.5**. It separates automated/tool checks from reported gameplay. A working preview, a byte-correct ISO and a working character in gameplay establish different things.
+This page records the evidence behind the current documentation, through **0.25.6**. It separates automated/tool checks from reported gameplay. A working preview, a byte-correct ISO and a working character in gameplay establish different things.
 
 ## Confirmed and reported gameplay
 
@@ -16,6 +16,7 @@ This page records the evidence behind the current documentation, through **0.25.
 
 | Area | Checked | What this does not establish |
 |---|---|---|
+| Character preparation, 0.25.6 / Bridge 0.24 | Blender 4.2.22 baking on two donor meshes/materials with three native destinations: 6412, 6732, 6622. Patterned texture placement after UV repacking, unchanged source topology/weights, render-setting restoration, failed-operation cleanup, transparency rejection, prepared-only GLB export, native compile/skeleton validation and package reload. | Gameplay certification, transparent/special shaders, larger texture storage, or unchanged appearance of attachments sharing the atlas. |
 | Toolbar visibility, 0.25.5 | Seven actual WPF checks: visible/enabled 0121 button, clicking it opens the workshop, both Advanced modes, character selection, return to 0443 and hiding actions for textures. | No additional weapon gameplay validation in this UI-only fix. |
 | Hex transfer, 0.25.4 | 41 range/UI checks including the main object action; exact offsets/scopes, line boundaries, invalid input, overlap, unchanged file length and surrounding bytes, real animation preview/project/undo, texture writes, stale edit rejection and ISO bank readback. | Meaning or runtime safety of arbitrary user-chosen bytes; no pointer repair or retargeting. |
 | Rigid objects, 0.25.4 | 28 object checks, including 18 supported resources rebuilt with matching triangle counts; actual Blender 4.2.22 added topology/material image return; WPF workshop; 0443 → 0121 plus 0442 → 0120 copied byte-for-byte, saved/reloaded and read back from ISO. | Gameplay validation of grip, culling, lighting or weapon behavior; support for all static formats. |

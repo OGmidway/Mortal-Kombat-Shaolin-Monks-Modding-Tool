@@ -2,7 +2,7 @@
 
 [Home](../README.md) · [Release notes](../CHANGELOG.md) · [Updates and recovery](UPDATES_AND_HELP.md) · [Roadmap](ROADMAP.md)
 
-**Current recommended version: [0.25.5](https://github.com/OGmidway/Mortal-Kombat-Shaolin-Monks-Modding-Tool/releases/tag/v0.25.5).** [Download latest](https://github.com/OGmidway/Mortal-Kombat-Shaolin-Monks-Modding-Tool/releases/latest).
+**Current recommended version: [0.25.6](https://github.com/OGmidway/Mortal-Kombat-Shaolin-Monks-Modding-Tool/releases/tag/v0.25.6).** [Download latest](https://github.com/OGmidway/Mortal-Kombat-Shaolin-Monks-Modding-Tool/releases/latest).
 
 This archive keeps superseded public builds easy to find. The downloads remain in their original GitHub releases; no application files or signatures are moved or rewritten. Start with the current version for normal use.
 
@@ -12,6 +12,7 @@ All rows below are previous builds, newest first. Dates are the original publica
 
 | Version / release notes | Published (UTC) | Main change | Windows download |
 |---|---|---|---|
+| [0.25.5](https://github.com/OGmidway/Mortal-Kombat-Shaolin-Monks-Modding-Tool/releases/tag/v0.25.5) | 2026-09-27 | Fixes the hidden weapon/object import button on rigid models | [Windows ZIP](https://github.com/OGmidway/Mortal-Kombat-Shaolin-Monks-Modding-Tool/releases/download/v0.25.5/MKSM-Studio-0.25.5-win-x64.zip) |
 | [0.25.4](https://github.com/OGmidway/Mortal-Kombat-Shaolin-Monks-Modding-Tool/releases/tag/v0.25.4) | 2026-09-27 | Hex transfer and rigid objects; weapon toolbar visibility fixed in 0.25.5 | [Windows ZIP](https://github.com/OGmidway/Mortal-Kombat-Shaolin-Monks-Modding-Tool/releases/download/v0.25.4/MKSM-Studio-0.25.4-win-x64.zip) |
 | [0.25.3](https://github.com/OGmidway/Mortal-Kombat-Shaolin-Monks-Modding-Tool/releases/tag/v0.25.3) | 2026-09-27 | Blender action selection, custom keys, verified metadata recovery and precision status | [Windows ZIP](https://github.com/OGmidway/Mortal-Kombat-Shaolin-Monks-Modding-Tool/releases/download/v0.25.3/MKSM-Studio-0.25.3-win-x64.zip) |
 | [0.25.2](https://github.com/OGmidway/Mortal-Kombat-Shaolin-Monks-Modding-Tool/releases/tag/v0.25.2) | 2026-09-27 | Replacement-character draw compatibility; corrected native mesh batches | [Windows ZIP](https://github.com/OGmidway/Mortal-Kombat-Shaolin-Monks-Modding-Tool/releases/download/v0.25.2/MKSM-Studio-0.25.2-win-x64.zip) |

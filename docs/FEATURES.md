@@ -2,7 +2,7 @@
 
 [Home](../README.md) · [Roadmap](ROADMAP.md) · [Validation](VALIDATION.md) · [Previous builds](PREVIOUS_BUILDS.md)
 
-Current application: **0.25.5**. Checked means implemented for supported data. **Experimental** means the workflow exists but needs preview and game testing. Unchecked items are not promised by this release.
+Current application: **0.25.6**. Checked means implemented for supported data. **Experimental** means the workflow exists but needs preview and game testing. Unchecked items are not promised by this release.
 
 ## 1. Opening and finding resources
 
@@ -33,6 +33,9 @@ Current application: **0.25.5**. Checked means implemented for supported data. *
 - [x] Shape/UV return with original topology, weights and mapping retained.
 - [x] **Experimental:** replacement topology/weights compiled around original skeleton/material constraints.
 - [x] Native model and supported material-image replacement packages.
+- [x] **Experimental:** automatic opaque base-color atlas, UV layout and native material assignment on Blender copies (Bridge 0.24).
+- [x] Export only the latest prepared character copies; report native size and shared attachment textures.
+- [ ] Automatic transparency/special shader conversion, texture resizing or attachment UV repacking.
 - [x] Input validation and native preview; supported character/model-image imports stage together.
 - [x] Three-bone draw batching and triangle checks in the shared replacement compiler (0.25.2).
 - [x] Reject incompatible rebuilt batches in native import and before ISO writing; preserve byte-exact original records.

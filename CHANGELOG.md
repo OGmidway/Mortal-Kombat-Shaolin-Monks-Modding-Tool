@@ -2,6 +2,18 @@
 
 [Current download](https://github.com/OGmidway/Mortal-Kombat-Shaolin-Monks-Modding-Tool/releases/latest) · [Previous builds](docs/PREVIOUS_BUILDS.md) · [Roadmap](docs/ROADMAP.md) · [Validation](docs/VALIDATION.md)
 
+## 0.25.6 — Easier character material preparation
+
+- Blender Bridge **0.24** adds **Prepare Character for MKSM**: select replacement meshes already weighted to the original rig. The bridge creates copies, generates a shared UV layout, bakes opaque base color into the largest native body texture slot, and assigns the original material ID.
+- Preserves donor mesh positions, topology, weights and original scene materials/UVs. Selected source meshes are hidden in the viewport after preparation and remain available as a backup. The preparation report identifies the atlas size/material and warns about texture sharing with native attachments.
+- Adds **Save Prepared Character for Studio**, which exports only the latest prepared copies and the original rig. Other hidden bodies are excluded.
+- Checks missing textures, source mismatches, unsupported shaders/transparency, unapplied transforms/modifiers and the three-bone-per-triangle limit. Failures clean up temporary data and restore render settings.
+- Adds preparation guidance in Studio's character workshop and exported Blender instructions. Keeps all previous weapon, hex, animation and updater fixes. Archives 0.25.5 under Previous Builds.
+
+Install **MKSM-Blender-Bridge-0.24.zip separately**; Studio's in-app updater updates the Windows application, not your Blender installation. Restart Blender after replacing the add-on.
+
+Validated in Blender 4.2.22 with two donor meshes/materials against three destination rigs (6412, Reptile 6732 and Kabal 6622), patterned UV placement, preserved source geometry/weights, failure cleanup, GLB/native compilation, skeleton checks and package reload. This release does not claim gameplay certification of automatically prepared characters. One native-size atlas can reduce detail; transparency, special shaders and attachments sharing the edited image may still require manual work.
+
 ## 0.25.5 — Missing weapon import button
 
 Fixes the missing **Import weapon / object…** toolbar button on rigid models, including **0121** and **0443**. The old visibility rule only showed the action for skinned characters.
