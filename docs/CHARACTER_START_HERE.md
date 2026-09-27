@@ -4,7 +4,7 @@
 
 Example: replace Reptile with Cyrax. Start with **Reptile's original MKSM export**. Put the new Cyrax body on **Reptile's game skeleton**.
 
-Use **Blender Bridge 0.25.0** with **MKSM Studio 0.25.6 or later**. [Download the Bridge](https://github.com/OGmidway/Mortal-Kombat-Shaolin-Monks-Modding-Tool/releases/download/v0.25.6/MKSM-Blender-Bridge-0.25.0.zip).
+Use **Blender Bridge 0.25.1** with **MKSM Studio 0.25.6 or later**. [Download the Bridge](https://github.com/OGmidway/Mortal-Kombat-Shaolin-Monks-Modding-Tool/releases/download/v0.25.6/MKSM-Blender-Bridge-0.25.1.zip).
 
 ## First: install the Bridge
 
@@ -14,7 +14,7 @@ Use **Blender Bridge 0.25.0** with **MKSM Studio 0.25.6 or later**. [Download th
 4. Enable **MKSM Studio Bridge**. Restart Blender if the old buttons remain.
 5. In the 3D Viewport, press **N**. Click the **MKSM** tab.
 
-The panel should say **MKSM Bridge 0.25.0 - Start here**. Studio's EXE updater does not install Blender add-ons. Install this download in Blender separately.
+The panel should say **MKSM Bridge 0.25.1 - Start here**. Studio's EXE updater does not install Blender add-ons. Install this download in Blender separately.
 
 ## 1. Get the ORIGINAL game character
 
@@ -66,6 +66,26 @@ If the old body is split into several objects, transfer from the right part for 
 Apply the new mesh's Location, Rotation and Scale before material preparation. Keep its Armature modifier. **Do not apply transforms to or rebuild the original game armature.**
 
 **Error: triangle uses more than three bones?** The three corners together must use at most three different bones. Remove tiny/unneeded weights, normalize, and check the pose again. “Three weights per vertex” alone may still leave four or more bones across a triangle.
+
+### Reduced polygons or changed geometry?
+
+Use **Bridge 0.25.1**. You can change topology and use **Import character** in Studio. **Import Blender edits** is for shape/UV edits that keep original topology.
+
+1. Save a backup. Reduce the **new body** in Blender. Apply the Decimate modifier; keep the Armature modifier.
+2. Finish texture setup. Select your new body and required skinned extras for export.
+3. In step 5 of the MKSM panel, enable **Clean weights on export**.
+4. Leave **Max weight removed (%) = 25** initially. This is the maximum total original influence the helper may remove from any vertex, not a polygon-reduction percentage.
+5. Optional but useful: click **Preview cleaned weights on a copy**. Pose the original rig and check the selected copies around joints. The original meshes are hidden and kept.
+6. Open **Weight cleanup report**. Check how many vertices lost influences and the largest removal.
+7. Export using **Export selected character (.glb)**. Include the dragon and any other required extras; exclude old body meshes. Import that GLB through Studio's **Import character**.
+
+With export cleanup enabled, the Bridge makes temporary export copies and cleans their weights automatically. It applies to selected-character GLB export, prepared-body export and native character package export. It does not change the source model or rig. Reports are kept in Blender's Text Editor and beside the exported file as `.weights.json`.
+
+**If cleanup stops at the limit:** the repair needs a larger change than allowed. You may increase the limit and use the preview-copy button to inspect the result, or adjust that area manually. Higher limits can change movement noticeably. The helper never raises the limit automatically, adds new bone influences, transfers weights to an unweighted model, or ignores the game's three-bone restriction.
+
+The cleanup checks the **union of bones across all three triangle corners**, not just weights per vertex. It removes selected influences, normalizes to native 1/4096 precision, and checks the result. Quads/ngons are triangulated on the copies so export uses the tested triangles. Material images and UVs remain unchanged. Preview copies should be exported with **Export selected character**, not a whole-scene export.
+
+This resolves the weight-compatibility import error. A successful import still does not establish that a replacement loads in-game or fix the separate loading-freeze investigation.
 
 ## 4. Make the textures ready
 

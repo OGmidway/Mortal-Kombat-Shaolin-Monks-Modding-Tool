@@ -2,7 +2,7 @@
 
 [Home](../README.md) · [Animations](ANIMATIONS.md) · [Build an ISO](PROJECTS_AND_TESTING.md)
 
-**Want the short, step-by-step version? [Start here: put a new character in the game](CHARACTER_START_HERE.md).** Blender Bridge **0.25.0** uses simpler labels and numbered sections. This technical guide retains some older button names: **Open Studio GLB** is now **Open original MKSM model (.glb)**; **Prepare Character for MKSM** is **Set up game textures (keep more detail)**; **Save Prepared Character for Studio** is **Export prepared body (.glb)**; the manual replacement button is **Export selected character (.glb)**.
+**Want the short, step-by-step version? [Start here: put a new character in the game](CHARACTER_START_HERE.md).** Blender Bridge **0.25.1** uses simpler labels and numbered sections. This technical guide retains some older button names: **Open Studio GLB** is now **Open original MKSM model (.glb)**; **Prepare Character for MKSM** is **Set up game textures (keep more detail)**; **Save Prepared Character for Studio** is **Export prepared body (.glb)**; the manual replacement button is **Export selected character (.glb)**.
 
 ## Export a character
 
@@ -22,7 +22,7 @@ GLB carries the editable rig, mesh, weights and UVs. The native companion is the
 
 ## Install the optional bridge
 
-Download **MKSM-Blender-Bridge-0.25.0.zip** from Releases and extract `io_mksm_studio.py`. Install it through Blender's add-on preferences and enable MKSM Studio. Open the 3D Viewport sidebar's **MKSM** panel. Multi-texture preparation was checked on the saved Liu Kang scene in Blender 5.2.2 with five, three and two body textures, including native compilation in Studio 0.25.6. These checks do not establish gameplay compatibility.
+Download **MKSM-Blender-Bridge-0.25.1.zip** from Releases and extract `io_mksm_studio.py`. Install it through Blender's add-on preferences and enable MKSM Studio. Open the 3D Viewport sidebar's **MKSM** panel. Multi-texture preparation was checked on the saved Liu Kang scene in Blender 5.2.2 with five, three and two body textures, including native compilation in Studio 0.25.6. These checks do not establish gameplay compatibility.
 
 Use **Open Studio GLB** there. The bridge retains mappings/companions needed for native return. Keep a `.blend` working copy alongside the original export.
 
@@ -72,9 +72,21 @@ Original rigid attachments are preserved by character rebuilding; use the shape 
 
 A good Studio preview is necessary but not sufficient: test movement, attacks, attachments and transitions in-game. Increase complexity gradually.
 
+## Optional automatic weight cleanup
+
+Bridge 0.25.1 adds **Clean weights on export**, **Preview cleaned weights on a copy**, and **Weight cleanup report**. [Follow the cleanup steps](CHARACTER_START_HERE.md#reduced-polygons-or-changed-geometry).
+
+- Source objects and the original rig are preserved. Export cleanup uses temporary mesh copies; preview cleanup retains separate copies.
+- Each triangle must use at most three distinct bones across all corners. The helper first removes influences that cannot survive native precision, keeps at most the strongest three at each vertex, then chooses compatible triangle palettes using a deterministic local heuristic. It only removes influences, so neighboring triangles cannot gain new bones.
+- The maximum cumulative original influence removed from any vertex is limited by **Max weight removed (%)**, default 25. This is a quality control, not a game limit or a guarantee of minimal deformation. Cleanup stops rather than silently increasing it. It is not a global optimization of animation error.
+- Native weight values are normalized to 1/4096 precision. All resulting triangles are validated from the weights stored on the copies. Quads/ngons are triangulated explicitly there so the exporter cannot choose an untested diagonal.
+- Apply Decimate and other mesh modifiers first, keeping the original Armature modifier. Missing weights, shape keys and incompatible native group metadata still require attention; this feature does not invent or retarget weights.
+- The report lists before/after weights and removed influence for every adjusted vertex. A `.weights.json` accompanies successful exports. Selected GLB, prepared-body and native package exports use the same optional cleanup.
+- The reduced Liu Kang test mesh successfully compiled in Studio 0.25.6 after cleanup. No gameplay success or loading-freeze fix is claimed. Check poses, import the character, then test the rebuilt ISO.
+
 ## Automatic material preparation
 
-Use **Studio 0.25.6** with **Blender Bridge 0.25.0**. [Follow the simple texture steps](CHARACTER_START_HERE.md#4-make-the-textures-ready).
+Use **Studio 0.25.6** with **Blender Bridge 0.25.1**. [Follow the simple texture steps](CHARACTER_START_HERE.md#4-make-the-textures-ready).
 
 - **Game textures = 0:** use available native slots as needed. Keep one source image per slot when enough are available. Shared source images are deduplicated, and existing valid native slot assignments are preferred.
 - **Game textures = 2 or 3:** limit the texture count. Combine source image rectangles, with edge padding, into existing native-size slots. Remap the copied UVs into those rectangles. Negative/repeating source UVs are sampled over their used domain.
