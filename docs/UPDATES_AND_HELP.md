@@ -24,7 +24,9 @@ A failed check is not proof of being up to date. Offline use remains available. 
 
 Use a regular writable folder. Running inside a ZIP, protected folder or through a junction/symbolic link can prevent updates. Extract the full latest release into a new ordinary folder if necessary. Administrator elevation is not requested.
 
-The previous EXE remains beside the application as `MKSM Studio.previous-<id>.exe`. If a new process fails before acknowledging startup, the updater attempts to restore/reopen the previous version. A slow, still-running new process is not forcibly terminated; the backup remains available.
+The updater temporarily keeps `MKSM Studio.previous-<id>.exe` for recovery. After the new application confirms successful startup, Studio deletes this old build and older updater-created backups in the same installation folder. It also removes the verified temporary download/helper EXEs for that completed update. Your projects, settings, game files and exports stay intact; unrelated files and manually downloaded release folders are not deleted. Locked files are retried briefly.
+
+If the new application fails before acknowledging startup, the updater attempts to restore/reopen the previous version. A slow, still-running new process is not forcibly terminated; its recovery backup remains until startup is confirmed.
 
 For manual recovery, close Studio and extract the desired complete release into a new folder. Keep ISOs/projects/exports. Older releases may not understand newer projects/native edits, so retain backups when changing versions.
 

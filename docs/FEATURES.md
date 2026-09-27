@@ -88,7 +88,7 @@ A bigger archive entry and greater in-game capacity are different issues. Reloca
 - [x] Startup and manual update checks.
 - [x] Higher-version checks, signed manifests and payload validation.
 - [x] In-app download, install and relaunch.
-- [x] Previous-EXE backup and recovery for failed startup.
+- [x] Temporary previous-EXE backup and recovery for failed startup; automatic old-build cleanup after confirmed successful startup.
 - [x] Separate Blender bridge download.
 - [ ] Guarantee that a compiled executable cannot be reverse-engineered.
 

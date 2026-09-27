@@ -1,5 +1,12 @@
 # Release notes
 
+## 0.25.1 — Remove old builds after updating
+
+- Deletes updater-created previous-version EXEs after the new application confirms successful startup.
+- Cleans up older accumulated updater backups in the same installation folder, plus verified temporary installer/download EXEs for the completed update.
+- Works when updating from an older helper: the new application also performs cleanup.
+- Retains recovery on failed startup. Projects, settings, exports and game files are untouched.
+
 ## 0.25.0 — Audio replacement and native ADX loops
 
 - Adds **Replace audio & set loop points…** to the Audio tab.
