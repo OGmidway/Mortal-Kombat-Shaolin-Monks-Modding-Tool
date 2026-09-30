@@ -1,5 +1,15 @@
 # Release notes
 
+## 0.27.0 - Community Workshop and bundled opening movie
+
+- Community Workshop action in the top navigation: refresh, search, download, subscribe and add native character packages to editing projects.
+- GitHub-backed publishing from Studio, creator version updates, and owner-only moderation of other creators' listings. Account permissions are checked online; no administrator credential is embedded in the EXE.
+- Exact native source checks, package hashes, bounded downloads and grouped model/texture staging. Subscription changes are checked on workshop refresh; they never apply automatically.
+- Complete converted opening movie included for automatic first-launch playback. Custom movie selection previews immediately; saved preferences remain respected.
+- Title-case navigation labels, including Models & Levels, Textures & Materials, and Music & Sound.
+- First workshop release: native character packages only. Live catalog/account checks and local/mocked publication tests passed; real creator upload/moderation and gameplay still need community testing. No sample character has been published automatically.
+
+
 ## 0.26.2 - Volume controls and responsive home sounds
 
 Improved audio controls and Home navigation.

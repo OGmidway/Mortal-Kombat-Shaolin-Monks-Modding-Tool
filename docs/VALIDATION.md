@@ -52,3 +52,7 @@ WPF checks verified the bundled MK4 font resolves, Windows accepts both menu eff
 ## 0.26.2 presentation checks
 
 Fourteen WPF checks cover rapid home hover transitions without throttling, same-target suppression, quiet Settings and model views, return-to-Home feedback, Discord position, percentage labels, live preview, one-percent button/keyboard steps, 0/100 endpoints, clickable themed tracks and restoring the previous volume on cancel.
+
+## 0.27.0 Workshop checks
+
+Native package integrity, malformed metadata, wrong creators/hosts, closed listings, archive entries, wrong destination, duplicate texture source handling, grouped model/texture staging and unchanged originals were tested. Live GitHub checks confirmed the public catalog and OGmidway stable ID/repository administrator role. Publishing/removal orchestration used a mock service; no character was posted to the public workshop during testing. Immediate movie preview was also checked.

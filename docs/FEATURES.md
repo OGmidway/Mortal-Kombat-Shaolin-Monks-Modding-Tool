@@ -2,7 +2,7 @@
 
 [Home](../README.md) · [Roadmap](ROADMAP.md) · [Validation](VALIDATION.md) · [Previous builds](PREVIOUS_BUILDS.md)
 
-Current application: **0.26.2**. Checked means implemented for supported data. **Experimental** means the workflow exists but needs preview and game testing. Unchecked items are not promised by this release.
+Current application: **0.27.0**. Checked means implemented for supported data. **Experimental** means the workflow exists but needs preview and game testing. Unchecked items are not promised by this release.
 
 ## 1. Opening and finding resources
 
@@ -160,3 +160,12 @@ A working resource is not proof of every game revision, rig, encoding or gamepla
 - [x] Independent dragon toggle and music/movie-audio/off selection.
 - [x] Continuous background video while viewing assets; optional continuation when inactive.
 - [x] Interface sound test buttons and Windows volume mixer shortcut.
+
+## Community Workshop (0.27.0)
+
+- [x] Browse/search live listings and download native character packages.
+- [x] Exact source validation and grouped project staging.
+- [x] Local subscriptions with changed-version notices on refresh.
+- [x] GitHub-backed creator publishing and owner removal controls.
+- [x] Bundled default opening movie with automatic playback.
+- [ ] Live end-to-end public creator upload/download/removal gameplay trial.

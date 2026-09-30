@@ -20,7 +20,7 @@
 
 ## Opening movie
 
-Studio prepares `Front/Movies/opening.sfd` from your own game folder or ISO. Conversion uses a local FFmpeg executable and runs outside the UI thread. If FFmpeg is missing, use **Choose FFmpeg converter**, then **Choose background movie** and select the SFD. You can also choose an MP4 or WMV directly. [FFmpeg's official download page](https://ffmpeg.org/download.html) links Windows builds. FFmpeg is a separate optional dependency, not included in Studio's EXE or updater.
+The converted opening movie is included and starts automatically on a fresh launch. A missing previous movie path falls back to that bundled default. You can still prepare `Front/Movies/opening.sfd` from your own game folder or ISO. Conversion uses a local FFmpeg executable and runs outside the UI thread. If FFmpeg is missing, use **Choose FFmpeg converter**, then **Choose background movie** and select the SFD. You can also choose an MP4 or WMV directly. [FFmpeg's official download page](https://ffmpeg.org/download.html) links Windows builds. FFmpeg is a separate optional dependency, not included in Studio's EXE or updater.
 
 Converted video is cached locally. The original game file stays unchanged. Choose **Opening movie audio** to hear its soundtrack, including with the video picture disabled. Only one background audio source plays at a time. Playback depends on Windows media support; if video cannot play, the dragon background remains usable.
 
@@ -30,7 +30,7 @@ The default `7051_000_mus_ambient_rc1.adx` soundtrack is packaged as MP3. Cursor
 
 Shared sound events `SND_SHARED_SF_UI_CURSOR_MOVE` and `SND_SHARED_SF_UI_CURSOR_SELECT` are resolved from the supported retail shared sound header/bank. Unsupported bank layouts leave those sounds unavailable rather than choosing arbitrary samples. UI samples are cached for reuse. Use **Test hover sound** and **Test select sound** in Settings. If Windows accepts playback but you hear nothing, use **Open Windows sound mixer** and check the Studio volume and output device.
 
-The background movie keeps playing while viewing assets. Playback continues when Studio loses focus unless you disable **Keep playing when I switch to another app**. Menu audio is included; the opening movie is prepared from your own game and is not included.
+The background movie keeps playing while viewing assets. Playback continues when Studio loses focus unless you disable **Keep playing when I switch to another app**. Menu audio is included; the default opening movie is included.
 
 ## Appearance
 
@@ -47,3 +47,7 @@ Settings and presentation caches live under `%LOCALAPPDATA%/MKSM Studio`. These 
 ## Volume controls (0.26.2)
 
 Both bars show 0-100%. Drag the larger handle or click the bar to set a level. Use the minus/plus buttons or arrow keys for 1% steps. Background volume previews immediately. Save settings keeps the changes; closing without saving restores the previous volume. Use the explicit test buttons to hear the home-menu sound volume. Automatic hover/select sounds are limited to Home and do not play in Settings or asset previews. Join Discord is also available immediately below Build game ISO on Home.
+
+Choosing a different background movie starts it immediately after preparation. Save settings keeps that movie; closing without saving restores the prior background.
+
+On a fresh installation, Home hover sounds default to off and Home select/click sounds default to on. Previously saved preferences remain in effect.
