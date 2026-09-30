@@ -1,5 +1,15 @@
 # Release notes
 
+## 0.26.1 � Archive styling and continuous background playback
+
+- Aged-metal frames, MK4 title font, responsive archive cards and large-window scaling.
+- Home added to left navigation and library; clearer model, material and audio section names.
+- Bundled MP3 menu music and WAV cursor/select effects, available without first opening an ISO.
+- Direct Windows interface-sound playback, routed hover handling, test buttons and volume-mixer shortcut.
+- Separate dragon visibility and background audio selection: game music, movie audio or off.
+- Background movie continues through asset previews and, by default, while another app has focus.
+- Existing modding, rebuilding, signed updates and Blender Bridge 0.25.1 remain unchanged.
+
 ## 0.26.0 — Workshop presentation and settings
 
 - New home navigation and clearer browse → edit → build workflow, retaining MKSM red, black, gold and dragon artwork.

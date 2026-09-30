@@ -22,21 +22,21 @@ You do not need to mount or unpack the ISO to begin. You do need your own game f
 
 This is an independent, experimental modding tool. The best-tested workflows use the researched **USA PS2 revision**. Support for one resource or revision does not establish support for every version of the game.
 
-## 2. Current release: 0.26.0
+## 2. Current release: 0.26.1
 
-**A refreshed MKSM workshop:** a navigation rail, clearer home screen, large gold author credits, floating embers and a pulsing red glow. Settings includes separate switches for video, music, hover/select sounds, particles, glow, background animation and startup update checks, plus volume controls and the [community Discord](https://discord.gg/aJwRJxd4hh).
+**An archive-focused MKSM interface:** aged-metal frames, bundled MK4 title lettering, responsive archive cards and automatic scaling on large windows. Home is available from the left navigation and the library. Instructions and file details keep a readable standard font.
 
-Studio now prompts when its signed startup check finds a newer release. Installation remains your choice; the existing updater downloads, verifies, replaces the application and reopens it.
+**Audio ready at startup:** the menu soundtrack is packaged as MP3; short cursor/select effects use PCM WAV and Windows sound playback. Settings includes test-sound buttons and a shortcut to the Windows volume mixer.
 
-Open your own game to prepare the menu audio: **7051_000_mus_ambient_rc1.adx** is preferred, and the shared game's cursor/select samples provide interface sounds. Audio preview has **Use this track as menu music**. The opening movie can be prepared from a game folder or ISO. **SFD conversion requires FFmpeg**: choose an existing `ffmpeg.exe` in Settings or place it beside Studio. MP4/WMV backgrounds can be selected directly. Game movies and sounds are not included in the download.
+Choose **Game music**, **Opening movie audio**, or **Off** independently from the video. Hide the dragon separately. The movie keeps playing through model, texture and other asset previews. Playback also continues when you switch apps by default; that behavior has its own switch.
 
-Performance work includes delayed search filtering while typing, cached menu media, a 20 FPS cap for decorative effects, and pausing presentation media while previewing assets or using another window. These are targeted improvements, not a claim of measured game/editor frame-rate gains.
+The opening movie still comes from your own game folder or ISO. **SFD conversion requires FFmpeg**; MP4/WMV can be selected directly. Startup update checks prompt only for newer signed releases. [Settings guide](docs/SETTINGS.md).
 
-**Character memory fixes are still experimental research, not enabled in this release.** A successful Studio preview does not guarantee an oversized replacement will load in game. [Verified findings and remaining work](docs/ENGINE_RESEARCH.md) · [Settings guide](docs/SETTINGS.md).
+**Character memory fixes remain experimental research, not enabled in this release.** A successful Studio preview does not guarantee an oversized replacement will load in game. [Verified findings and remaining work](docs/ENGINE_RESEARCH.md).
 
 ### Existing Blender workflow (Bridge 0.25.1)
 
-**New to character swaps? [Start with the simple Blender guide](docs/CHARACTER_START_HERE.md).** [Blender Bridge 0.25.1](https://github.com/OGmidway/Mortal-Kombat-Shaolin-Monks-Modding-Tool/releases/download/v0.25.6/MKSM-Blender-Bridge-0.25.1.zip) adds **Set up game textures (keep more detail)**. Automatic mode uses multiple original slots; choose two or three atlases if you want fewer textures. Original weights stay unchanged, and textures used by kept native meshes are protected. Install the add-on separately; Studio remains 0.25.6.
+**New to character swaps? [Start with the simple Blender guide](docs/CHARACTER_START_HERE.md).** [Blender Bridge 0.25.1](https://github.com/OGmidway/Mortal-Kombat-Shaolin-Monks-Modding-Tool/releases/download/v0.25.6/MKSM-Blender-Bridge-0.25.1.zip) adds **Set up game textures (keep more detail)**. Automatic mode uses multiple original slots; choose two or three atlases if you want fewer textures. Original weights stay unchanged, and textures used by kept native meshes are protected. Install the add-on separately; The application is now 0.26.1.
 
 **New in Bridge 0.25.1:** optional **Clean weights on export**, plus **Preview cleaned weights on a copy** and a weight-change report. This handles triangles that touch more than three bones after topology changes. Originals stay untouched. A per-vertex removal limit prevents unexpectedly large changes; default 25%. This does not fix or bypass game memory limits. [Cleanup steps](docs/CHARACTER_START_HERE.md#reduced-polygons-or-changed-geometry).
 

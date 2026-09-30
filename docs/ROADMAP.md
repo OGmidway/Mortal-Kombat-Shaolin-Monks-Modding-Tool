@@ -76,4 +76,4 @@ For a specific problem, [open an issue](https://github.com/OGmidway/Mortal-Komba
 
 ## September 30 update
 
-See [engine research status](ENGINE_RESEARCH.md) for confirmed model-memory findings and their diagnostic limits. Studio 0.26.0 ships presentation/settings improvements; it does not ship the unfinished memory patch.
+See [engine research status](ENGINE_RESEARCH.md) for confirmed model-memory findings and their diagnostic limits. Studio 0.26.1 ships presentation/settings improvements; it does not ship the unfinished memory patch.

@@ -44,3 +44,7 @@ After rebuilding, boot the newly built ISO fresh. A save state can retain resour
 ## September 30 update
 
 See [engine research status](ENGINE_RESEARCH.md) for confirmed model-memory findings and their diagnostic limits. Studio 0.26.0 ships presentation/settings improvements; it does not ship the unfinished memory patch.
+
+## 0.26.1 presentation checks
+
+WPF checks verified the bundled MK4 font resolves, Windows accepts both menu effects, hover events reach playback, the movie advances during a model preview and while the main window is inactive, nine settings switches, the three audio choices, movie audio without visible video/dragon, and audio-off behavior. These checks verify playback routing and state; perceived loudness still depends on the user's Windows output/mixer.

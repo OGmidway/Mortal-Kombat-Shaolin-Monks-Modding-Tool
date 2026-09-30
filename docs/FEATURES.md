@@ -2,7 +2,7 @@
 
 [Home](../README.md) · [Roadmap](ROADMAP.md) · [Validation](VALIDATION.md) · [Previous builds](PREVIOUS_BUILDS.md)
 
-Current application: **0.26.0**. Checked means implemented for supported data. **Experimental** means the workflow exists but needs preview and game testing. Unchecked items are not promised by this release.
+Current application: **0.26.1**. Checked means implemented for supported data. **Experimental** means the workflow exists but needs preview and game testing. Unchecked items are not promised by this release.
 
 ## 1. Opening and finding resources
 
@@ -144,7 +144,7 @@ The [validation record](VALIDATION.md) distinguishes historic corpus checks, cur
 
 A working resource is not proof of every game revision, rig, encoding or gameplay situation. Use the [roadmap](ROADMAP.md) for the unfinished work and include specific resource IDs when reporting a problem.
 
-## Presentation and updates (0.26.0)
+## Presentation and updates (0.26.1)
 
 - [x] Home navigation rail and grouped workflow guidance.
 - [x] Optional particles, red glow, menu music and native cursor/select feedback.
@@ -154,3 +154,9 @@ A working resource is not proof of every game revision, rig, encoding or gamepla
 - [ ] Released native memory-preservation patch for larger replacements.
 
 [Settings](SETTINGS.md) · [Verified engine research and remaining work](ENGINE_RESEARCH.md)
+
+- [x] Bundled MK4 title font and menu audio.
+- [x] Responsive archive cards, large-window scaling and left-side Home navigation.
+- [x] Independent dragon toggle and music/movie-audio/off selection.
+- [x] Continuous background video while viewing assets; optional continuation when inactive.
+- [x] Interface sound test buttons and Windows volume mixer shortcut.
