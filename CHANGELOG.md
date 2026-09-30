@@ -1,3 +1,17 @@
+# MKSM Studio 0.27.4 — Community Mod Packs
+
+- Create one `.mksmmodpack` from multiple files and publish it to Community Workshop without an ISO or gameplay test.
+- Assign a destination game file ID to each replacement. Include native models, textures, animation banks and audio, or Studio-ready GLB/character packages.
+- Download packs unchanged, or use **Apply Pack to Project** with a game open. Review all replacements and existing-edit conflicts before applying.
+- Every file is checked before the group is staged. A failed file blocks the whole pack. The original ISO stays untouched; build a new ISO after applying.
+- **Import Mod Pack...** also opens a downloaded local pack.
+
+Limits: 100 input files, 200 MB compressed download and 384 MB expanded input. Existing native-format, rig, texture and game-memory restrictions still apply. Nested audio tracks must be provided as rebuilt native banks. Format validation is not gameplay validation.
+
+Public and private source builds retain separate update channels.
+
+---
+
 # Release notes
 
 ## 0.27.3 — Standalone Community Workshop

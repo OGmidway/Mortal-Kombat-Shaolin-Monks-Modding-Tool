@@ -45,3 +45,7 @@ The catalog reads up to the newest 1,000 open GitHub entries. GitHub availabilit
 25 integrated checks cover no-ISO raw uploads, original-file downloads, companion textures, rest-pose previews, glow settings, creator-only edit/delete permissions and the shared account box. Publishing and mutations were tested with a mocked service; no sample mod was posted publicly. The earlier source-channel upgrade from 0.27.0 to 0.27.1 was verified through download, signature checks, extraction and application launch.
 
 The left navigation now has a full metal-style enclosure and a red perimeter glow. The existing Settings > Glow option controls the aura.
+
+## Multiple files in one mod
+
+Use **Create / Upload Mod Pack** to share several mapped replacements. With your game open, **Apply Pack to Project** checks and stages the complete group after your review. [Mod pack instructions](MOD_PACKS.md). Single-file downloads remain manual.
