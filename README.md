@@ -22,7 +22,7 @@ You do not need to mount or unpack the ISO to begin. You do need your own game f
 
 This is an independent, experimental modding tool. The best-tested workflows use the researched **USA PS2 revision**. Support for one resource or revision does not establish support for every version of the game.
 
-## 2. Current release: 0.27.0
+## 2. Current release: 0.27.1
 
 **Community Workshop:** browse character replacements, download them into your editing project, subscribe for version comparisons on refresh, and publish your own native character packages through GitHub. Creator uploads appear without an approval queue. OGmidway's authenticated owner account can remove any listing; other creators manage only their own. [Workshop guide](docs/COMMUNITY_WORKSHOP.md).
 
@@ -44,7 +44,7 @@ Custom **SFD conversion requires FFmpeg**; MP4/WMV can be selected directly. The
 
 ### Existing Blender workflow (Bridge 0.25.1)
 
-**New to character swaps? [Start with the simple Blender guide](docs/CHARACTER_START_HERE.md).** [Blender Bridge 0.25.1](https://github.com/OGmidway/Mortal-Kombat-Shaolin-Monks-Modding-Tool/releases/download/v0.25.6/MKSM-Blender-Bridge-0.25.1.zip) adds **Set up game textures (keep more detail)**. Automatic mode uses multiple original slots; choose two or three atlases if you want fewer textures. Original weights stay unchanged, and textures used by kept native meshes are protected. Install the add-on separately; The application is now 0.27.0.
+**New to character swaps? [Start with the simple Blender guide](docs/CHARACTER_START_HERE.md).** [Blender Bridge 0.25.1](https://github.com/OGmidway/Mortal-Kombat-Shaolin-Monks-Modding-Tool/releases/download/v0.25.6/MKSM-Blender-Bridge-0.25.1.zip) adds **Set up game textures (keep more detail)**. Automatic mode uses multiple original slots; choose two or three atlases if you want fewer textures. Original weights stay unchanged, and textures used by kept native meshes are protected. Install the add-on separately; The application is now 0.27.1.
 
 **New in Bridge 0.25.1:** optional **Clean weights on export**, plus **Preview cleaned weights on a copy** and a weight-change report. This handles triangles that touch more than three bones after topology changes. Originals stay untouched. A per-vertex removal limit prevents unexpectedly large changes; default 25%. This does not fix or bypass game memory limits. [Cleanup steps](docs/CHARACTER_START_HERE.md#reduced-polygons-or-changed-geometry).
 

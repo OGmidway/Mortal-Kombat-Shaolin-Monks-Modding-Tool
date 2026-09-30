@@ -1,5 +1,15 @@
 # Release notes
 
+## 0.27.1 — Workshop uploads and preview images
+
+- Upload prepared GLB characters, native character BIN/PME2 files, or existing MKSM character packages.
+- Native models can include an optional texture BIN. The original destination character and texture set remain explicit.
+- Add a PNG/JPG preview image, displayed beside the mod description.
+- Larger Community Workshop button, in the top-right toolbar only.
+- Public and private source builds updated together; update channels remain separate.
+- 20 targeted checks passed. Beta model gameplay compatibility still needs testing; this patch does not raise engine limits.
+
+
 ## 0.27.0 - Community Workshop and bundled opening movie
 
 - Community Workshop action in the top navigation: refresh, search, download, subscribe and add native character packages to editing projects.
