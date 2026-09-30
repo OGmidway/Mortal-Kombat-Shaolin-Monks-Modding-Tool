@@ -1,5 +1,16 @@
 # Release notes
 
+## 0.27.3 — Standalone Community Workshop
+
+- Share original GLB, BIN, PME2 or MKSM character files without opening an ISO, converting the model, or running the game. Optional companion texture BINs are supported.
+- Download files to a chosen folder; installing them into a game is a separate manual step.
+- Mod cards and a larger detail panel, optional pictures, and an interactive rest-pose model preview when no picture is supplied.
+- Custom author display name with red, gold, blue, green, purple or white glow. Verified GitHub uploader remains visible separately.
+- Creators can edit listing details, upload a new version, or remove their own listing. Owner moderation remains available to OGmidway.
+- Shared GitHub account box on the main header/homepage, Workshop and updater windows. Existing credentials are restored; connected views display the username and already-signed-in status.
+- 25 integrated checks passed with raw-file fixtures and mocked publishing/ownership mutations. Unsupported model previews remain downloadable. Public and private source channels updated together.
+
+
 ## 0.27.2 — Browser sign-in fix
 
 - GitHub sign-in now opens a dedicated authorization dialog, with a selectable device code, Copy Code, Open GitHub and Copy Link controls.

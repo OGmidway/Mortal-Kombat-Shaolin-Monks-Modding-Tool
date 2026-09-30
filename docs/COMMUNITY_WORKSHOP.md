@@ -1,55 +1,47 @@
 # Community Workshop
 
-[Home](../README.md) · [Characters](CHARACTER_START_HERE.md) · [Build and test](PROJECTS_AND_TESTING.md)
+[Home](../README.md) · [Characters](CHARACTER_START_HERE.md)
 
-## Download a character
+## Share a mod — no ISO required
 
-1. Open your game ISO in Studio.
-2. Click **Community Workshop** at the top.
-3. Select a character. Check its destination model, texture set, game revision and creator's notes.
-4. Click **Download + add to project**. Studio checks its checksum, native structure and exact original model/texture sources before staging the changes.
-5. Close Workshop, review the character, **Save project**, then **Build ISO**.
+1. Open Community Workshop at the top right. No game needs to be open.
+2. Use the GitHub account box to sign in. Studio opens GitHub and shows a code with Copy Code and Copy Link buttons. Authorize GitHub CLI in your browser.
+3. Click **Upload character** and choose `.glb`, `.bin`, `.pme2` or `.mksmcharacter`.
+4. Enter a title and description. Add your author name and choose its glow color. You may include suggested model/texture IDs and game revision notes, but an ISO is not required.
+5. Optionally attach a texture BIN and a PNG/JPG picture. Click **Publish publicly**.
 
-**Download only** saves a package without changing your project. If an installed edit conflicts, Studio asks before replacing it. Workshop never writes directly over the original ISO. A package passing validation is not a guarantee that its size or gameplay behavior works in the engine.
+Your file is shared unchanged. Workshop does not compile, convert, run, or test it against a game. Import requirements are checked later when a downloader chooses to install it. Individual files are limited to 200 MB. Raw GLBs get a basic header check; native BIN uploads are preserved as supplied.
 
-The workshop starts empty until creators publish. Existing demonstration files on the developer's machine are not uploaded automatically.
+Files are published in your public `MKSM-Workshop-Mods` GitHub release repository. The official Studio repository stores the listing. An existing private creator repository is never made public automatically. New listings appear without an approval queue.
 
-## Subscribe and update
+## Browse and download
 
-Subscribe remembers a listing on this computer. Opening Workshop or clicking Refresh fetches current listings, independently of Studio releases. A changed package hash is shown as a subscribed update. Download and apply it when you choose; no automatic replacement or background polling occurs.
+Select a mod card to see its author, title, description, picture or model preview. The verified GitHub uploader is shown separately from the creator's custom display name.
 
-## Publish your character
+Without a picture, Studio downloads the file into its preview cache and tries to display its stored rest pose. GLB triangle meshes with embedded images, supported native character BINs and MKSM character packages are supported. It does not force every model into a T-pose. Unsupported, compressed or very large previews may be unavailable; the file can still be downloaded.
 
-1. Choose a `.mksmcharacter` package, a prepared character `.glb`, or a native character model `.bin` / `.pme2`. GLBs must use the destination MKSM skeleton, weights and material slots, just like **Import character**. Arbitrary unprepared game models are not automatically rigged.
-2. Open the original game revision used to create the package. Select the destination character and its matching texture set in Studio. Some native texture sets have identical bytes, so this selection identifies the intended destination.
-3. Open Community Workshop and click **Sign in with GitHub**. Studio opens GitHub in your browser and displays the one-time code in a sign-in window. Click **Copy Code**, paste it into GitHub, and authorize **GitHub CLI**. **Open GitHub** and **Copy Link** are available if the browser did not open. Keep the window open until Studio connects. GitHub CLI is included; do not send a password or token to the workshop owner.
-4. Click **Upload character** and choose your file. For GLB/BIN uploads, select the original character you want to replace before opening Workshop. GLB images are compiled into the selected texture set. Native BIN uploads can optionally include a separate native texture BIN; choose No to retain the original textures. Studio packages everything automatically.
-5. Review the destination, title, version, description and game revision. Use **Choose Preview Image...** to attach a PNG/JPG picture. Click **Publish publicly**.
+Click **Download Files...**, choose a folder, and Studio saves the original file, optional companion texture BIN and a readme in a new mod folder. It verifies download checksums. This does not change your game or editing project.
 
-Studio creates a public `MKSM-Workshop-Mods` repository under your GitHub account if it does not exist. It uploads the package as a release asset, then creates a workshop listing in the official Studio repository. If that repository already exists privately, Studio asks you to resolve that rather than changing visibility silently. Publishing shares the entire package, including its embedded Blender GLB and textures.
+To install later, open your ISO in Studio, select the destination character, and use Import character for GLB/packages or Replace game file for native BINs. Import companion textures into the intended texture set. Save your project and build your ISO when ready.
 
-Uploads appear without an approval queue. Files are hosted under each creator's account. GitHub sign-in is needed for publishing/managing, but browsing and downloads are public. Packages are capped at 200 MB compressed and 384 MB expanded for this first release.
+## Edit or delete your own mod
 
-To update: select one of your listings, click **Upload new version**, choose the new package and enter a higher version such as `1.0.1`. Subscribers see a change after refresh. If the upload succeeds but listing creation fails, your GitHub download release and the local Workshop publish folder retain the package and listing text for recovery.
+Sign in with the account that uploaded it. **Edit Listing** changes the title, description, author name, glow and suggested destination without uploading the file again. **Upload new version** replaces the files or picture and requires a higher version number. Attach companion textures again when publishing a new version if they are still needed.
 
-## Administrator controls
+**Delete Listing** removes your listing from the Workshop by closing its GitHub issue. This does not erase files already downloaded or delete your separate GitHub release assets. Other users cannot edit or remove your listing. OGmidway retains owner moderation controls.
 
-Sign in as **OGmidway**. Studio verifies the account's stable GitHub ID and administrator access to the official repository before showing removal controls for other creators' listings. This is enforced by GitHub permissions, not a secret button or a special public EXE.
+## Sign in once
 
-**Remove listing** closes the listing; owner moderation also locks it. It disappears on the next refresh. Creators can remove their own listings. Removal does not erase packages already downloaded, existing projects, or the creator's separate download repository.
+The bordered account box appears at the top left of the application, including the homepage, and in Workshop/update windows. Connected views say **GitHub · Signed in as username** and **Already signed in**. GitHub CLI keeps credentials in its normal credential store; Studio restores the account when starting. Public application updates do not require login. Private source updates require an invited account.
 
-The owner source package is delivered privately, not as a public release asset. It includes the application source and a rebuild script. It contains no GitHub credentials or private update-signing keys.
+## Subscriptions and compatibility
 
-## First-release boundaries
+Subscribe marks a mod on this computer. Refresh detects changed file hashes; it does not install anything automatically. Old packaged listings remain readable. Raw-file listings require Studio 0.27.3 or newer.
 
-- Character packages, prepared GLBs and native character model BINs are supported. They are delivered as validated `.mksmcharacter` bundles. Native beta imports remain experimental; structural validation cannot guarantee compatibility with retail gameplay. No general level/audio workshop yet.
-- Creator-uploaded preview images appear with the description. PNG/JPG input is normalized to a bounded PNG preview; no live 3D viewer, ratings, comments UI, automatic subscription download or automatic mod installation.
-- Lists the newest 1,000 open GitHub entries; a notice appears if the limit is reached.
-- GitHub rate limits, availability and account permissions apply.
-- Tested with native package fixtures, source conflicts, owner-role verification and live catalog reads. Creator publication/removal orchestration was tested against a mocked service; a real public character round trip has not yet been performed.
+The catalog reads up to the newest 1,000 open GitHub entries. GitHub availability and rate limits apply. Sharing a file does not guarantee game compatibility. User-reported beta native imports have succeeded; other models need their own testing.
 
-## 0.27.1 checks
+## Validation
 
-20 targeted checks passed, including the working Kratos GLB, original native model/texture byte preservation, destination matching, image integrity, mocked image/package publication, and the larger top-right-only Workshop button. No test characters were published automatically. Both public and private source channels include these changes.
+25 integrated checks cover no-ISO raw uploads, original-file downloads, companion textures, rest-pose previews, glow settings, creator-only edit/delete permissions and the shared account box. Publishing and mutations were tested with a mocked service; no sample mod was posted publicly. The earlier source-channel upgrade from 0.27.0 to 0.27.1 was verified through download, signature checks, extraction and application launch.
 
-User-reported validation: a collaborator successfully extracted beta character models and imported them through the native BIN workflow. The 0.27.1 changes add that input path to Community Workshop.
+The left navigation now has a full metal-style enclosure and a red perimeter glow. The existing Settings > Glow option controls the aura.
