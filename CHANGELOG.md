@@ -1,5 +1,17 @@
 # Release notes
 
+## 0.26.0 — Workshop presentation and settings
+
+- New home navigation and clearer browse → edit → build workflow, retaining MKSM red, black, gold and dragon artwork.
+- Startup update prompt only for a newer signed release; manual checks remain available.
+- Opening-movie background with local SFD conversion through FFmpeg, or direct MP4/WMV selection.
+- Menu music from the user's game, defaulting to 7051's ambient track; choose another previewed track.
+- Native shared cursor-move and cursor-select samples decoded locally for hover/click feedback.
+- Separate settings switches for video, music, interface sounds, particles, glow and animation; independent volume controls; Discord link.
+- Cached media, delayed search filtering, bounded decorative refresh and pause-on-inactive/asset-preview behavior.
+- No new engine memory patch or guarantee for oversized characters. See the research status for the confirmed failure mechanisms and remaining validation.
+
+
 [Current download](https://github.com/OGmidway/Mortal-Kombat-Shaolin-Monks-Modding-Tool/releases/latest) · [Previous builds](docs/PREVIOUS_BUILDS.md) · [Roadmap](docs/ROADMAP.md) · [Validation](docs/VALIDATION.md)
 
 ## 0.25.6 — Easier character material preparation

@@ -2,7 +2,7 @@
 
 [Home](../README.md) · [Roadmap](ROADMAP.md) · [Validation](VALIDATION.md) · [Previous builds](PREVIOUS_BUILDS.md)
 
-Current application: **0.25.6**. Checked means implemented for supported data. **Experimental** means the workflow exists but needs preview and game testing. Unchecked items are not promised by this release.
+Current application: **0.26.0**. Checked means implemented for supported data. **Experimental** means the workflow exists but needs preview and game testing. Unchecked items are not promised by this release.
 
 ## 1. Opening and finding resources
 
@@ -143,3 +143,14 @@ The core source is private; a compiled executable cannot guarantee protection ag
 The [validation record](VALIDATION.md) distinguishes historic corpus checks, current automated/UI/ISO checks, and reported gameplay. The Kratos replacement now has an in-game success report. The newly imported Kabal motion has preview/project/ISO verification; its gameplay test remains pending.
 
 A working resource is not proof of every game revision, rig, encoding or gameplay situation. Use the [roadmap](ROADMAP.md) for the unfinished work and include specific resource IDs when reporting a problem.
+
+## Presentation and updates (0.26.0)
+
+- [x] Home navigation rail and grouped workflow guidance.
+- [x] Optional particles, red glow, menu music and native cursor/select feedback.
+- [x] Separate settings toggles and volume controls; community Discord link.
+- [x] Startup prompt for a newer signed release.
+- [x] Local opening-movie preparation with optional FFmpeg dependency; MP4/WMV background selection.
+- [ ] Released native memory-preservation patch for larger replacements.
+
+[Settings](SETTINGS.md) · [Verified engine research and remaining work](ENGINE_RESEARCH.md)

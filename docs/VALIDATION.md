@@ -40,3 +40,7 @@ These are historical scoped checks, not a statement that the full corpus was rer
 Include Studio version, game revision, model/bank/clip IDs, what you imported, the chosen action/FPS, and the behavior you tested. For a failure, include the exact error and the smallest useful reproduction. Do not upload game ISOs, BIOS files or full extracted archives.
 
 After rebuilding, boot the newly built ISO fresh. A save state can retain resources loaded from an earlier build, so it is not a reliable first check of a replacement.
+
+## September 30 update
+
+See [engine research status](ENGINE_RESEARCH.md) for confirmed model-memory findings and their diagnostic limits. Studio 0.26.0 ships presentation/settings improvements; it does not ship the unfinished memory patch.

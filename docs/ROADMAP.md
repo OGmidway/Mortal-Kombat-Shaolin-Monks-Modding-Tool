@@ -73,3 +73,7 @@ Resource relocation already allows supported files to grow or shrink. General 40
 - [x] Archive index maintenance during release packaging; existing downloads and signatures remain in their original releases.
 
 For a specific problem, [open an issue](https://github.com/OGmidway/Mortal-Kombat-Shaolin-Monks-Modding-Tool/issues) with the details in [Updates and help](UPDATES_AND_HELP.md#reporting-a-problem).
+
+## September 30 update
+
+See [engine research status](ENGINE_RESEARCH.md) for confirmed model-memory findings and their diagnostic limits. Studio 0.26.0 ships presentation/settings improvements; it does not ship the unfinished memory patch.
