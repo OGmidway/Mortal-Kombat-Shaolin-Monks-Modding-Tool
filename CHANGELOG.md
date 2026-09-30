@@ -1,3 +1,15 @@
+# MKSM Studio 0.27.5 — Sidebar Layout
+
+- Full-height left sidebar containing GitHub account, Studio branding and navigation / game library.
+- Continuous vertical divider separates the sidebar from the editing workspace.
+- Background movie, dragon and ambient effects stay on the right side.
+- Adjusted spacing and compact-window scaling while retaining the existing controls and theme.
+- Includes Community Mod Packs and administrator listing removal from the previous updates.
+
+Visually checked on the home screen and model viewer at 1060x700 and 1920x1080. Public and private source update channels remain separate.
+
+---
+
 # MKSM Studio 0.27.4 — Community Mod Packs
 
 - Create one `.mksmmodpack` from multiple files and publish it to Community Workshop without an ISO or gameplay test.

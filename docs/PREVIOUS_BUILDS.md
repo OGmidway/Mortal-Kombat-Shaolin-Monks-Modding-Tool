@@ -2,7 +2,7 @@
 
 [Home](../README.md) · [Release notes](../CHANGELOG.md) · [Updates and recovery](UPDATES_AND_HELP.md) · [Roadmap](ROADMAP.md)
 
-**Current recommended version: [0.27.4](https://github.com/OGmidway/Mortal-Kombat-Shaolin-Monks-Modding-Tool/releases/tag/v0.27.4).** [Download latest](https://github.com/OGmidway/Mortal-Kombat-Shaolin-Monks-Modding-Tool/releases/latest).
+**Current recommended version: [0.27.5](https://github.com/OGmidway/Mortal-Kombat-Shaolin-Monks-Modding-Tool/releases/tag/v0.27.5).** [Download latest](https://github.com/OGmidway/Mortal-Kombat-Shaolin-Monks-Modding-Tool/releases/latest).
 
 This archive keeps superseded public builds easy to find. The downloads remain in their original GitHub releases; no application files or signatures are moved or rewritten. Start with the current version for normal use.
 
@@ -12,6 +12,7 @@ All rows below are previous builds, newest first. Dates are the original publica
 
 | Version / release notes | Published (UTC) | Main change | Windows download |
 |---|---|---|---|
+| [0.27.4](https://github.com/OGmidway/Mortal-Kombat-Shaolin-Monks-Modding-Tool/releases/tag/v0.27.4) | 2026-09-30 | See the linked release notes | [Windows ZIP](https://github.com/OGmidway/Mortal-Kombat-Shaolin-Monks-Modding-Tool/releases/download/v0.27.4/MKSM-Studio-0.27.4-win-x64.zip) |
 | [0.27.3](https://github.com/OGmidway/Mortal-Kombat-Shaolin-Monks-Modding-Tool/releases/tag/v0.27.3) | 2026-09-30 | See the linked release notes | [Windows ZIP](https://github.com/OGmidway/Mortal-Kombat-Shaolin-Monks-Modding-Tool/releases/download/v0.27.3/MKSM-Studio-0.27.3-win-x64.zip) |
 | [0.27.2](https://github.com/OGmidway/Mortal-Kombat-Shaolin-Monks-Modding-Tool/releases/tag/v0.27.2) | 2026-09-30 | See the linked release notes | [Windows ZIP](https://github.com/OGmidway/Mortal-Kombat-Shaolin-Monks-Modding-Tool/releases/download/v0.27.2/MKSM-Studio-0.27.2-win-x64.zip) |
 | [0.27.1](https://github.com/OGmidway/Mortal-Kombat-Shaolin-Monks-Modding-Tool/releases/tag/v0.27.1) | 2026-09-30 | See the linked release notes | [Windows ZIP](https://github.com/OGmidway/Mortal-Kombat-Shaolin-Monks-Modding-Tool/releases/download/v0.27.1/MKSM-Studio-0.27.1-win-x64.zip) |
