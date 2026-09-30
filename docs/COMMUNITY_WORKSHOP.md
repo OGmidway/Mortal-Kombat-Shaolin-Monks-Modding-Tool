@@ -22,7 +22,7 @@ Subscribe remembers a listing on this computer. Opening Workshop or clicking Ref
 
 1. Choose a `.mksmcharacter` package, a prepared character `.glb`, or a native character model `.bin` / `.pme2`. GLBs must use the destination MKSM skeleton, weights and material slots, just like **Import character**. Arbitrary unprepared game models are not automatically rigged.
 2. Open the original game revision used to create the package. Select the destination character and its matching texture set in Studio. Some native texture sets have identical bytes, so this selection identifies the intended destination.
-3. Open Community Workshop and click **Sign in with GitHub**. Follow GitHub's browser/device sign-in. GitHub CLI is included; do not send a password or token to the workshop owner.
+3. Open Community Workshop and click **Sign in with GitHub**. Studio opens GitHub in your browser and displays the one-time code in a sign-in window. Click **Copy Code**, paste it into GitHub, and authorize **GitHub CLI**. **Open GitHub** and **Copy Link** are available if the browser did not open. Keep the window open until Studio connects. GitHub CLI is included; do not send a password or token to the workshop owner.
 4. Click **Upload character** and choose your file. For GLB/BIN uploads, select the original character you want to replace before opening Workshop. GLB images are compiled into the selected texture set. Native BIN uploads can optionally include a separate native texture BIN; choose No to retain the original textures. Studio packages everything automatically.
 5. Review the destination, title, version, description and game revision. Use **Choose Preview Image...** to attach a PNG/JPG picture. Click **Publish publicly**.
 

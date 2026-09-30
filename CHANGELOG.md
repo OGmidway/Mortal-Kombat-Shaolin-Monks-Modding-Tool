@@ -1,5 +1,14 @@
 # Release notes
 
+## 0.27.2 — Browser sign-in fix
+
+- GitHub sign-in now opens a dedicated authorization dialog, with a selectable device code, Copy Code, Open GitHub and Copy Link controls.
+- Studio opens the official GitHub device authorization page when the code arrives, fixing the noninteractive CLI flow that only printed a link.
+- The dialog waits for authorization, shows errors, supports retry, and cancels the pending helper when closed.
+- Applies to Community Workshop and private source-update sign-in. Public/private channels remain separate.
+- 13 focused sign-in checks passed with a simulated authorization provider. A second user's successful live authorization still needs confirmation.
+
+
 ## 0.27.1 — Workshop uploads and preview images
 
 - Upload prepared GLB characters, native character BIN/PME2 files, or existing MKSM character packages.
