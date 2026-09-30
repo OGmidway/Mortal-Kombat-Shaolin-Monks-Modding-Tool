@@ -2,7 +2,7 @@
 
 [Home](../README.md) · [Release notes](../CHANGELOG.md) · [Updates and recovery](UPDATES_AND_HELP.md) · [Roadmap](ROADMAP.md)
 
-**Current recommended version: [0.26.1](https://github.com/OGmidway/Mortal-Kombat-Shaolin-Monks-Modding-Tool/releases/tag/v0.26.1).** [Download latest](https://github.com/OGmidway/Mortal-Kombat-Shaolin-Monks-Modding-Tool/releases/latest).
+**Current recommended version: [0.26.2](https://github.com/OGmidway/Mortal-Kombat-Shaolin-Monks-Modding-Tool/releases/tag/v0.26.2).** [Download latest](https://github.com/OGmidway/Mortal-Kombat-Shaolin-Monks-Modding-Tool/releases/latest).
 
 This archive keeps superseded public builds easy to find. The downloads remain in their original GitHub releases; no application files or signatures are moved or rewritten. Start with the current version for normal use.
 
@@ -12,6 +12,7 @@ All rows below are previous builds, newest first. Dates are the original publica
 
 | Version / release notes | Published (UTC) | Main change | Windows download |
 |---|---|---|---|
+| [0.26.1](https://github.com/OGmidway/Mortal-Kombat-Shaolin-Monks-Modding-Tool/releases/tag/v0.26.1) | 2026-09-30 | See the linked release notes | [Windows ZIP](https://github.com/OGmidway/Mortal-Kombat-Shaolin-Monks-Modding-Tool/releases/download/v0.26.1/MKSM-Studio-0.26.1-win-x64.zip) |
 | [0.26.0](https://github.com/OGmidway/Mortal-Kombat-Shaolin-Monks-Modding-Tool/releases/tag/v0.26.0) | 2026-09-30 | See the linked release notes | [Windows ZIP](https://github.com/OGmidway/Mortal-Kombat-Shaolin-Monks-Modding-Tool/releases/download/v0.26.0/MKSM-Studio-0.26.0-win-x64.zip) |
 | [0.25.6](https://github.com/OGmidway/Mortal-Kombat-Shaolin-Monks-Modding-Tool/releases/tag/v0.25.6) | 2026-09-27 | Automatic opaque character atlas and UV preparation in Blender Bridge 0.24 | [Windows ZIP](https://github.com/OGmidway/Mortal-Kombat-Shaolin-Monks-Modding-Tool/releases/download/v0.25.6/MKSM-Studio-0.25.6-win-x64.zip) |
 | [0.25.5](https://github.com/OGmidway/Mortal-Kombat-Shaolin-Monks-Modding-Tool/releases/tag/v0.25.5) | 2026-09-27 | Fixes the hidden weapon/object import button on rigid models | [Windows ZIP](https://github.com/OGmidway/Mortal-Kombat-Shaolin-Monks-Modding-Tool/releases/download/v0.25.5/MKSM-Studio-0.25.5-win-x64.zip) |
