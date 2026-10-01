@@ -1,3 +1,13 @@
+# MKSM Studio 0.27.6 — Persistent Source Updates
+
+- Source updates now replace the original application and Source folder. Existing shortcuts reopen the newest version.
+- Updates launched by the previous source updater automatically hand off to the original installation.
+- Previous executable is removed; local source edits are preserved in a Source-backup folder.
+- Locked executable failures restore the original Source folder and keep the original executable.
+- Public updates already replace the original executable in place; that behavior is retained.
+
+---
+
 # MKSM Studio 0.27.5 — Sidebar Layout
 
 - Full-height left sidebar containing GitHub account, Studio branding and navigation / game library.
