@@ -1,3 +1,14 @@
+# MKSM Studio 0.27.10 — Interface Scale & Windows Icon Refresh
+
+- Settings > Appearance > Interface Scale adds a 70–125% size control with live preview, percentage readout and a 100% reset. Save keeps the choice across restarts; closing without saving restores the previous size.
+- Fullscreen now creates more workspace instead of automatically enlarging the interface. Smaller windows fit their available space. Studio, Community Workshop and themed dialogs use the same scale; title-bar controls keep their normal size.
+- Both actual EXEs contain the black/crimson dragon icon. Updates now notify Windows about the file and directory, invalidate cached icon associations, and request Windows' icon refresh. Settings > Application > Refresh Windows Application Icon provides the same action if Explorer still shows its cached gold icon. No icon-cache files are deleted and Explorer is not restarted.
+- MK fonts, Workshop ratings/sorting, scrolling model portraits, separate signed update channels, movie/audio, particles, banner and fog are retained.
+
+Validation covered live preview/cancel/save/reopen, minimized/maximized/restored windows, small-window fitting, Workshop/dialog scaling, unchanged title-bar height, closed-window cleanup, actual executable icons, signed package hashes and source update replacement/rollback. No new game-memory patches are included.
+
+---
+
 # MKSM Studio 0.27.9 — Crimson Polish & Workshop Ratings
 
 - Redder crimson throughout Studio, Workshop and dialogs; matching OG Midway text and glow. Ordinary Home instructions and section labels are neutral white. Card numbers 01 / 02 / 03 remain crimson.
