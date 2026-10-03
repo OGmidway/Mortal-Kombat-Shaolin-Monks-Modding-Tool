@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="assets/icon.png" width="96" alt="MKSM Studio gold dragon icon">
+<img src="assets/icon.png" width="96" alt="MKSM Studio crimson dragon icon">
 
 # Mortal Kombat Shaolin Monks Modding Tool by OG Midway
 
@@ -24,17 +24,15 @@ You do not need to mount or unpack the ISO to begin. You do need your own game f
 
 This is an independent, experimental modding tool. The best-tested workflows use the researched **USA PS2 revision**. Support for one resource or revision does not establish support for every version of the game.
 
-## 2. Current release: 0.27.7
+## 2. Current release: 0.27.8
 
 Clean red-and-black interface, integrated title bar, GitHub avatar, refreshed Workshop browsing and grouped Settings. Sidebar **Patch Notes** shows the latest update; green dragon indicators pulse for unread notes or available updates. Owner announcements appear once and can be reopened from the sidebar. Select your interface font under **Settings → Appearance → Typography**. Save, then reopen Studio to apply it.
 
-**Community Workshop:** browse character replacements, download them into your editing project, subscribe for version comparisons on refresh, and publish your own native character packages through GitHub. Creator uploads appear without an approval queue. OGmidway's authenticated owner account can remove any listing; other creators manage only their own. [Workshop guide](docs/COMMUNITY_WORKSHOP.md).
+**Community Workshop:** browse character replacements, download their files, subscribe for version comparisons on refresh, and publish your own native character packages through GitHub. Creator uploads appear without an approval queue. OGmidway's authenticated owner account can remove any listing; other creators manage only their own. [Workshop guide](docs/COMMUNITY_WORKSHOP.md).
 
 **Opening movie included:** the converted opening movie is bundled and starts on first launch. The default movie needs no ISO extraction or FFmpeg. Saved off/volume choices are preserved; selecting another movie previews it immediately.
 
 **An archive-focused MKSM interface:** aged-metal frames, bundled MK4 title lettering, responsive archive cards and automatic scaling on large windows. Home is available from the left navigation and the library. Instructions and file details keep a readable standard font.
-
-**Volume and menu feedback:** clear 0-100% sliders, larger handles, one-percent buttons and live background-volume preview. Automatic hover/select sounds play only on Home; Settings and asset views stay quiet. Join Discord is directly below Build game ISO.
 
 **Volume and menu feedback:** clear 0-100% sliders, larger handles, one-percent buttons and live background-volume preview. Automatic hover/select sounds play only on Home; Settings and asset views stay quiet. Join Discord is directly below Build game ISO.
 
@@ -46,9 +44,9 @@ Custom **SFD conversion requires FFmpeg**; MP4/WMV can be selected directly. The
 
 **Character memory fixes remain experimental research, not enabled in this release.** A successful Studio preview does not guarantee an oversized replacement will load in game. [Verified findings and remaining work](docs/ENGINE_RESEARCH.md).
 
-### Existing Blender workflow (Bridge 0.25.1)
+### Existing Blender workflow (Bridge 0.25.2)
 
-**New to character swaps? [Start with the simple Blender guide](docs/CHARACTER_START_HERE.md).** [Blender Bridge 0.25.1](https://github.com/OGmidway/Mortal-Kombat-Shaolin-Monks-Modding-Tool/releases/download/v0.25.6/MKSM-Blender-Bridge-0.25.1.zip) adds **Set up game textures (keep more detail)**. Automatic mode uses multiple original slots; choose two or three atlases if you want fewer textures. Original weights stay unchanged, and textures used by kept native meshes are protected. Install the add-on separately; The application is now 0.27.7.
+**New to character swaps? [Start with the simple Blender guide](docs/CHARACTER_START_HERE.md).** [Blender Bridge 0.25.2](https://github.com/OGmidway/Mortal-Kombat-Shaolin-Monks-Modding-Tool/releases/download/v0.27.8/MKSM-Blender-Bridge-0.25.2.zip) adds **Set up game textures (keep more detail)**. Automatic mode uses multiple original slots; choose two or three atlases if you want fewer textures. Original weights stay unchanged, and textures used by kept native meshes are protected. Install the add-on separately; The application is now 0.27.8.
 
 **New in Bridge 0.25.1:** optional **Clean weights on export**, plus **Preview cleaned weights on a copy** and a weight-change report. This handles triangles that touch more than three bones after topology changes. Originals stay untouched. A per-vertex removal limit prevents unexpectedly large changes; default 25%. This does not fix or bypass game memory limits. [Cleanup steps](docs/CHARACTER_START_HERE.md#reduced-polygons-or-changed-geometry).
 
@@ -152,3 +150,5 @@ Mortal Kombat and Shaolin Monks belong to their respective rights holders. This 
 Share multiple replacements in one download and apply them together before rebuilding. [Create and install a mod pack](docs/MOD_PACKS.md).
 
 Particle animation: **Settings → Appearance → Particle Frame Rate** supports Off, 15, 30 and 60 FPS (default 60). Movie playback uses its own frame rate and remains independent.
+
+Studio 0.27.8 uses crimson/pink accents and a red-and-black dragon icon. Workshop cards and details show the current version’s file-download count from GitHub; counts include uncached preview fetches and direct downloads, not unique people. Background video, audio and particle options remain available.

@@ -6,7 +6,7 @@
 
 1. Open Community Workshop at the top right. No game needs to be open.
 2. Use the GitHub account box to sign in. Studio opens GitHub and shows a code with Copy Code and Copy Link buttons. Authorize GitHub CLI in your browser.
-3. Click **Upload character** and choose `.glb`, `.bin`, `.pme2` or `.mksmcharacter`.
+3. Click **Upload Mod** and choose `.glb`, `.bin`, `.pme2` or `.mksmcharacter`.
 4. Enter a title and description. Add your author name and choose its glow color. You may include suggested model/texture IDs and game revision notes, but an ISO is not required.
 5. Optionally attach a texture BIN and a PNG/JPG picture. Click **Publish publicly**.
 
@@ -58,3 +58,9 @@ In the private source build, OG Midway's verified owner account can use **Publis
 New messages display once on the next launch, or within two minutes while the app is active and no editing dialog is open. Close the message after reading; its ID is saved. The sidebar button remains available to review it. Offline checks never block editing. A newer publication replaces the current announcement and gets a new notification ID.
 
 Use arrow keys to scroll message text, Enter or Space on Continue to dismiss, and Esc to go back. Settings uses Tab/Shift+Tab to move, Space to activate the focused control, and Enter to save.
+
+## File-download totals (Studio 0.27.8)
+
+Every mod card and detail page shows the main release file’s GitHub download count for its currently published version. Refresh reads release statistics in batches; results are cached for two minutes to reduce requests. Missing files, unavailable GitHub responses and rate limits show **Downloads unavailable** without blocking the listing or its download button.
+
+Counts include direct GitHub downloads and the first uncached file fetch used for a 3D preview. Copying a cached file again does not add a GitHub download. Cover images and companion textures are excluded. These are file-transfer totals, not unique people or lifetime totals across previous versions of a mod.

@@ -1,3 +1,17 @@
+# MKSM Studio 0.27.8 — Crimson Interface & Workshop Downloads
+
+- Gold interface accents replaced with vibrant crimson and pink highlights. Open Game ISO now matches the theme; neutral text stays readable.
+- New red-and-black dragon icon for the executable, title bar and taskbar.
+- Consistent headings, tabs, scrollbars, message frames, buttons and borders.
+- Community Workshop cards and mod details show GitHub file-download totals for the currently published version. Counts are cached briefly; unavailable statistics never block browsing or downloads.
+- Download totals count the main mod file only, including direct downloads and uncached 3D-preview fetches. Companion textures and cover images are excluded. Counts are not unique users or lifetime totals across older versions.
+- Background movie, audio controls, particles with Off / 15 / 30 / 60 FPS, once-only announcements and manual review remain available.
+- Public and private source builds retain separate signed update channels and installation replacement.
+
+Live online-user counting is deferred. Experimental engine/memory patches are not included.
+
+---
+
 # MKSM Studio 0.27.7 — Interface & Community Refresh
 
 - OG Midway is the sole author. RelaxDirk and Z mods are credited separately as contributors.
