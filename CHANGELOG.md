@@ -1,3 +1,13 @@
+# MKSM Studio 0.27.11 — Taskbar & Sidebar Clipping Fix
+
+- Maximized Studio and Workshop windows now use the current monitor's usable working area, keeping the Windows taskbar from covering bottom sidebar buttons. Bounds use native pixel coordinates rather than a primary-monitor-only height limit.
+- The waving sidebar flag is clipped below the live GitHub profile-card bounds. Its top edge no longer peeks above the profile. The protected region follows layout changes.
+- Normal restore dimensions and saved 70–125% UI scale are retained. Existing crimson icons, fonts, Workshop ratings, background video/audio, particles, flag animation and fog are unchanged.
+
+Validation covered actual maximized Studio and Workshop windows against Windows monitor work-area rectangles at the current display scale, restore size, 70%/125% UI scale, four synthetic taskbar/monitor layouts including negative coordinates, and rendered banner pixels above/below the protected profile region. Packaged EXE icons and signed channel packages are checked before publication.
+
+---
+
 # MKSM Studio 0.27.10 — Interface Scale & Windows Icon Refresh
 
 - Settings > Appearance > Interface Scale adds a 70–125% size control with live preview, percentage readout and a 100% reset. Save keeps the choice across restarts; closing without saving restores the previous size.
