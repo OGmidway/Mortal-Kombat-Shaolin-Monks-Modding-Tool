@@ -4,7 +4,9 @@
 
 # Mortal Kombat Shaolin Monks Modding Tool by OG Midway
 
-**MKSM Studio — by OGmidway, RelaxDirk & Z mods**
+**MKSM Studio — by OG Midway**
+
+<sub>Contributors: RelaxDirk · Z mods</sub>
 
 Explore the game. Work with its characters and animations. Build a separate modded ISO to test your changes.
 
@@ -22,7 +24,9 @@ You do not need to mount or unpack the ISO to begin. You do need your own game f
 
 This is an independent, experimental modding tool. The best-tested workflows use the researched **USA PS2 revision**. Support for one resource or revision does not establish support for every version of the game.
 
-## 2. Current release: 0.27.6
+## 2. Current release: 0.27.7
+
+Clean red-and-black interface, integrated title bar, GitHub avatar, refreshed Workshop browsing and grouped Settings. Select your interface font under **Settings → Appearance → Typography**. Save, then reopen Studio to apply it.
 
 **Community Workshop:** browse character replacements, download them into your editing project, subscribe for version comparisons on refresh, and publish your own native character packages through GitHub. Creator uploads appear without an approval queue. OGmidway's authenticated owner account can remove any listing; other creators manage only their own. [Workshop guide](docs/COMMUNITY_WORKSHOP.md).
 
@@ -44,7 +48,7 @@ Custom **SFD conversion requires FFmpeg**; MP4/WMV can be selected directly. The
 
 ### Existing Blender workflow (Bridge 0.25.1)
 
-**New to character swaps? [Start with the simple Blender guide](docs/CHARACTER_START_HERE.md).** [Blender Bridge 0.25.1](https://github.com/OGmidway/Mortal-Kombat-Shaolin-Monks-Modding-Tool/releases/download/v0.25.6/MKSM-Blender-Bridge-0.25.1.zip) adds **Set up game textures (keep more detail)**. Automatic mode uses multiple original slots; choose two or three atlases if you want fewer textures. Original weights stay unchanged, and textures used by kept native meshes are protected. Install the add-on separately; The application is now 0.27.6.
+**New to character swaps? [Start with the simple Blender guide](docs/CHARACTER_START_HERE.md).** [Blender Bridge 0.25.1](https://github.com/OGmidway/Mortal-Kombat-Shaolin-Monks-Modding-Tool/releases/download/v0.25.6/MKSM-Blender-Bridge-0.25.1.zip) adds **Set up game textures (keep more detail)**. Automatic mode uses multiple original slots; choose two or three atlases if you want fewer textures. Original weights stay unchanged, and textures used by kept native meshes are protected. Install the add-on separately; The application is now 0.27.7.
 
 **New in Bridge 0.25.1:** optional **Clean weights on export**, plus **Preview cleaned weights on a copy** and a weight-change report. This handles triangles that touch more than three bones after topology changes. Originals stay untouched. A per-vertex removal limit prevents unexpectedly large changes; default 25%. This does not fix or bypass game memory limits. [Cleanup steps](docs/CHARACTER_START_HERE.md#reduced-polygons-or-changed-geometry).
 
@@ -137,7 +141,7 @@ This public repository contains documentation and release downloads. **The main 
 
 ## 8. Credits and support
 
-**Tool authors: OGmidway, RelaxDirk & Z mods.** See [Credits and notices](docs/CREDITS.md) for research references, runtime licenses and dragon artwork attribution.
+**Author: OG Midway.** Contributors: RelaxDirk and Z mods. See [Credits and notices](docs/CREDITS.md) for research references, runtime licenses and dragon artwork attribution.
 
 For a useful bug report, include the tool version, game region/revision, resource ID, steps to reproduce, and exact error. Share a screenshot or text report where helpful; do not upload an ISO, BIOS or extracted game archive. See [support details](docs/UPDATES_AND_HELP.md#reporting-a-problem).
 

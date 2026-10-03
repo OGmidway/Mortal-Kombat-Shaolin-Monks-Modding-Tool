@@ -1,3 +1,19 @@
+# MKSM Studio 0.27.7 — Interface & Community Refresh
+
+- OG Midway is the sole author. RelaxDirk and Z mods are credited separately as contributors.
+- Application title, executable metadata, header, Blender helper and project pages use the updated credits.
+- Dark integrated title bar with standard window controls; clean rounded outlines replace silver bevels. Buttons highlight with a red glow.
+- Red author shimmer/pulse, black panels and restrained gold accents.
+- Community Workshop has wrapping mod cards, clear mod titles, compact creator credits and a framed model/image preview.
+- GitHub profile panel shows your account avatar. Click your name to open GitHub; account refresh reloads the picture. Permissions still come from the authenticated account.
+- Settings are organized into Appearance, Audio and Application. Volume controls retain percentages and live preview; Save stays visible.
+- Choose among 14 bundled font styles from the MK font collection, or load a TTF/OTF. MK4 is the default; system font is also available. Reopen Studio after saving a font change. This collection does not include a separately verified MK9 font.
+- Public and private source builds keep separate signed update channels and the existing installation-replacement behavior.
+
+This release changes presentation and credits. Experimental engine/memory patches are not included.
+
+---
+
 # MKSM Studio 0.27.6 — Persistent Source Updates
 
 - Source updates now replace the original application and Source folder. Existing shortcuts reopen the newest version.

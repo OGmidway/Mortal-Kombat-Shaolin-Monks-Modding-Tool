@@ -2,11 +2,17 @@
 
 [Home](../README.md)
 
-## Tool authors
+## Author
 
-**OGmidway, RelaxDirk & Z mods**
+**OG Midway** — Mortal Kombat Shaolin Monks Modding Tool / MKSM Studio.
 
-Presented as **Mortal Kombat Shaolin Monks Modding Tool by OG Midway**, with all three tool authors credited in the application and documentation.
+### Contributors
+
+RelaxDirk and Z mods.
+
+## Interface fonts
+
+Bundled font collection is sourced from [Mortal Kombat Warehouse's font page](https://www.mortalkombatwarehouse.com/site/fonts/). Font creators credited by that page include Murdoink, Paolo Baglioni, Dennis Ferrand, F-Rott, AthemWulf and the listed font designers. Original game designs and third-party fonts retain their respective ownership and terms. Font choices include MK1–4, Mythologies, Deadly Alliance, Armageddon, MK title, MKX, MK11 and MK1 (2023) styles, plus the supplied Fatality and menu fonts. A distinct MK9 font is not verified or bundled.
 
 ## Research references
 
