@@ -64,3 +64,13 @@ Use arrow keys to scroll message text, Enter or Space on Continue to dismiss, an
 Every mod card and detail page shows the main release file’s GitHub download count for its currently published version. Refresh reads release statistics in batches; results are cached for two minutes to reduce requests. Missing files, unavailable GitHub responses and rate limits show **Downloads unavailable** without blocking the listing or its download button.
 
 Counts include direct GitHub downloads and the first uncached file fetch used for a 3D preview. Copying a cached file again does not add a GitHub download. Cover images and companion textures are excluded. These are file-transfer totals, not unique people or lifetime totals across previous versions of a mod.
+
+## Browse and rate creations (Studio 0.27.9)
+
+Choose **Most Popular** to rank by likes minus dislikes, then likes, current-version downloads and latest update. **Most Downloaded**, **Recently Updated** and **My Uploads** are also available. Search combines with the selected ordering. Ratings belong to a listing, so they remain when its creator publishes a new file version; file-download totals still describe the current version.
+
+Sign in with GitHub, then use **Like** or **Dislike**. The tool saves your thumb reaction on the listing's GitHub issue and restores your choice when you return. Switching removes your previous thumb; clicking the selected thumb again clears your vote. Existing reactions from other accounts are not changed. GitHub also permits rating directly on the listing page. Counts and choices refresh when requested; unavailable GitHub responses never invent totals.
+
+**Follow Updates** (previously Subscribe) compares file versions when you refresh. It does not install or download anything automatically. Use **Download Files** when ready.
+
+Model portraits: drag to rotate; Shift-drag to pan. The mouse wheel scrolls the details page without zooming the model. Main Studio model editing retains full zoom controls.

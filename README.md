@@ -24,11 +24,11 @@ You do not need to mount or unpack the ISO to begin. You do need your own game f
 
 This is an independent, experimental modding tool. The best-tested workflows use the researched **USA PS2 revision**. Support for one resource or revision does not establish support for every version of the game.
 
-## 2. Current release: 0.27.8
+## 2. Current release: 0.27.9
 
-Clean red-and-black interface, integrated title bar, GitHub avatar, refreshed Workshop browsing and grouped Settings. Sidebar **Patch Notes** shows the latest update; green dragon indicators pulse for unread notes or available updates. Owner announcements appear once and can be reopened from the sidebar. Select your interface font under **Settings → Appearance → Typography**. Save, then reopen Studio to apply it.
+Clean red-and-black interface, integrated title bar, GitHub avatar, refreshed Workshop browsing and grouped Settings. Sidebar **Patch Notes** shows the latest update; green dragon indicators pulse for unread notes or available updates. Owner announcements appear once and can be reopened from the sidebar. Select your interface font under **Settings → Appearance → Typography**. Save settings to apply it immediately.
 
-**Community Workshop:** browse character replacements, download their files, subscribe for version comparisons on refresh, and publish your own native character packages through GitHub. Creator uploads appear without an approval queue. OGmidway's authenticated owner account can remove any listing; other creators manage only their own. [Workshop guide](docs/COMMUNITY_WORKSHOP.md).
+**Community Workshop:** browse character replacements, download their files, follow updates for version comparisons on refresh, and publish your own native character packages through GitHub. Creator uploads appear without an approval queue. OGmidway's authenticated owner account can remove any listing; other creators manage only their own. [Workshop guide](docs/COMMUNITY_WORKSHOP.md).
 
 **Opening movie included:** the converted opening movie is bundled and starts on first launch. The default movie needs no ISO extraction or FFmpeg. Saved off/volume choices are preserved; selecting another movie previews it immediately.
 
@@ -46,7 +46,7 @@ Custom **SFD conversion requires FFmpeg**; MP4/WMV can be selected directly. The
 
 ### Existing Blender workflow (Bridge 0.25.2)
 
-**New to character swaps? [Start with the simple Blender guide](docs/CHARACTER_START_HERE.md).** [Blender Bridge 0.25.2](https://github.com/OGmidway/Mortal-Kombat-Shaolin-Monks-Modding-Tool/releases/download/v0.27.8/MKSM-Blender-Bridge-0.25.2.zip) adds **Set up game textures (keep more detail)**. Automatic mode uses multiple original slots; choose two or three atlases if you want fewer textures. Original weights stay unchanged, and textures used by kept native meshes are protected. Install the add-on separately; The application is now 0.27.8.
+**New to character swaps? [Start with the simple Blender guide](docs/CHARACTER_START_HERE.md).** [Blender Bridge 0.25.2](https://github.com/OGmidway/Mortal-Kombat-Shaolin-Monks-Modding-Tool/releases/download/v0.27.9/MKSM-Blender-Bridge-0.25.2.zip) adds **Set up game textures (keep more detail)**. Automatic mode uses multiple original slots; choose two or three atlases if you want fewer textures. Original weights stay unchanged, and textures used by kept native meshes are protected. Install the add-on separately; The application is now 0.27.9.
 
 **New in Bridge 0.25.1:** optional **Clean weights on export**, plus **Preview cleaned weights on a copy** and a weight-change report. This handles triangles that touch more than three bones after topology changes. Originals stay untouched. A per-vertex removal limit prevents unexpectedly large changes; default 25%. This does not fix or bypass game memory limits. [Cleanup steps](docs/CHARACTER_START_HERE.md#reduced-polygons-or-changed-geometry).
 
@@ -151,4 +151,4 @@ Share multiple replacements in one download and apply them together before rebui
 
 Particle animation: **Settings → Appearance → Particle Frame Rate** supports Off, 15, 30 and 60 FPS (default 60). Movie playback uses its own frame rate and remains independent.
 
-Studio 0.27.8 uses crimson/pink accents and a red-and-black dragon icon. Workshop cards and details show the current version’s file-download count from GitHub; counts include uncached preview fetches and direct downloads, not unique people. Background video, audio and particle options remain available.
+Studio 0.27.9 uses redder crimson accents, white Home instructions, a matching author glow, and a crimson dragon EXE icon. Optional torn MKSM sidebar banner and moving fog join the existing video, audio and particle effects. Bundled fonts load from the EXE; changes apply on Save. Workshop offers shared Like/Dislike ratings, Most Popular sorting and previews that let the mouse wheel scroll the page without zooming.

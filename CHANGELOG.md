@@ -1,3 +1,19 @@
+# MKSM Studio 0.27.9 — Crimson Polish & Workshop Ratings
+
+- Redder crimson throughout Studio, Workshop and dialogs; matching OG Midway text and glow. Ordinary Home instructions and section labels are neutral white. Card numbers 01 / 02 / 03 remain crimson.
+- MK4 and all 14 bundled font choices resolve from the EXE's own WPF resources using the correct family aliases. Font changes apply when settings are saved.
+- The actual Windows executable includes the crimson dragon icon at seven sizes. Successful public/source replacements notify Explorer about that file's changed icon.
+- A torn vertical MKSM banner gently waves behind the sidebar, with moving fog at the bottom. Banner and fog have separate switches; Animate Background Effects and the refresh-rate setting control motion.
+- Workshop model portraits keep rotation and Shift-drag panning. Mouse-wheel scrolling reads the page without changing camera zoom; full editor zoom is retained.
+- Workshop offers Most Popular, Most Downloaded, Recently Updated and My Uploads browsing. Most Popular ranks net likes, then likes, downloads and recent updates.
+- Shared Like / Dislike counts use GitHub reactions on each listing. Sign in to vote, switch your vote, or click the chosen thumb again to clear it. Your choice is restored from GitHub; only your own thumb reactions are changed. Feedback animation respects the motion setting.
+- Subscribe is now Follow Updates, with clear wording: it compares published file versions on Refresh and does not download files automatically.
+- Existing background movie/audio, particle effects, announcements, mod packs, owner permissions and separate signed public/source updates are retained.
+
+Validation covered font resolution, preview wheel behavior, rating changes and restoration, pagination, cancellation, unavailable ratings, animation lifecycle, packaged executable icons, signed packages and source replacement/rollback. No live mod ratings were changed during tests. Experimental game-memory patches and online-user counting are not included.
+
+---
+
 # MKSM Studio 0.27.8 — Crimson Interface & Workshop Downloads
 
 - Gold interface accents replaced with vibrant crimson and pink highlights. Open Game ISO now matches the theme; neutral text stays readable.
