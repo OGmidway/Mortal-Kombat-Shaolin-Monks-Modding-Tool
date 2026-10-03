@@ -4,8 +4,8 @@
 
 ## Share a mod — no ISO required
 
-1. Open Community Workshop at the top right. No game needs to be open.
-2. Use the GitHub account box to sign in. Studio opens GitHub and shows a code with Copy Code and Copy Link buttons. Authorize GitHub CLI in your browser.
+1. Click **Community Workshop** at the top right. It opens inside Studio; no game needs to be open. **Home** returns to the start page. Returning to Workshop keeps your search, sorting, selected mod and scroll position.
+2. Use the GitHub profile box on the left to sign in. Studio opens GitHub and shows a code with Copy Code and Copy Link buttons. Authorize GitHub CLI in your browser.
 3. Click **Upload Mod** and choose `.glb`, `.bin`, `.pme2` or `.mksmcharacter`.
 4. Enter a title and description. Add your author name and choose its glow color. You may include suggested model/texture IDs and game revision notes, but an ISO is not required.
 5. Optionally attach a texture BIN and a PNG/JPG picture. Click **Publish publicly**.
@@ -15,6 +15,10 @@ Your file is shared unchanged. Workshop does not compile, convert, run, or test 
 Files are published in your public `MKSM-Workshop-Mods` GitHub release repository. The official Studio repository stores the listing. An existing private creator repository is never made public automatically. New listings appear without an approval queue.
 
 ## Browse and download
+
+The main navigation and Settings stay available while browsing. **Ctrl+F** focuses Workshop search; **F1** returns Home. Model previews support rotation and panning; the mouse wheel scrolls the details rather than zooming the model.
+
+![Community Workshop inside Studio](../assets/workshop.png)
 
 Select a mod card to see its author, title, description, picture or model preview. The verified GitHub uploader is shown separately from the creator's custom display name.
 
@@ -32,7 +36,7 @@ Sign in with the account that uploaded it. **Edit Listing** changes the title, d
 
 ## Sign in once
 
-The bordered account box appears at the top left of the application, including the homepage, and in Workshop/update windows. Connected views say **GitHub · Signed in as username** and **Already signed in**. GitHub CLI keeps credentials in its normal credential store; Studio restores the account when starting. Public application updates do not require login. Private source updates require an invited account.
+The bordered account box appears at the top left of the application, including the homepage and integrated Workshop. Update dialogs reuse the same account. Connected views say **GitHub · Signed in as username** and **Already signed in**. GitHub CLI keeps credentials in its normal credential store; Studio restores the account when starting. Public application updates do not require login. Private source updates require an invited account.
 
 ## Subscriptions and compatibility
 

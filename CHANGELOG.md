@@ -1,3 +1,14 @@
+# MKSM Studio 0.27.12 — Integrated Community Workshop
+
+- Community Workshop now opens inside the main Studio workspace. Home returns to the start page; no separate Workshop window is created.
+- Returning to Workshop keeps search, sorting, selected mod and scroll position. Ctrl+F targets the current page's search field.
+- The existing GitHub profile, navigation, settings and background playback remain part of the same screen. Upload, edit and download dialogs remain owned by Studio. Workshop work is cancelled when Studio closes.
+- Mod formats, creator/admin permissions, ratings, download totals and project replacement checks retain their existing behavior.
+
+Validation covered real WPF navigation with no extra Workshop window, preserved search/sort/selection/scroll state, continued movie and particle playback, supported window sizes and 70–125% scale, dialog ownership and close cleanup. The embedded page loaded 16 live listings and rendered a cached model preview. Both signed channel packages are verified before publication.
+
+---
+
 # MKSM Studio 0.27.11 — Taskbar & Sidebar Clipping Fix
 
 - Maximized Studio and Workshop windows now use the current monitor's usable working area, keeping the Windows taskbar from covering bottom sidebar buttons. Bounds use native pixel coordinates rather than a primary-monitor-only height limit.
