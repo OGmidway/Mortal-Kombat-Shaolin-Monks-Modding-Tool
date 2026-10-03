@@ -49,3 +49,12 @@ The left navigation now has a full metal-style enclosure and a red perimeter glo
 ## Multiple files in one mod
 
 Use **Create / Upload Mod Pack** to share several mapped replacements. With your game open, **Apply Pack to Project** checks and stages the complete group after your review. [Mod pack instructions](MOD_PACKS.md). Single-file downloads remain manual.
+
+
+## Studio announcements
+
+In the private source build, OG Midway's verified owner account can use **Publish Announcement** in the sidebar. Choose Message of the Day or Patch Notes, type a title and message, preview it, then **Publish to All Builds**. Other accounts cannot publish. The public build has no publisher control.
+
+New messages display once on the next launch, or within two minutes while the app is active and no editing dialog is open. Close the message after reading; its ID is saved. The sidebar button remains available to review it. Offline checks never block editing. A newer publication replaces the current announcement and gets a new notification ID.
+
+Use arrow keys to scroll message text, Enter or Space on Continue to dismiss, and Esc to go back. Settings uses Tab/Shift+Tab to move, Space to activate the focused control, and Enter to save.

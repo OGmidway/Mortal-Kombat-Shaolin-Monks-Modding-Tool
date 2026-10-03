@@ -26,7 +26,7 @@ This is an independent, experimental modding tool. The best-tested workflows use
 
 ## 2. Current release: 0.27.7
 
-Clean red-and-black interface, integrated title bar, GitHub avatar, refreshed Workshop browsing and grouped Settings. Select your interface font under **Settings → Appearance → Typography**. Save, then reopen Studio to apply it.
+Clean red-and-black interface, integrated title bar, GitHub avatar, refreshed Workshop browsing and grouped Settings. Sidebar **Patch Notes** shows the latest update; green dragon indicators pulse for unread notes or available updates. Owner announcements appear once and can be reopened from the sidebar. Select your interface font under **Settings → Appearance → Typography**. Save, then reopen Studio to apply it.
 
 **Community Workshop:** browse character replacements, download them into your editing project, subscribe for version comparisons on refresh, and publish your own native character packages through GitHub. Creator uploads appear without an approval queue. OGmidway's authenticated owner account can remove any listing; other creators manage only their own. [Workshop guide](docs/COMMUNITY_WORKSHOP.md).
 
@@ -150,3 +150,5 @@ Mortal Kombat and Shaolin Monks belong to their respective rights holders. This 
 ## Community Mod Packs
 
 Share multiple replacements in one download and apply them together before rebuilding. [Create and install a mod pack](docs/MOD_PACKS.md).
+
+Particle animation: **Settings → Appearance → Particle Frame Rate** supports Off, 15, 30 and 60 FPS (default 60). Movie playback uses its own frame rate and remains independent.

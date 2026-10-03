@@ -6,11 +6,16 @@
 - Red author shimmer/pulse, black panels and restrained gold accents.
 - Community Workshop has wrapping mod cards, clear mod titles, compact creator credits and a framed model/image preview.
 - GitHub profile panel shows your account avatar. Click your name to open GitHub; account refresh reloads the picture. Permissions still come from the authenticated account.
+- Faster particles with Off / 15 / 30 / 60 FPS in Appearance (default 60). Cached drawing brushes and frame-synchronized rendering reduce allocation overhead. Background video playback stays independent.
 - Settings are organized into Appearance, Audio and Application. Volume controls retain percentages and live preview; Save stays visible.
 - Choose among 14 bundled font styles from the MK font collection, or load a TTF/OTF. MK4 is the default; system font is also available. Reopen Studio after saving a font change. This collection does not include a separately verified MK9 font.
+- Green dragon notification beside sidebar Patch Notes for unread release notes, and beside Update Available after a newer release is detected. Slow pulse respects animation settings; reading notes clears it.
+- Owner-only source control publishes Message of the Day or custom Patch Notes to all builds. Notifications appear once per publication on next launch, or within two minutes while active and not editing a modal operation. Offline failures do not block Studio.
 - Public and private source builds keep separate signed update channels and the existing installation-replacement behavior.
 
-This release changes presentation and credits. Experimental engine/memory patches are not included.
+Typed announcements support preview, a red-and-gold temple-style frame, scrolling and keyboard controls. New-version notes and announcements show once; sidebar buttons reopen them for review. Exact in-game font extraction is not included.
+
+This release changes presentation, announcements and credits. Experimental engine/memory patches are not included.
 
 ---
 
