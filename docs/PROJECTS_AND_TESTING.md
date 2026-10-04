@@ -48,3 +48,7 @@ Fresh-boot the new ISO for the first check. An old emulator save state can retai
 Record source revision, original IDs, edit type and failure point. Test one change at a time to identify the cause.
 
 See [reported gameplay and technical checks](VALIDATION.md) for the results already established. Switching preview animations, loop/FPS controls or visible surfaces alone does not replace a game animation; import and stage the intended native edit first.
+
+## Cross-version saves and Workshop sharing (0.27.13)
+
+Archive-only projects keep format 2, accepted by the previous Studio reader. The current reader accepts formats 1, 2 and 3. Movie edits use format 3 and require 0.27.13 or a later compatible reader. No arbitrary backward/forward compatibility is promised for unknown future features. Workshop Upload Mod converts supported saved archive edits into the existing portable mod-pack format without discarding unsupported data. [Workshop sharing](COMMUNITY_WORKSHOP.md#share-a-saved-editing-project-02713).

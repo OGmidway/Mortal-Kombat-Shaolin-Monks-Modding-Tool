@@ -16,6 +16,16 @@ Explore the game. Work with its characters and animations. Build a separate modd
 
 ![MKSM Studio home screen](assets/studio.png)
 
+## Discovery maps
+
+[Interactive Modding Progress](https://ogmidway.github.io/Mortal-Kombat-Shaolin-Monks-Modding-Tool/research/index.html) · [Interactive Engine Reconstruction](https://ogmidway.github.io/Mortal-Kombat-Shaolin-Monks-Modding-Tool/research/engine.html) · [Research status](docs/RESEARCH_MAPS.md)
+
+[![Modding Progress](docs/research/discovery-map.png)](https://ogmidway.github.io/Mortal-Kombat-Shaolin-Monks-Modding-Tool/research/index.html)
+
+[![Engine Reconstruction](docs/research/engine-map.png)](https://ogmidway.github.io/Mortal-Kombat-Shaolin-Monks-Modding-Tool/research/engine.html)
+
+Modding percentages count six explicit validation milestones. Engine reconstruction coverage remains **unmeasured**. Hover, focus or select a tile in the interactive maps for findings and remaining checks.
+
 ## 1. What is MKSM Studio?
 
 MKSM Studio is a Windows application for researching and modifying **Mortal Kombat: Shaolin Monks for PlayStation 2**. Open your own game ISO directly, browse supported resources, preview textured characters and their original skeletons, play native animations, export rigged GLB data for Blender and compatible 3D tools/engines, and collect supported edits in a project. Build ISO writes a **new ISO** and can launch it in PCSX2.
@@ -24,7 +34,9 @@ You do not need to mount or unpack the ISO to begin. You do need your own game f
 
 This is an independent, experimental modding tool. The best-tested workflows use the researched **USA PS2 revision**. Support for one resource or revision does not establish support for every version of the game.
 
-## 2. Current release: 0.27.12
+## 2. Current release: 0.27.13
+
+**New: saved-project Workshop sharing and experimental native-size SFD movie import.** Open Movies & Cutscenes, export the original movie, check an already-created replacement SFD, then stage/save/build it. FFmpeg and ffprobe are required for import checks. Native game playback remains unverified. [Movie guide](docs/MOVIES.md).
 
 Clean red-and-black interface, integrated title bar, GitHub avatar, refreshed Workshop browsing and grouped Settings. Sidebar **Patch Notes** shows the latest update; green dragon indicators pulse for unread notes or available updates. Owner announcements appear once and can be reopened from the sidebar. Select your interface font under **Settings → Appearance → Typography**. Save settings to apply it immediately.
 
@@ -46,7 +58,7 @@ Custom **SFD conversion requires FFmpeg**; MP4/WMV can be selected directly. The
 
 ### Existing Blender workflow (Bridge 0.25.2)
 
-**New to character swaps? [Start with the simple Blender guide](docs/CHARACTER_START_HERE.md).** [Blender Bridge 0.25.2](https://github.com/OGmidway/Mortal-Kombat-Shaolin-Monks-Modding-Tool/releases/download/v0.27.12/MKSM-Blender-Bridge-0.25.2.zip) adds **Set up game textures (keep more detail)**. Automatic mode uses multiple original slots; choose two or three atlases if you want fewer textures. Original weights stay unchanged, and textures used by kept native meshes are protected. Install the add-on separately; The application is now 0.27.12.
+**New to character swaps? [Start with the simple Blender guide](docs/CHARACTER_START_HERE.md).** [Blender Bridge 0.25.2](https://github.com/OGmidway/Mortal-Kombat-Shaolin-Monks-Modding-Tool/releases/download/v0.27.13/MKSM-Blender-Bridge-0.25.2.zip) adds **Set up game textures (keep more detail)**. Automatic mode uses multiple original slots; choose two or three atlases if you want fewer textures. Original weights stay unchanged, and textures used by kept native meshes are protected. Install the add-on separately; The application is now 0.27.13.
 
 **New in Bridge 0.25.1:** optional **Clean weights on export**, plus **Preview cleaned weights on a copy** and a weight-change report. This handles triangles that touch more than three bones after topology changes. Originals stay untouched. A per-vertex removal limit prevents unexpectedly large changes; default 25%. This does not fix or bypass game memory limits. [Cleanup steps](docs/CHARACTER_START_HERE.md#reduced-polygons-or-changed-geometry).
 
@@ -61,9 +73,9 @@ The weapon/object visibility fix, hex transfer, animation imports and character 
 ## 3. Download and open
 
 1. Open **[Releases](https://github.com/OGmidway/Mortal-Kombat-Shaolin-Monks-Modding-Tool/releases/latest)**.
-2. Download **MKSM-Studio-0.25.6-win-x64.zip** (or the newest equivalent Windows ZIP).
+2. Download **MKSM-Studio-0.27.13-win-x64.zip** (or the newest equivalent Windows ZIP).
 3. Extract the entire ZIP into a regular folder you can write to, such as `Documents/MKSM Studio`. Do not run it from inside the ZIP.
-4. Double-click **MKSM Studio.exe**, recognizable by its gold dragon icon.
+4. Double-click **MKSM Studio.exe**, recognizable by its black/crimson dragon icon.
 5. Click **Open game ISO** and select your Shaolin Monks PS2 ISO.
 
 The Windows x64 runtime is included. Blender and PCSX2 are optional, separate applications. Download **MKSM-Blender-Bridge-0.25.1.zip** separately for the Blender editing workflow.
@@ -151,10 +163,10 @@ Share multiple replacements in one download and apply them together before rebui
 
 Particle animation: **Settings → Appearance → Particle Frame Rate** supports Off, 15, 30 and 60 FPS (default 60). Movie playback uses its own frame rate and remains independent.
 
-Studio 0.27.12 uses redder crimson accents, white Home instructions, a matching author glow, and a crimson dragon EXE icon. Optional torn MKSM sidebar banner and moving fog join the existing video, audio and particle effects. Bundled fonts load from the EXE; changes apply on Save. Workshop offers shared Like/Dislike ratings, Most Popular sorting and previews that let the mouse wheel scroll the page without zooming.
+Studio 0.27.13 uses redder crimson accents, white Home instructions, a matching author glow, and a crimson dragon EXE icon. Optional torn MKSM sidebar banner and moving fog join the existing video, audio and particle effects. Bundled fonts load from the EXE; changes apply on Save. Workshop offers shared Like/Dislike ratings, Most Popular sorting and previews that let the mouse wheel scroll the page without zooming.
 
 ### Interface size and Windows icon
 
 Choose **Settings > Appearance > Interface Scale** (70–125%). Changes preview immediately; Save keeps them. Fullscreen retains your chosen size and adds working room. **Settings > Application > Refresh Windows Application Icon** requests a Windows cache refresh if Explorer shows the old gold dragon; both EXEs embed the black/crimson icon.
 
-Studio 0.27.12 integrates Community Workshop into the main window. Shared GitHub sign-in, settings and background playback remain available. UI scale remains under Settings > Appearance.
+Studio 0.27.13 integrates Community Workshop into the main window. Shared GitHub sign-in, settings and background playback remain available. UI scale remains under Settings > Appearance.

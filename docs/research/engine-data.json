@@ -1,0 +1,381 @@
+{
+  "updated": "2026-10-04",
+  "build": "USA / SLUS_210.87",
+  "metric": "Engine reconstruction coverage; denominator not established",
+  "overallCoverage": null,
+  "portReadiness": "Not established",
+  "gates": [
+    "Complete system inventory",
+    "Behavior specification",
+    "Portable implementation",
+    "Reference-output parity",
+    "Integrated game behavior",
+    "Full regression coverage"
+  ],
+  "sections": [
+    {
+      "name": "Rendering",
+      "scope": "Graphics, materials, lighting, effects and cameras",
+      "findings": [
+        "GS texture upload and selected camera/movie paths inspected."
+      ],
+      "remaining": [
+        "Complete renderer behavior, effects and per-scene output parity remain unverified."
+      ],
+      "evidence": [
+        "work/engine-map-2026-09-29/texture-packet-tests.json"
+      ],
+      "percent": null,
+      "state": "unknown",
+      "gates": [
+        {
+          "name": "Complete system inventory",
+          "passed": false
+        },
+        {
+          "name": "Behavior specification",
+          "passed": false
+        },
+        {
+          "name": "Portable implementation",
+          "passed": false
+        },
+        {
+          "name": "Reference-output parity",
+          "passed": false
+        },
+        {
+          "name": "Integrated game behavior",
+          "passed": false
+        },
+        {
+          "name": "Full regression coverage",
+          "passed": false
+        }
+      ]
+    },
+    {
+      "name": "Models & animation",
+      "scope": "Geometry, rigs, animation and all runtime consumers",
+      "findings": [
+        "Mesh/animation codecs and selected runtime paths inspected."
+      ],
+      "remaining": [
+        "Complete animation blending, cutscene behavior and all object types remain unverified."
+      ],
+      "evidence": [
+        "work/v27.12/source/NativeAnimationWriter.cs"
+      ],
+      "percent": null,
+      "state": "unknown",
+      "gates": [
+        {
+          "name": "Complete system inventory",
+          "passed": false
+        },
+        {
+          "name": "Behavior specification",
+          "passed": false
+        },
+        {
+          "name": "Portable implementation",
+          "passed": false
+        },
+        {
+          "name": "Reference-output parity",
+          "passed": false
+        },
+        {
+          "name": "Integrated game behavior",
+          "passed": false
+        },
+        {
+          "name": "Full regression coverage",
+          "passed": false
+        }
+      ]
+    },
+    {
+      "name": "Audio & movies",
+      "scope": "Sound events, mixing, streaming and cinematics",
+      "findings": [
+        "ADX, native ADPCM banks and native SFD profiles inspected."
+      ],
+      "remaining": [
+        "Complete event routing, voice lifetime, mixing and audible scene parity remain unverified."
+      ],
+      "evidence": [
+        "work/sfd-2026-10-04/native-sfd-checks.json",
+        "work/engine-map-2026-09-29/dtpk-codec-tests.json"
+      ],
+      "percent": null,
+      "state": "unknown",
+      "gates": [
+        {
+          "name": "Complete system inventory",
+          "passed": false
+        },
+        {
+          "name": "Behavior specification",
+          "passed": false
+        },
+        {
+          "name": "Portable implementation",
+          "passed": false
+        },
+        {
+          "name": "Reference-output parity",
+          "passed": false
+        },
+        {
+          "name": "Integrated game behavior",
+          "passed": false
+        },
+        {
+          "name": "Full regression coverage",
+          "passed": false
+        }
+      ]
+    },
+    {
+      "name": "Physics & collision",
+      "scope": "Motion, contact, destructibles and collision responses",
+      "findings": [
+        "Selected collision records and lifetime paths inspected."
+      ],
+      "remaining": [
+        "A full physics implementation and gameplay-equivalent collision responses are missing."
+      ],
+      "evidence": [
+        "work/ghidra-character-2026-10-02/type12_record_codec_test.json"
+      ],
+      "percent": null,
+      "state": "unknown",
+      "gates": [
+        {
+          "name": "Complete system inventory",
+          "passed": false
+        },
+        {
+          "name": "Behavior specification",
+          "passed": false
+        },
+        {
+          "name": "Portable implementation",
+          "passed": false
+        },
+        {
+          "name": "Reference-output parity",
+          "passed": false
+        },
+        {
+          "name": "Integrated game behavior",
+          "passed": false
+        },
+        {
+          "name": "Full regression coverage",
+          "passed": false
+        }
+      ]
+    },
+    {
+      "name": "Combat & input",
+      "scope": "Moves, hitboxes, timing, damage and controls",
+      "findings": [
+        "No complete reconstruction milestone verified for this system."
+      ],
+      "remaining": [
+        "Inventory every move, state transition, input rule, hit response and timing dependency."
+      ],
+      "evidence": [],
+      "percent": null,
+      "state": "unknown",
+      "gates": [
+        {
+          "name": "Complete system inventory",
+          "passed": false
+        },
+        {
+          "name": "Behavior specification",
+          "passed": false
+        },
+        {
+          "name": "Portable implementation",
+          "passed": false
+        },
+        {
+          "name": "Reference-output parity",
+          "passed": false
+        },
+        {
+          "name": "Integrated game behavior",
+          "passed": false
+        },
+        {
+          "name": "Full regression coverage",
+          "passed": false
+        }
+      ]
+    },
+    {
+      "name": "AI & scripting",
+      "scope": "Enemies, bosses, events and scripted sequences",
+      "findings": [
+        "No complete reconstruction milestone verified for this system."
+      ],
+      "remaining": [
+        "Recover state machines, scripting semantics, triggers and complete encounter behavior."
+      ],
+      "evidence": [],
+      "percent": null,
+      "state": "unknown",
+      "gates": [
+        {
+          "name": "Complete system inventory",
+          "passed": false
+        },
+        {
+          "name": "Behavior specification",
+          "passed": false
+        },
+        {
+          "name": "Portable implementation",
+          "passed": false
+        },
+        {
+          "name": "Reference-output parity",
+          "passed": false
+        },
+        {
+          "name": "Integrated game behavior",
+          "passed": false
+        },
+        {
+          "name": "Full regression coverage",
+          "passed": false
+        }
+      ]
+    },
+    {
+      "name": "Levels & progression",
+      "scope": "Stage loading, world state, quests and transitions",
+      "findings": [
+        "Stage previews and selected resource loading paths exist."
+      ],
+      "remaining": [
+        "Full stage semantics, progression rules, quests and transition parity remain unverified."
+      ],
+      "evidence": [
+        "work/v27.12/source/StageVerification.cs"
+      ],
+      "percent": null,
+      "state": "unknown",
+      "gates": [
+        {
+          "name": "Complete system inventory",
+          "passed": false
+        },
+        {
+          "name": "Behavior specification",
+          "passed": false
+        },
+        {
+          "name": "Portable implementation",
+          "passed": false
+        },
+        {
+          "name": "Reference-output parity",
+          "passed": false
+        },
+        {
+          "name": "Integrated game behavior",
+          "passed": false
+        },
+        {
+          "name": "Full regression coverage",
+          "passed": false
+        }
+      ]
+    },
+    {
+      "name": "Interface & saves",
+      "scope": "Game menus, HUD, persistence and multiplayer state",
+      "findings": [
+        "Studio UI is tooling; it does not reconstruct the game interface."
+      ],
+      "remaining": [
+        "Game UI behavior, save schema, checkpoints and co-op persistence need complete coverage."
+      ],
+      "evidence": [],
+      "percent": null,
+      "state": "unknown",
+      "gates": [
+        {
+          "name": "Complete system inventory",
+          "passed": false
+        },
+        {
+          "name": "Behavior specification",
+          "passed": false
+        },
+        {
+          "name": "Portable implementation",
+          "passed": false
+        },
+        {
+          "name": "Reference-output parity",
+          "passed": false
+        },
+        {
+          "name": "Integrated game behavior",
+          "passed": false
+        },
+        {
+          "name": "Full regression coverage",
+          "passed": false
+        }
+      ]
+    },
+    {
+      "name": "Platform & streaming",
+      "scope": "Memory, jobs, disc I/O and engine services",
+      "findings": [
+        "Selected allocators, queues, archive readers and failure paths inspected."
+      ],
+      "remaining": [
+        "Complete service contracts, scheduling, ownership and a portable backend remain unverified."
+      ],
+      "evidence": [
+        "work/engine-map-2026-09-29/engine-map.json"
+      ],
+      "percent": null,
+      "state": "unknown",
+      "gates": [
+        {
+          "name": "Complete system inventory",
+          "passed": false
+        },
+        {
+          "name": "Behavior specification",
+          "passed": false
+        },
+        {
+          "name": "Portable implementation",
+          "passed": false
+        },
+        {
+          "name": "Reference-output parity",
+          "passed": false
+        },
+        {
+          "name": "Integrated game behavior",
+          "passed": false
+        },
+        {
+          "name": "Full regression coverage",
+          "passed": false
+        }
+      ]
+    }
+  ]
+}

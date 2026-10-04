@@ -1,0 +1,106 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="620" viewBox="0 0 900 620" role="img" aria-labelledby="title desc">
+<title id="title">MKSM Modding Progress</title>
+<desc id="desc">Percentages count completed checklist milestones, not total game understanding. Whole-game coverage unknown.</desc>
+<rect width="900" height="620" fill="#090b10"/>
+<g font-family="sans-serif" fill="#eff0f5">
+<text x="24" y="37" font-size="25">MKSM · Modding Progress</text>
+<text x="24" y="63" font-size="14" fill="#aeb2c1">Modding milestones · USA · These percentages do not measure port readiness</text>
+<g><title>Larger imported characters and skeleton compatibility: 67%</title>
+<rect x="24" y="86" width="270" height="140" rx="8" fill="#141720"/>
+<text x="40" y="115" font-size="17">Models</text>
+<text x="40" y="156" font-size="29">67%</text>
+<text x="40" y="177" font-size="12" fill="#aeb2c1">4 / 6 modding milestones</text>
+<rect x="40" y="195" width="35" height="13" rx="2" fill="#4abc79"/>
+<rect x="79" y="195" width="35" height="13" rx="2" fill="#4abc79"/>
+<rect x="118" y="195" width="35" height="13" rx="2" fill="#4abc79"/>
+<rect x="157" y="195" width="35" height="13" rx="2" fill="#4abc79"/>
+<rect x="196" y="195" width="35" height="13" rx="2" fill="#252936"/>
+<rect x="235" y="195" width="35" height="13" rx="2" fill="#252936"/>
+</g>
+<g><title>Larger textures, upload queues and memory ownership: 67%</title>
+<rect x="310" y="86" width="270" height="140" rx="8" fill="#141720"/>
+<text x="326" y="115" font-size="17">Textures</text>
+<text x="326" y="156" font-size="29">67%</text>
+<text x="326" y="177" font-size="12" fill="#aeb2c1">4 / 6 modding milestones</text>
+<rect x="326" y="195" width="35" height="13" rx="2" fill="#4abc79"/>
+<rect x="365" y="195" width="35" height="13" rx="2" fill="#4abc79"/>
+<rect x="404" y="195" width="35" height="13" rx="2" fill="#4abc79"/>
+<rect x="443" y="195" width="35" height="13" rx="2" fill="#4abc79"/>
+<rect x="482" y="195" width="35" height="13" rx="2" fill="#252936"/>
+<rect x="521" y="195" width="35" height="13" rx="2" fill="#252936"/>
+</g>
+<g><title>Extended skeletons, transition readers and lifetime: 67%</title>
+<rect x="596" y="86" width="270" height="140" rx="8" fill="#141720"/>
+<text x="612" y="115" font-size="17">Animation</text>
+<text x="612" y="156" font-size="29">67%</text>
+<text x="612" y="177" font-size="12" fill="#aeb2c1">4 / 6 modding milestones</text>
+<rect x="612" y="195" width="35" height="13" rx="2" fill="#4abc79"/>
+<rect x="651" y="195" width="35" height="13" rx="2" fill="#4abc79"/>
+<rect x="690" y="195" width="35" height="13" rx="2" fill="#4abc79"/>
+<rect x="729" y="195" width="35" height="13" rx="2" fill="#4abc79"/>
+<rect x="768" y="195" width="35" height="13" rx="2" fill="#252936"/>
+<rect x="807" y="195" width="35" height="13" rx="2" fill="#252936"/>
+</g>
+<g><title>Codec and stream-pipeline refinements: 67%</title>
+<rect x="24" y="242" width="270" height="140" rx="8" fill="#141720"/>
+<text x="40" y="271" font-size="17">ADX music</text>
+<text x="40" y="312" font-size="29">67%</text>
+<text x="40" y="333" font-size="12" fill="#aeb2c1">4 / 6 modding milestones</text>
+<rect x="40" y="351" width="35" height="13" rx="2" fill="#4abc79"/>
+<rect x="79" y="351" width="35" height="13" rx="2" fill="#4abc79"/>
+<rect x="118" y="351" width="35" height="13" rx="2" fill="#4abc79"/>
+<rect x="157" y="351" width="35" height="13" rx="2" fill="#4abc79"/>
+<rect x="196" y="351" width="35" height="13" rx="2" fill="#252936"/>
+<rect x="235" y="351" width="35" height="13" rx="2" fill="#252936"/>
+</g>
+<g><title>Native DTPK / PS2 ADPCM sound-bank replacements: 67%</title>
+<rect x="310" y="242" width="270" height="140" rx="8" fill="#141720"/>
+<text x="326" y="271" font-size="17">Grunts &amp; effects</text>
+<text x="326" y="312" font-size="29">67%</text>
+<text x="326" y="333" font-size="12" fill="#aeb2c1">4 / 6 modding milestones</text>
+<rect x="326" y="351" width="35" height="13" rx="2" fill="#4abc79"/>
+<rect x="365" y="351" width="35" height="13" rx="2" fill="#4abc79"/>
+<rect x="404" y="351" width="35" height="13" rx="2" fill="#4abc79"/>
+<rect x="443" y="351" width="35" height="13" rx="2" fill="#4abc79"/>
+<rect x="482" y="351" width="35" height="13" rx="2" fill="#252936"/>
+<rect x="521" y="351" width="35" height="13" rx="2" fill="#252936"/>
+</g>
+<g><title>New movies within native dimensions, byte budget and duration: 67%</title>
+<rect x="596" y="242" width="270" height="140" rx="8" fill="#141720"/>
+<text x="612" y="271" font-size="17">SFD movies</text>
+<text x="612" y="312" font-size="29">67%</text>
+<text x="612" y="333" font-size="12" fill="#aeb2c1">4 / 6 modding milestones</text>
+<rect x="612" y="351" width="35" height="13" rx="2" fill="#4abc79"/>
+<rect x="651" y="351" width="35" height="13" rx="2" fill="#4abc79"/>
+<rect x="690" y="351" width="35" height="13" rx="2" fill="#4abc79"/>
+<rect x="729" y="351" width="35" height="13" rx="2" fill="#4abc79"/>
+<rect x="768" y="351" width="35" height="13" rx="2" fill="#252936"/>
+<rect x="807" y="351" width="35" height="13" rx="2" fill="#252936"/>
+</g>
+<g><title>Expanded resource placement and runtime loading: 67%</title>
+<rect x="24" y="398" width="270" height="140" rx="8" fill="#141720"/>
+<text x="40" y="427" font-size="17">Archives</text>
+<text x="40" y="468" font-size="29">67%</text>
+<text x="40" y="489" font-size="12" fill="#aeb2c1">4 / 6 modding milestones</text>
+<rect x="40" y="507" width="35" height="13" rx="2" fill="#4abc79"/>
+<rect x="79" y="507" width="35" height="13" rx="2" fill="#4abc79"/>
+<rect x="118" y="507" width="35" height="13" rx="2" fill="#4abc79"/>
+<rect x="157" y="507" width="35" height="13" rx="2" fill="#4abc79"/>
+<rect x="196" y="507" width="35" height="13" rx="2" fill="#252936"/>
+<rect x="235" y="507" width="35" height="13" rx="2" fill="#252936"/>
+</g>
+<g><title>Complete editable stages and collision round trips: 33%</title>
+<rect x="310" y="398" width="270" height="140" rx="8" fill="#141720"/>
+<text x="326" y="427" font-size="17">Levels &amp; collision</text>
+<text x="326" y="468" font-size="29">33%</text>
+<text x="326" y="489" font-size="12" fill="#aeb2c1">2 / 6 modding milestones</text>
+<rect x="326" y="507" width="35" height="13" rx="2" fill="#4abc79"/>
+<rect x="365" y="507" width="35" height="13" rx="2" fill="#4abc79"/>
+<rect x="404" y="507" width="35" height="13" rx="2" fill="#252936"/>
+<rect x="443" y="507" width="35" height="13" rx="2" fill="#252936"/>
+<rect x="482" y="507" width="35" height="13" rx="2" fill="#252936"/>
+<rect x="521" y="507" width="35" height="13" rx="2" fill="#252936"/>
+</g>
+<text x="24" y="580" font-size="14" fill="#aeb2c1">Open interactive map for findings, failed game tests, unknowns and evidence.</text>
+<text x="24" y="602" font-size="12" fill="#aeb2c1">Not a completion estimate. Equal areas represent categories, not binary coverage.</text>
+</g></svg>

@@ -78,3 +78,19 @@ Sign in with GitHub, then use **Like** or **Dislike**. The tool saves your thumb
 **Follow Updates** (previously Subscribe) compares file versions when you refresh. It does not install or download anything automatically. Use **Download Files** when ready.
 
 Model portraits: drag to rotate; Shift-drag to pan. The mouse wheel scrolls the details page without zooming the model. Main Studio model editing retains full zoom controls.
+
+## Share a saved editing project (0.27.13)
+
+Choose **Upload Mod**, then select your `.mksmproject`. Studio verifies payload sizes/hashes and converts archive edits into the existing `.mksmmodpack` format; the original project remains unchanged. Downloaders can apply the pack into their own project and save it. No ISO or gameplay test is required to publish.
+
+The package uses schema 1, accepted by the 0.27.12 reader and later compatible readers. This does not make every old or future application support new features. Projects with SFD movie edits require 0.27.13 to reopen; they cannot be represented by older Workshop packs and sharing reports that explicitly. Unknown schema versions, replacement modes or extra payloads are rejected. Existing archive-only project saves retain version 2, while current Studio reads project versions 1, 2 and 3. Recipients still need the matching game revision and valid resource destinations.
+
+## Adjust Workshop layout (0.27.13)
+
+Drag the thin crimson divider between mod cards and preview left/right. Drag the top crimson strip up/down to adjust header spacing. Credits and navigation remain above the workspace; minimum pane sizes keep content usable. Saved settings retain these layout choices.
+
+## Latest-version access
+
+Studio 0.27.13 and later check signed release metadata before opening Workshop and performing online operations. Update to the latest release for your public or private-source channel. If the version check cannot finish, reconnect and retry. Local project editing and downloaded packs remain available. Previously distributed older builds cannot be remotely disabled by this client-side policy.
+
+Widen the mod library with its center divider to get two or more compact card columns. Narrow widths use one column. Only visible rows and nearby cards are realized; off-screen cards are recycled.

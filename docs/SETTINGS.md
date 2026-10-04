@@ -8,7 +8,7 @@
 
 ## Your switches
 
-- **Check for updates when Studio opens:** only newer signed releases prompt you to install. No forced installation.
+- **Notify me about updates when Studio opens:** only newer signed releases prompt you to install. Background release checks continue even with notifications disabled. No forced installation.
 - **Animate background effects:** stop decorative movement while keeping enabled artwork visible.
 - **Floating particles** and **Red glow at the bottom:** independently show or hide each effect.
 - **Play the opening movie:** enable or disable the video background.
@@ -34,7 +34,7 @@ The background movie keeps playing while viewing assets. Playback continues when
 
 ## Appearance
 
-MK4 title lettering and scalable iron frames are included. The home cards rearrange with available width, and the main interface grows on large windows. Body text keeps its readable standard font. **Choose MK4 title font (.ttf)** lets you substitute a local font; save and reopen Studio to apply it. **Use default title font** restores the bundled MK4 font.
+Bundled MK fonts include the supplied Shaolin Monks font by Z Mods. Choose Settings → Appearance → Typography to change the interface font, or Load Another Font for a local TTF/OTF. Save applies the font immediately. Reset to Mortal Kombat 4 restores the default font. Home cards rearrange with available width; the interface scale remains independently adjustable.
 
 Font credit: Mortal Kombat 4 Font v1.0, The Realm of Mortal Kombat (1997), sourced from [MKWarehouse](https://www.mortalkombatwarehouse.com/site/fonts/). Menu audio is from Mortal Kombat: Shaolin Monks.
 
@@ -50,4 +50,10 @@ Both bars show 0-100%. Drag the larger handle or click the bar to set a level. U
 
 Choosing a different background movie starts it immediately after preparation. Save settings keeps that movie; closing without saving restores the prior background.
 
-On a fresh installation, Home hover sounds default to off and Home select/click sounds default to on. Previously saved preferences remain in effect.
+On a fresh installation, Home hover/select sounds and background audio default to Off. Previously saved preferences remain in effect.
+
+## Low-power visuals (0.27.13)
+
+**Settings → Appearance → Low-Power Visuals** selects 15 FPS effects and disables fog/glow. Save settings to apply it. Video and audio choices remain unchanged; turn off background video separately on very limited graphics hardware. Sidebar cloth is cached, preview materials are shared/frozen, invisible effects stop rendering and Workshop cards recycle as you scroll. No blanket minimum-hardware or 60 FPS guarantee is implied.
+
+Hover sounds, select sounds and background music default to Off for new settings. Existing saved choices are retained. Startup release metadata checks run in the background. Update Now opens installation, Remind Me Later prompts next launch, and Skip This Version suppresses that release only. Manual Check for Updates remains available. The notification toggle suppresses automatic prompts while background checks continue.

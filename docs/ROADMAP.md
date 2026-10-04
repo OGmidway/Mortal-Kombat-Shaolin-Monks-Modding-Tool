@@ -1,5 +1,7 @@
 # Roadmap and completed milestones
 
+October 2026 update: [separate discovery maps](RESEARCH_MAPS.md) and [experimental native SFD import](MOVIES.md) are available in Studio 0.27.13. Game playback validation remains open.
+
 [Home](../README.md) · [Current features](FEATURES.md) · [Validation](VALIDATION.md) · [Previous builds](PREVIOUS_BUILDS.md)
 
 This is the work list through **0.25.6**, not a release schedule. Checked milestones are delivered for the supported data. Unchecked items need implementation, research or further testing; they are not hidden features you can unlock with a setting.

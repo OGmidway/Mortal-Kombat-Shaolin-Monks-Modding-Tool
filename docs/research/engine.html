@@ -1,0 +1,400 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>MKSM — Engine Reconstruction</title>
+<style>
+:root{color-scheme:dark;--bg:#090b10;--panel:#141720;--ink:#eff0f5;--muted:#aeb2c1;--line:#303440;--red:#dc2448;--green:#4abc79;--amber:#d9a952;--empty:#252936}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.5 system-ui,sans-serif}main{max-width:1240px;margin:auto;padding:40px 28px}header{border-bottom:1px solid var(--line);padding-bottom:24px;margin-bottom:24px}.eyebrow{color:var(--red);font-size:12px;letter-spacing:.2em;font-weight:700}h1{font-size:32px;margin:10px 0 12px;letter-spacing:-.03em}h2{font-size:22px;margin:0 0 8px}h3{font-size:14px;color:var(--muted);margin:24px 0 8px}.sub{color:var(--muted);margin:0;max-width:850px}.badges{display:flex;gap:12px;flex-wrap:wrap;margin-top:18px}.badge{padding:5px 10px;background:var(--panel);border:1px solid var(--line);border-radius:5px;font-size:13px}.layout{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(300px,1fr);gap:24px}.map{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;align-content:start}.tile{appearance:none;text-align:left;border:1px solid var(--line);border-radius:9px;padding:16px;background:var(--panel);color:var(--ink);cursor:pointer;min-height:158px;font:inherit;transition:border-color .12s,background .12s}.tile:hover,.tile:focus-visible{border-color:var(--red);outline:none;background:#1d1923}.tile[aria-pressed=true]{border-color:var(--red);box-shadow:0 0 0 1px var(--red)}.name{display:block;font-weight:650;margin-bottom:14px}.pct{font-size:27px;font-variant-numeric:tabular-nums;display:block}.caption{font-size:12px;color:var(--muted)}.cells{display:grid;grid-template-columns:repeat(6,1fr);gap:3px;margin:14px 0 0}.cell{height:14px;background:var(--empty);border-radius:2px}.cell.pass{background:var(--green)}.cell.open{background:var(--amber);opacity:.4}.detail{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:24px;align-self:start;position:sticky;top:16px;min-height:500px}.scope{color:var(--muted);font-size:14px}.state{font-size:12px;color:var(--amber);margin:16px 0}.state.issue{color:#ff859c}.state.unknown{color:var(--muted)}ul{padding-left:20px;margin:8px 0}li{margin:8px 0;font-size:14px}.gates{list-style:none;padding:0}.gates li{margin:7px 0;display:flex;justify-content:space-between;gap:12px}.gates strong{font-size:12px;color:var(--green);white-space:nowrap}.gates strong.open{color:var(--muted)}.legend{display:flex;gap:18px;flex-wrap:wrap;font-size:13px;color:var(--muted);margin:20px 0}.legend span:before{content:'';display:inline-block;width:10px;height:10px;margin-right:7px;background:var(--green);border-radius:2px}.legend span:nth-child(2):before{background:var(--amber);opacity:.4}.legend span:nth-child(3):before{background:var(--empty)}details{margin-top:20px;border-top:1px solid var(--line);padding-top:15px}summary{cursor:pointer;font-size:13px;color:var(--muted)}code{font-size:12px;overflow-wrap:anywhere;display:block;margin-top:10px;color:var(--muted)}footer{margin-top:26px;color:var(--muted);font-size:13px;border-top:1px solid var(--line);padding-top:20px}a{color:#ff859c} @media(max-width:920px){.layout{grid-template-columns:1fr}.detail{position:static;min-height:0}}@media(max-width:570px){main{padding:24px 16px}.map{grid-template-columns:repeat(2,minmax(0,1fr))}.tile{padding:12px}h1{font-size:27px}}@media(prefers-reduced-motion:reduce){.tile{transition:none}}
+</style></head><body><main>
+<header><div class="eyebrow">MKSM STUDIO · RESEARCH</div><h1>Engine Reconstruction</h1><p class="sub">Track the systems needed to reconstruct the game in another engine. Existing findings are partial. Coverage stays unmeasured until each system has a complete inventory and evidence-backed denominator.</p><div class="badges"><span class="badge">USA · SLUS_210.87</span><span class="badge">Updated 4 October 2026</span><span class="badge">Port readiness: not established</span></div><nav class="badges" aria-label="Research maps"><a class="badge" href="index.html">Modding Progress</a><a class="badge" href="engine.html">Engine Reconstruction</a></nav></header>
+<div class="layout"><section aria-label="Discovery sections"><div id="map" class="map"></div><div class="legend"><span>Verified milestone</span><span>Pending verification</span><span>Not established</span></div><p class="sub caption">Hover, focus, or select a section. Equal tile sizes represent categories—not code size. Reconstruction gates require complete system coverage and reference parity. Modding milestones do not transfer into this map.</p></section>
+<aside class="detail" id="detail" aria-label="Selected discovery details"></aside></div>
+<footer>Scope: recorded findings and targeted checks. A milestone percentage is not a release-readiness score, a time estimate, or proof of complete format coverage. <a href="engine-map.svg">Static snapshot</a> · <a href="engine-data.json">Milestones and evidence</a></footer>
+</main><script id="discovery-data" type="application/json">{
+  "updated": "2026-10-04",
+  "build": "USA / SLUS_210.87",
+  "metric": "Engine reconstruction coverage; denominator not established",
+  "overallCoverage": null,
+  "portReadiness": "Not established",
+  "gates": [
+    "Complete system inventory",
+    "Behavior specification",
+    "Portable implementation",
+    "Reference-output parity",
+    "Integrated game behavior",
+    "Full regression coverage"
+  ],
+  "sections": [
+    {
+      "name": "Rendering",
+      "scope": "Graphics, materials, lighting, effects and cameras",
+      "findings": [
+        "GS texture upload and selected camera/movie paths inspected."
+      ],
+      "remaining": [
+        "Complete renderer behavior, effects and per-scene output parity remain unverified."
+      ],
+      "evidence": [
+        "work/engine-map-2026-09-29/texture-packet-tests.json"
+      ],
+      "percent": null,
+      "state": "unknown",
+      "gates": [
+        {
+          "name": "Complete system inventory",
+          "passed": false
+        },
+        {
+          "name": "Behavior specification",
+          "passed": false
+        },
+        {
+          "name": "Portable implementation",
+          "passed": false
+        },
+        {
+          "name": "Reference-output parity",
+          "passed": false
+        },
+        {
+          "name": "Integrated game behavior",
+          "passed": false
+        },
+        {
+          "name": "Full regression coverage",
+          "passed": false
+        }
+      ]
+    },
+    {
+      "name": "Models & animation",
+      "scope": "Geometry, rigs, animation and all runtime consumers",
+      "findings": [
+        "Mesh/animation codecs and selected runtime paths inspected."
+      ],
+      "remaining": [
+        "Complete animation blending, cutscene behavior and all object types remain unverified."
+      ],
+      "evidence": [
+        "work/v27.12/source/NativeAnimationWriter.cs"
+      ],
+      "percent": null,
+      "state": "unknown",
+      "gates": [
+        {
+          "name": "Complete system inventory",
+          "passed": false
+        },
+        {
+          "name": "Behavior specification",
+          "passed": false
+        },
+        {
+          "name": "Portable implementation",
+          "passed": false
+        },
+        {
+          "name": "Reference-output parity",
+          "passed": false
+        },
+        {
+          "name": "Integrated game behavior",
+          "passed": false
+        },
+        {
+          "name": "Full regression coverage",
+          "passed": false
+        }
+      ]
+    },
+    {
+      "name": "Audio & movies",
+      "scope": "Sound events, mixing, streaming and cinematics",
+      "findings": [
+        "ADX, native ADPCM banks and native SFD profiles inspected."
+      ],
+      "remaining": [
+        "Complete event routing, voice lifetime, mixing and audible scene parity remain unverified."
+      ],
+      "evidence": [
+        "work/sfd-2026-10-04/native-sfd-checks.json",
+        "work/engine-map-2026-09-29/dtpk-codec-tests.json"
+      ],
+      "percent": null,
+      "state": "unknown",
+      "gates": [
+        {
+          "name": "Complete system inventory",
+          "passed": false
+        },
+        {
+          "name": "Behavior specification",
+          "passed": false
+        },
+        {
+          "name": "Portable implementation",
+          "passed": false
+        },
+        {
+          "name": "Reference-output parity",
+          "passed": false
+        },
+        {
+          "name": "Integrated game behavior",
+          "passed": false
+        },
+        {
+          "name": "Full regression coverage",
+          "passed": false
+        }
+      ]
+    },
+    {
+      "name": "Physics & collision",
+      "scope": "Motion, contact, destructibles and collision responses",
+      "findings": [
+        "Selected collision records and lifetime paths inspected."
+      ],
+      "remaining": [
+        "A full physics implementation and gameplay-equivalent collision responses are missing."
+      ],
+      "evidence": [
+        "work/ghidra-character-2026-10-02/type12_record_codec_test.json"
+      ],
+      "percent": null,
+      "state": "unknown",
+      "gates": [
+        {
+          "name": "Complete system inventory",
+          "passed": false
+        },
+        {
+          "name": "Behavior specification",
+          "passed": false
+        },
+        {
+          "name": "Portable implementation",
+          "passed": false
+        },
+        {
+          "name": "Reference-output parity",
+          "passed": false
+        },
+        {
+          "name": "Integrated game behavior",
+          "passed": false
+        },
+        {
+          "name": "Full regression coverage",
+          "passed": false
+        }
+      ]
+    },
+    {
+      "name": "Combat & input",
+      "scope": "Moves, hitboxes, timing, damage and controls",
+      "findings": [
+        "No complete reconstruction milestone verified for this system."
+      ],
+      "remaining": [
+        "Inventory every move, state transition, input rule, hit response and timing dependency."
+      ],
+      "evidence": [],
+      "percent": null,
+      "state": "unknown",
+      "gates": [
+        {
+          "name": "Complete system inventory",
+          "passed": false
+        },
+        {
+          "name": "Behavior specification",
+          "passed": false
+        },
+        {
+          "name": "Portable implementation",
+          "passed": false
+        },
+        {
+          "name": "Reference-output parity",
+          "passed": false
+        },
+        {
+          "name": "Integrated game behavior",
+          "passed": false
+        },
+        {
+          "name": "Full regression coverage",
+          "passed": false
+        }
+      ]
+    },
+    {
+      "name": "AI & scripting",
+      "scope": "Enemies, bosses, events and scripted sequences",
+      "findings": [
+        "No complete reconstruction milestone verified for this system."
+      ],
+      "remaining": [
+        "Recover state machines, scripting semantics, triggers and complete encounter behavior."
+      ],
+      "evidence": [],
+      "percent": null,
+      "state": "unknown",
+      "gates": [
+        {
+          "name": "Complete system inventory",
+          "passed": false
+        },
+        {
+          "name": "Behavior specification",
+          "passed": false
+        },
+        {
+          "name": "Portable implementation",
+          "passed": false
+        },
+        {
+          "name": "Reference-output parity",
+          "passed": false
+        },
+        {
+          "name": "Integrated game behavior",
+          "passed": false
+        },
+        {
+          "name": "Full regression coverage",
+          "passed": false
+        }
+      ]
+    },
+    {
+      "name": "Levels & progression",
+      "scope": "Stage loading, world state, quests and transitions",
+      "findings": [
+        "Stage previews and selected resource loading paths exist."
+      ],
+      "remaining": [
+        "Full stage semantics, progression rules, quests and transition parity remain unverified."
+      ],
+      "evidence": [
+        "work/v27.12/source/StageVerification.cs"
+      ],
+      "percent": null,
+      "state": "unknown",
+      "gates": [
+        {
+          "name": "Complete system inventory",
+          "passed": false
+        },
+        {
+          "name": "Behavior specification",
+          "passed": false
+        },
+        {
+          "name": "Portable implementation",
+          "passed": false
+        },
+        {
+          "name": "Reference-output parity",
+          "passed": false
+        },
+        {
+          "name": "Integrated game behavior",
+          "passed": false
+        },
+        {
+          "name": "Full regression coverage",
+          "passed": false
+        }
+      ]
+    },
+    {
+      "name": "Interface & saves",
+      "scope": "Game menus, HUD, persistence and multiplayer state",
+      "findings": [
+        "Studio UI is tooling; it does not reconstruct the game interface."
+      ],
+      "remaining": [
+        "Game UI behavior, save schema, checkpoints and co-op persistence need complete coverage."
+      ],
+      "evidence": [],
+      "percent": null,
+      "state": "unknown",
+      "gates": [
+        {
+          "name": "Complete system inventory",
+          "passed": false
+        },
+        {
+          "name": "Behavior specification",
+          "passed": false
+        },
+        {
+          "name": "Portable implementation",
+          "passed": false
+        },
+        {
+          "name": "Reference-output parity",
+          "passed": false
+        },
+        {
+          "name": "Integrated game behavior",
+          "passed": false
+        },
+        {
+          "name": "Full regression coverage",
+          "passed": false
+        }
+      ]
+    },
+    {
+      "name": "Platform & streaming",
+      "scope": "Memory, jobs, disc I/O and engine services",
+      "findings": [
+        "Selected allocators, queues, archive readers and failure paths inspected."
+      ],
+      "remaining": [
+        "Complete service contracts, scheduling, ownership and a portable backend remain unverified."
+      ],
+      "evidence": [
+        "work/engine-map-2026-09-29/engine-map.json"
+      ],
+      "percent": null,
+      "state": "unknown",
+      "gates": [
+        {
+          "name": "Complete system inventory",
+          "passed": false
+        },
+        {
+          "name": "Behavior specification",
+          "passed": false
+        },
+        {
+          "name": "Portable implementation",
+          "passed": false
+        },
+        {
+          "name": "Reference-output parity",
+          "passed": false
+        },
+        {
+          "name": "Integrated game behavior",
+          "passed": false
+        },
+        {
+          "name": "Full regression coverage",
+          "passed": false
+        }
+      ]
+    }
+  ]
+}</script>
+<script>
+const data=JSON.parse(document.getElementById('discovery-data').textContent);
+const map=document.getElementById('map'), detail=document.getElementById('detail');
+const label=d=>d.percent===null?'Unmeasured':d.percent+'%';
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+function show(index){const d=data.sections[index];for(const [i,b] of [...map.children].entries())b.setAttribute('aria-pressed',String(i===index));const status=d.state==='issue'?'Known game regression unresolved':d.state==='unknown'?'Partial findings · full-system coverage unmeasured':'Research verified in stated scopes · game regression pending';detail.innerHTML='<h2>'+esc(d.name)+'</h2><div class="scope">'+esc(d.scope)+'</div><div class="state '+esc(d.state)+'">'+status+'</div><div class="pct">'+label(d)+' <span class="caption">'+'Coverage inventory incomplete</span></div><h3>Engine reconstruction gates</h3><ul class="gates">'+d.gates.map(g=>'<li><span>'+esc(g.name)+'</span><strong class="'+(g.passed?'':'open')+'">'+(g.passed?'PASSED':'OPEN')+'</strong></li>').join('')+'</ul><h3>Established findings</h3><ul>'+d.findings.map(f=>'<li>'+esc(f)+'</li>').join('')+'</ul><h3>Still unresolved</h3><ul>'+d.remaining.map(f=>'<li>'+esc(f)+'</li>').join('')+'</ul><details><summary>Evidence references</summary>'+d.evidence.map(f=>'<code>'+esc(f)+'</code>').join('')+'</details>';}
+data.sections.forEach((d,i)=>{const b=document.createElement('button');b.type='button';b.className='tile';b.setAttribute('aria-pressed','false');b.setAttribute('aria-label',d.name+': '+label(d)+' engine coverage');b.title=d.scope+' — '+label(d)+' of checklist; '+d.remaining[0];b.innerHTML='<span class="name">'+esc(d.name)+'</span><span class="pct">'+label(d)+'</span><span class="caption">'+d.gates.filter(g=>g.passed).length+' / 6 modding milestones</span><span class="cells" aria-hidden="true">'+d.gates.map(g=>'<span class="cell '+(g.passed?'pass':d.state==='unknown'?'':'open')+'"></span>').join('')+'</span>';b.addEventListener('mouseenter',()=>show(i));b.addEventListener('focus',()=>show(i));b.addEventListener('click',()=>show(i));b.addEventListener('keydown',e=>{const moves={ArrowRight:1,ArrowLeft:-1,ArrowDown:3,ArrowUp:-3};if(e.key in moves){e.preventDefault();const n=Math.max(0,Math.min(data.sections.length-1,i+moves[e.key]));map.children[n].focus();}});map.appendChild(b);});show(5);
+</script></body></html>

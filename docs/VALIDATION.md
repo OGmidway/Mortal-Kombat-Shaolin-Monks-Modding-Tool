@@ -1,5 +1,7 @@
 # What has been tested
 
+October 2026 update: [separate discovery maps](RESEARCH_MAPS.md) and [experimental native SFD import](MOVIES.md) are available in Studio 0.27.13. Game playback validation remains open.
+
 [Home](../README.md) · [Features](FEATURES.md) · [Roadmap](ROADMAP.md) · [Release notes](../CHANGELOG.md)
 
 This page records the evidence behind the current documentation, through **0.25.6**. It separates automated/tool checks from reported gameplay. A working preview, a byte-correct ISO and a working character in gameplay establish different things.

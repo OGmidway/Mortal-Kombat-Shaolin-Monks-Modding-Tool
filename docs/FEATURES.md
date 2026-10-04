@@ -1,5 +1,7 @@
 # Feature checklist and current boundaries
 
+October 2026 update: [separate discovery maps](RESEARCH_MAPS.md) and [experimental native SFD import](MOVIES.md) are available in Studio 0.27.13. Game playback validation remains open.
+
 [Home](../README.md) · [Roadmap](ROADMAP.md) · [Validation](VALIDATION.md) · [Previous builds](PREVIOUS_BUILDS.md)
 
 Current application: **0.27.0**. Checked means implemented for supported data. **Experimental** means the workflow exists but needs preview and game testing. Unchecked items are not promised by this release.

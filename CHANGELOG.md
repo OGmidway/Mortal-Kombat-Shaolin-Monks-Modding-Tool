@@ -1,3 +1,21 @@
+# MKSM Studio 0.27.13 — Experimental SFD Movie Import
+
+- **Movies & Cutscenes:** inventory and export the original SFD movies directly from your ISO.
+- Check a replacement SFD, stage it, save/reopen your editing project, and include it in Build Game ISO. Movie imports require the supported retail USA executable and original movie hashes.
+- Native dimensions/frame rate/audio topology are retained. Replacements must be strictly smaller than the original, within its duration and frame budget, and pass full FFmpeg decoding. FFmpeg and ffprobe are required for review and rechecked at build time.
+- Movie writes retain original disc locations, update both ISO length fields, clear old allocation padding and verify the installed data. Directory, path-table and neighboring-file overlaps are rejected.
+- **Resizable Workshop:** drag the center divider to resize mod cards and preview. Drag the top handle to adjust header spacing; author credits and toolbar remain above it. Layout choices persist. Wider libraries reflow into multiple compact card columns; visible rows are virtualized and recycled.
+- **Saved-project sharing:** Workshop Upload Mod accepts .mksmproject files and converts supported archive edits to the existing schema-1 mod-pack format. Previous-version readers accept these packs; source projects stay unchanged. Movie edits and unknown project features are rejected with an explanation instead of being dropped.
+- Hover/select sounds and background music are off for new settings; saved user choices remain intact. Startup checks run in the background, with Update Now / Remind Me Later / Skip This Version choices. Community Workshop checks signed latest-release metadata for the installed build channel before access and online actions; offline version checks cannot unlock it. Builds already distributed before this policy cannot be remotely disabled.
+- Two separate discovery maps cover **Modding Progress** and **Engine Reconstruction**. Checklist percentages do not estimate full-game completion; engine coverage stays unmeasured until an inventory exists.
+- Includes the supplied Shaolin Monks font option, larger contributor credits with an orange/white outlined RelaxDirk shimmer, cached sidebar cloth rendering, shared frozen model materials, recycled Workshop cards and a Low-Power Visuals preset (15 FPS effects, no fog/glow; video/audio choices retained). Public and private-source updater channels remain separate.
+
+**Experimental:** native CRI/game playback is not verified. This release imports already-created SFDs; it does not bundle an SFD encoder or raise movie resolution. Grunt replacement and character-memory patches remain outside this update.
+
+Validation: both release channels compile cleanly; eight original movie profiles and eight generated samples pass software inspection. Checks cover 97 packet cases, 59 synthetic write-boundary cases, six project cases, four export cases, three rejected replacements, 14 cross-version project-sharing checks, cancellation and signed updater/package integrity. These checks do not certify game playback. No user ISO was generated for this release.
+
+---
+
 # MKSM Studio 0.27.12 — Integrated Community Workshop
 
 - Community Workshop now opens inside the main Studio workspace. Home returns to the start page; no separate Workshop window is created.

@@ -1,0 +1,373 @@
+{
+  "updated": "2026-10-04",
+  "build": "USA / SLUS_210.87",
+  "metric": "Completed checklist milestones / six milestones; not total game coverage.",
+  "overallCoverage": null,
+  "gates": [
+    "Structure mapped",
+    "Export / decode",
+    "Reimport / encode",
+    "Targeted code checks",
+    "Game regression passed",
+    "Validated feature shipped"
+  ],
+  "sections": [
+    {
+      "name": "Models",
+      "scope": "Larger imported characters and skeleton compatibility",
+      "gates": [
+        {
+          "name": "Structure mapped",
+          "passed": true
+        },
+        {
+          "name": "Export / decode",
+          "passed": true
+        },
+        {
+          "name": "Reimport / encode",
+          "passed": true
+        },
+        {
+          "name": "Targeted code checks",
+          "passed": true
+        },
+        {
+          "name": "Game regression passed",
+          "passed": false
+        },
+        {
+          "name": "Validated feature shipped",
+          "passed": false
+        }
+      ],
+      "findings": [
+        "Native mesh packets, weights, bone groups and coordinate encoding mapped.",
+        "GLB/Blender export and native mesh construction exist."
+      ],
+      "remaining": [
+        "Larger characters still need full scene and cutscene regression.",
+        "Successful individual mods do not validate arbitrary geometry or bone counts."
+      ],
+      "evidence": [
+        "work/v27.12/source/NativeMeshRebuild.cs",
+        "work/ghidra-character-2026-10-02/wide_visibility_lifetime_test.json"
+      ],
+      "state": "issue",
+      "percent": 67
+    },
+    {
+      "name": "Textures",
+      "scope": "Larger textures, upload queues and memory ownership",
+      "gates": [
+        {
+          "name": "Structure mapped",
+          "passed": true
+        },
+        {
+          "name": "Export / decode",
+          "passed": true
+        },
+        {
+          "name": "Reimport / encode",
+          "passed": true
+        },
+        {
+          "name": "Targeted code checks",
+          "passed": true
+        },
+        {
+          "name": "Game regression passed",
+          "passed": false
+        },
+        {
+          "name": "Validated feature shipped",
+          "passed": false
+        }
+      ],
+      "findings": [
+        "Texture decoding, storage layouts and packet construction inspected.",
+        "Native allocation/upload checks exist beyond basic 128\u00d7128 replacements."
+      ],
+      "remaining": [
+        "VRAM residency, asynchronous cleanup and shared-scene regressions remain.",
+        "No unrestricted texture-size promise."
+      ],
+      "evidence": [
+        "work/engine-map-2026-09-29/texture-packet-tests.json",
+        "work/engine-map-2026-09-29/texture-runtime-tests.json"
+      ],
+      "state": "research",
+      "percent": 67
+    },
+    {
+      "name": "Animation",
+      "scope": "Extended skeletons, transition readers and lifetime",
+      "gates": [
+        {
+          "name": "Structure mapped",
+          "passed": true
+        },
+        {
+          "name": "Export / decode",
+          "passed": true
+        },
+        {
+          "name": "Reimport / encode",
+          "passed": true
+        },
+        {
+          "name": "Targeted code checks",
+          "passed": true
+        },
+        {
+          "name": "Game regression passed",
+          "passed": false
+        },
+        {
+          "name": "Validated feature shipped",
+          "passed": false
+        }
+      ],
+      "findings": [
+        "Native animation reading/writing and targeted transition tests exist."
+      ],
+      "remaining": [
+        "User reports Raiden still stretches in V5 and V6 cutscenes.",
+        "Full scene transitions and all character users are not verified."
+      ],
+      "evidence": [
+        "work/v27.12/source/NativeAnimationWriter.cs",
+        "work/ghidra-character-2026-10-02/wide_animation_pose_test.json"
+      ],
+      "state": "issue",
+      "percent": 67
+    },
+    {
+      "name": "ADX music",
+      "scope": "Codec and stream-pipeline refinements",
+      "gates": [
+        {
+          "name": "Structure mapped",
+          "passed": true
+        },
+        {
+          "name": "Export / decode",
+          "passed": true
+        },
+        {
+          "name": "Reimport / encode",
+          "passed": true
+        },
+        {
+          "name": "Targeted code checks",
+          "passed": true
+        },
+        {
+          "name": "Game regression passed",
+          "passed": false
+        },
+        {
+          "name": "Validated feature shipped",
+          "passed": false
+        }
+      ],
+      "findings": [
+        "WAV conversion, native header/frame decoding and loop callbacks inspected.",
+        "Baseline ADX editing already exists in Studio."
+      ],
+      "remaining": [
+        "Latest codec/pipeline changes need game regression and a verified release.",
+        "Baseline feature availability is separate from this research checklist."
+      ],
+      "evidence": [
+        "work/engine-map-2026-09-29/adx-studio-compatibility-fixed-tests.json",
+        "work/v27.12/source/AdxCodec.cs"
+      ],
+      "state": "research",
+      "percent": 67
+    },
+    {
+      "name": "Grunts & effects",
+      "scope": "Native DTPK / PS2 ADPCM sound-bank replacements",
+      "gates": [
+        {
+          "name": "Structure mapped",
+          "passed": true
+        },
+        {
+          "name": "Export / decode",
+          "passed": true
+        },
+        {
+          "name": "Reimport / encode",
+          "passed": true
+        },
+        {
+          "name": "Targeted code checks",
+          "passed": true
+        },
+        {
+          "name": "Game regression passed",
+          "passed": false
+        },
+        {
+          "name": "Validated feature shipped",
+          "passed": false
+        }
+      ],
+      "findings": [
+        "Native banks decoded; WAV-to-ADPCM encoding and bank round trips checked.",
+        "EE/IOP upload, named events and failure paths investigated."
+      ],
+      "remaining": [
+        "Game test lost grunts and special-move sounds.",
+        "Offline success has not established safe game sound-bank replacement.",
+        "Work paused at user request while SFD replacement is investigated."
+      ],
+      "evidence": [
+        "work/engine-map-2026-09-29/dtpk-codec-tests.json",
+        "work/ghidra-character-2026-10-02/grunt-queue-failure-tests.json"
+      ],
+      "state": "issue",
+      "percent": 67
+    },
+    {
+      "name": "SFD movies",
+      "scope": "New movies within native dimensions, byte budget and duration",
+      "gates": [
+        {
+          "name": "Structure mapped",
+          "passed": true
+        },
+        {
+          "name": "Export / decode",
+          "passed": true
+        },
+        {
+          "name": "Reimport / encode",
+          "passed": true
+        },
+        {
+          "name": "Targeted code checks",
+          "passed": true
+        },
+        {
+          "name": "Game regression passed",
+          "passed": false
+        },
+        {
+          "name": "Validated feature shipped",
+          "passed": false
+        }
+      ],
+      "findings": [
+        "All eight retail movie profiles mapped against ELF metadata.",
+        "New MPEG-2 SFDs passed PC decoding across all eight profiles.",
+        "Original audio topology and compressed sound frames retained.",
+        "Oversized, overlong and mismatched-profile replacements rejected.",
+        "Studio export, review, staging and saved movie projects implemented.",
+        "59 synthetic write checks cover neighboring data, padding and both size fields."
+      ],
+      "remaining": [
+        "Native CRI/game playback remains unverified.",
+        "Studio 0.27.13 distributes experimental movie import; validated gameplay release remains pending.",
+        "Full rebuilt-disc playback and hardware/emulator regression remain unverified.",
+        "High-resolution expansion is outside this first native-size milestone."
+      ],
+      "evidence": [
+        "work/sfd-2026-10-04/native-sfd-checks.json",
+        "work/sfd-2026-10-04/mksm-movie-profiles.json"
+      ],
+      "state": "research",
+      "percent": 67
+    },
+    {
+      "name": "Archives",
+      "scope": "Expanded resource placement and runtime loading",
+      "gates": [
+        {
+          "name": "Structure mapped",
+          "passed": true
+        },
+        {
+          "name": "Export / decode",
+          "passed": true
+        },
+        {
+          "name": "Reimport / encode",
+          "passed": true
+        },
+        {
+          "name": "Targeted code checks",
+          "passed": true
+        },
+        {
+          "name": "Game regression passed",
+          "passed": false
+        },
+        {
+          "name": "Validated feature shipped",
+          "passed": false
+        }
+      ],
+      "findings": [
+        "ISO/WAD reading and rebuilding exist; archive and AFS paths inspected.",
+        "Targeted native loader and repack tests exist."
+      ],
+      "remaining": [
+        "On-disc placement and runtime pool limits are separate.",
+        "End-to-end expanded-asset regressions and failure recovery remain."
+      ],
+      "evidence": [
+        "work/engine-map-2026-09-29/afs-repacked-native-tests.json",
+        "work/engine-map-2026-09-29/asset-load-roundtrip.json"
+      ],
+      "state": "research",
+      "percent": 67
+    },
+    {
+      "name": "Levels & collision",
+      "scope": "Complete editable stages and collision round trips",
+      "gates": [
+        {
+          "name": "Structure mapped",
+          "passed": true
+        },
+        {
+          "name": "Export / decode",
+          "passed": true
+        },
+        {
+          "name": "Reimport / encode",
+          "passed": false
+        },
+        {
+          "name": "Targeted code checks",
+          "passed": false
+        },
+        {
+          "name": "Game regression passed",
+          "passed": false
+        },
+        {
+          "name": "Validated feature shipped",
+          "passed": false
+        }
+      ],
+      "findings": [
+        "Stage/model previews and selected collision record structures inspected."
+      ],
+      "remaining": [
+        "Selected record codecs do not establish a complete editable stage format.",
+        "Complete stage reimport, triggers, collisions and gameplay regression remain."
+      ],
+      "evidence": [
+        "work/ghidra-character-2026-10-02/type12_record_codec_test.json",
+        "work/v27.12/source/StageVerification.cs"
+      ],
+      "state": "research",
+      "percent": 33
+    }
+  ]
+}

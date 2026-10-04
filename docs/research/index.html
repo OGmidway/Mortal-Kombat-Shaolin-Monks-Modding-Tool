@@ -1,0 +1,392 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>MKSM — Modding Progress</title>
+<style>
+:root{color-scheme:dark;--bg:#090b10;--panel:#141720;--ink:#eff0f5;--muted:#aeb2c1;--line:#303440;--red:#dc2448;--green:#4abc79;--amber:#d9a952;--empty:#252936}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.5 system-ui,sans-serif}main{max-width:1240px;margin:auto;padding:40px 28px}header{border-bottom:1px solid var(--line);padding-bottom:24px;margin-bottom:24px}.eyebrow{color:var(--red);font-size:12px;letter-spacing:.2em;font-weight:700}h1{font-size:32px;margin:10px 0 12px;letter-spacing:-.03em}h2{font-size:22px;margin:0 0 8px}h3{font-size:14px;color:var(--muted);margin:24px 0 8px}.sub{color:var(--muted);margin:0;max-width:850px}.badges{display:flex;gap:12px;flex-wrap:wrap;margin-top:18px}.badge{padding:5px 10px;background:var(--panel);border:1px solid var(--line);border-radius:5px;font-size:13px}.layout{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(300px,1fr);gap:24px}.map{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;align-content:start}.tile{appearance:none;text-align:left;border:1px solid var(--line);border-radius:9px;padding:16px;background:var(--panel);color:var(--ink);cursor:pointer;min-height:158px;font:inherit;transition:border-color .12s,background .12s}.tile:hover,.tile:focus-visible{border-color:var(--red);outline:none;background:#1d1923}.tile[aria-pressed=true]{border-color:var(--red);box-shadow:0 0 0 1px var(--red)}.name{display:block;font-weight:650;margin-bottom:14px}.pct{font-size:27px;font-variant-numeric:tabular-nums;display:block}.caption{font-size:12px;color:var(--muted)}.cells{display:grid;grid-template-columns:repeat(6,1fr);gap:3px;margin:14px 0 0}.cell{height:14px;background:var(--empty);border-radius:2px}.cell.pass{background:var(--green)}.cell.open{background:var(--amber);opacity:.4}.detail{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:24px;align-self:start;position:sticky;top:16px;min-height:500px}.scope{color:var(--muted);font-size:14px}.state{font-size:12px;color:var(--amber);margin:16px 0}.state.issue{color:#ff859c}.state.unknown{color:var(--muted)}ul{padding-left:20px;margin:8px 0}li{margin:8px 0;font-size:14px}.gates{list-style:none;padding:0}.gates li{margin:7px 0;display:flex;justify-content:space-between;gap:12px}.gates strong{font-size:12px;color:var(--green);white-space:nowrap}.gates strong.open{color:var(--muted)}.legend{display:flex;gap:18px;flex-wrap:wrap;font-size:13px;color:var(--muted);margin:20px 0}.legend span:before{content:'';display:inline-block;width:10px;height:10px;margin-right:7px;background:var(--green);border-radius:2px}.legend span:nth-child(2):before{background:var(--amber);opacity:.4}.legend span:nth-child(3):before{background:var(--empty)}details{margin-top:20px;border-top:1px solid var(--line);padding-top:15px}summary{cursor:pointer;font-size:13px;color:var(--muted)}code{font-size:12px;overflow-wrap:anywhere;display:block;margin-top:10px;color:var(--muted)}footer{margin-top:26px;color:var(--muted);font-size:13px;border-top:1px solid var(--line);padding-top:20px}a{color:#ff859c} @media(max-width:920px){.layout{grid-template-columns:1fr}.detail{position:static;min-height:0}}@media(max-width:570px){main{padding:24px 16px}.map{grid-template-columns:repeat(2,minmax(0,1fr))}.tile{padding:12px}h1{font-size:27px}}@media(prefers-reduced-motion:reduce){.tile{transition:none}}
+</style></head><body><main>
+<header><div class="eyebrow">MKSM STUDIO · RESEARCH</div><h1>Modding Progress</h1><p class="sub">Explore what is mapped, tested, and still unresolved. Percentages count completed modding milestones for each named scope. They do not estimate how much of the whole game is understood.</p><div class="badges"><span class="badge">USA · SLUS_210.87</span><span class="badge">Updated 4 October 2026</span><span class="badge">Whole-game coverage: unknown</span></div><nav class="badges" aria-label="Research maps"><a class="badge" href="index.html">Modding Progress</a><a class="badge" href="engine.html">Engine Reconstruction</a></nav></header>
+<div class="layout"><section aria-label="Discovery sections"><div id="map" class="map"></div><div class="legend"><span>Verified milestone</span><span>Pending verification</span><span>Not established</span></div><p class="sub caption">Hover, focus, or select a section. Equal tile sizes represent categories—not code size. Six milestones carry equal weight; a passed code check does not count as a passed game test.</p></section>
+<aside class="detail" id="detail" aria-label="Selected discovery details"></aside></div>
+<footer>Scope: recorded findings and targeted checks. A milestone percentage is not a release-readiness score, a time estimate, or proof of complete format coverage. <a href="discovery-map.svg">Static snapshot</a> · <a href="discovery-data.json">Milestones and evidence</a></footer>
+</main><script id="discovery-data" type="application/json">{
+  "updated": "2026-10-04",
+  "build": "USA / SLUS_210.87",
+  "metric": "Completed checklist milestones / six milestones; not total game coverage.",
+  "overallCoverage": null,
+  "gates": [
+    "Structure mapped",
+    "Export / decode",
+    "Reimport / encode",
+    "Targeted code checks",
+    "Game regression passed",
+    "Validated feature shipped"
+  ],
+  "sections": [
+    {
+      "name": "Models",
+      "scope": "Larger imported characters and skeleton compatibility",
+      "gates": [
+        {
+          "name": "Structure mapped",
+          "passed": true
+        },
+        {
+          "name": "Export / decode",
+          "passed": true
+        },
+        {
+          "name": "Reimport / encode",
+          "passed": true
+        },
+        {
+          "name": "Targeted code checks",
+          "passed": true
+        },
+        {
+          "name": "Game regression passed",
+          "passed": false
+        },
+        {
+          "name": "Validated feature shipped",
+          "passed": false
+        }
+      ],
+      "findings": [
+        "Native mesh packets, weights, bone groups and coordinate encoding mapped.",
+        "GLB/Blender export and native mesh construction exist."
+      ],
+      "remaining": [
+        "Larger characters still need full scene and cutscene regression.",
+        "Successful individual mods do not validate arbitrary geometry or bone counts."
+      ],
+      "evidence": [
+        "work/v27.12/source/NativeMeshRebuild.cs",
+        "work/ghidra-character-2026-10-02/wide_visibility_lifetime_test.json"
+      ],
+      "state": "issue",
+      "percent": 67
+    },
+    {
+      "name": "Textures",
+      "scope": "Larger textures, upload queues and memory ownership",
+      "gates": [
+        {
+          "name": "Structure mapped",
+          "passed": true
+        },
+        {
+          "name": "Export / decode",
+          "passed": true
+        },
+        {
+          "name": "Reimport / encode",
+          "passed": true
+        },
+        {
+          "name": "Targeted code checks",
+          "passed": true
+        },
+        {
+          "name": "Game regression passed",
+          "passed": false
+        },
+        {
+          "name": "Validated feature shipped",
+          "passed": false
+        }
+      ],
+      "findings": [
+        "Texture decoding, storage layouts and packet construction inspected.",
+        "Native allocation/upload checks exist beyond basic 128\u00d7128 replacements."
+      ],
+      "remaining": [
+        "VRAM residency, asynchronous cleanup and shared-scene regressions remain.",
+        "No unrestricted texture-size promise."
+      ],
+      "evidence": [
+        "work/engine-map-2026-09-29/texture-packet-tests.json",
+        "work/engine-map-2026-09-29/texture-runtime-tests.json"
+      ],
+      "state": "research",
+      "percent": 67
+    },
+    {
+      "name": "Animation",
+      "scope": "Extended skeletons, transition readers and lifetime",
+      "gates": [
+        {
+          "name": "Structure mapped",
+          "passed": true
+        },
+        {
+          "name": "Export / decode",
+          "passed": true
+        },
+        {
+          "name": "Reimport / encode",
+          "passed": true
+        },
+        {
+          "name": "Targeted code checks",
+          "passed": true
+        },
+        {
+          "name": "Game regression passed",
+          "passed": false
+        },
+        {
+          "name": "Validated feature shipped",
+          "passed": false
+        }
+      ],
+      "findings": [
+        "Native animation reading/writing and targeted transition tests exist."
+      ],
+      "remaining": [
+        "User reports Raiden still stretches in V5 and V6 cutscenes.",
+        "Full scene transitions and all character users are not verified."
+      ],
+      "evidence": [
+        "work/v27.12/source/NativeAnimationWriter.cs",
+        "work/ghidra-character-2026-10-02/wide_animation_pose_test.json"
+      ],
+      "state": "issue",
+      "percent": 67
+    },
+    {
+      "name": "ADX music",
+      "scope": "Codec and stream-pipeline refinements",
+      "gates": [
+        {
+          "name": "Structure mapped",
+          "passed": true
+        },
+        {
+          "name": "Export / decode",
+          "passed": true
+        },
+        {
+          "name": "Reimport / encode",
+          "passed": true
+        },
+        {
+          "name": "Targeted code checks",
+          "passed": true
+        },
+        {
+          "name": "Game regression passed",
+          "passed": false
+        },
+        {
+          "name": "Validated feature shipped",
+          "passed": false
+        }
+      ],
+      "findings": [
+        "WAV conversion, native header/frame decoding and loop callbacks inspected.",
+        "Baseline ADX editing already exists in Studio."
+      ],
+      "remaining": [
+        "Latest codec/pipeline changes need game regression and a verified release.",
+        "Baseline feature availability is separate from this research checklist."
+      ],
+      "evidence": [
+        "work/engine-map-2026-09-29/adx-studio-compatibility-fixed-tests.json",
+        "work/v27.12/source/AdxCodec.cs"
+      ],
+      "state": "research",
+      "percent": 67
+    },
+    {
+      "name": "Grunts & effects",
+      "scope": "Native DTPK / PS2 ADPCM sound-bank replacements",
+      "gates": [
+        {
+          "name": "Structure mapped",
+          "passed": true
+        },
+        {
+          "name": "Export / decode",
+          "passed": true
+        },
+        {
+          "name": "Reimport / encode",
+          "passed": true
+        },
+        {
+          "name": "Targeted code checks",
+          "passed": true
+        },
+        {
+          "name": "Game regression passed",
+          "passed": false
+        },
+        {
+          "name": "Validated feature shipped",
+          "passed": false
+        }
+      ],
+      "findings": [
+        "Native banks decoded; WAV-to-ADPCM encoding and bank round trips checked.",
+        "EE/IOP upload, named events and failure paths investigated."
+      ],
+      "remaining": [
+        "Game test lost grunts and special-move sounds.",
+        "Offline success has not established safe game sound-bank replacement.",
+        "Work paused at user request while SFD replacement is investigated."
+      ],
+      "evidence": [
+        "work/engine-map-2026-09-29/dtpk-codec-tests.json",
+        "work/ghidra-character-2026-10-02/grunt-queue-failure-tests.json"
+      ],
+      "state": "issue",
+      "percent": 67
+    },
+    {
+      "name": "SFD movies",
+      "scope": "New movies within native dimensions, byte budget and duration",
+      "gates": [
+        {
+          "name": "Structure mapped",
+          "passed": true
+        },
+        {
+          "name": "Export / decode",
+          "passed": true
+        },
+        {
+          "name": "Reimport / encode",
+          "passed": true
+        },
+        {
+          "name": "Targeted code checks",
+          "passed": true
+        },
+        {
+          "name": "Game regression passed",
+          "passed": false
+        },
+        {
+          "name": "Validated feature shipped",
+          "passed": false
+        }
+      ],
+      "findings": [
+        "All eight retail movie profiles mapped against ELF metadata.",
+        "New MPEG-2 SFDs passed PC decoding across all eight profiles.",
+        "Original audio topology and compressed sound frames retained.",
+        "Oversized, overlong and mismatched-profile replacements rejected.",
+        "Studio export, review, staging and saved movie projects implemented.",
+        "59 synthetic write checks cover neighboring data, padding and both size fields."
+      ],
+      "remaining": [
+        "Native CRI/game playback remains unverified.",
+        "Studio 0.27.13 distributes experimental movie import; validated gameplay release remains pending.",
+        "Full rebuilt-disc playback and hardware/emulator regression remain unverified.",
+        "High-resolution expansion is outside this first native-size milestone."
+      ],
+      "evidence": [
+        "work/sfd-2026-10-04/native-sfd-checks.json",
+        "work/sfd-2026-10-04/mksm-movie-profiles.json"
+      ],
+      "state": "research",
+      "percent": 67
+    },
+    {
+      "name": "Archives",
+      "scope": "Expanded resource placement and runtime loading",
+      "gates": [
+        {
+          "name": "Structure mapped",
+          "passed": true
+        },
+        {
+          "name": "Export / decode",
+          "passed": true
+        },
+        {
+          "name": "Reimport / encode",
+          "passed": true
+        },
+        {
+          "name": "Targeted code checks",
+          "passed": true
+        },
+        {
+          "name": "Game regression passed",
+          "passed": false
+        },
+        {
+          "name": "Validated feature shipped",
+          "passed": false
+        }
+      ],
+      "findings": [
+        "ISO/WAD reading and rebuilding exist; archive and AFS paths inspected.",
+        "Targeted native loader and repack tests exist."
+      ],
+      "remaining": [
+        "On-disc placement and runtime pool limits are separate.",
+        "End-to-end expanded-asset regressions and failure recovery remain."
+      ],
+      "evidence": [
+        "work/engine-map-2026-09-29/afs-repacked-native-tests.json",
+        "work/engine-map-2026-09-29/asset-load-roundtrip.json"
+      ],
+      "state": "research",
+      "percent": 67
+    },
+    {
+      "name": "Levels & collision",
+      "scope": "Complete editable stages and collision round trips",
+      "gates": [
+        {
+          "name": "Structure mapped",
+          "passed": true
+        },
+        {
+          "name": "Export / decode",
+          "passed": true
+        },
+        {
+          "name": "Reimport / encode",
+          "passed": false
+        },
+        {
+          "name": "Targeted code checks",
+          "passed": false
+        },
+        {
+          "name": "Game regression passed",
+          "passed": false
+        },
+        {
+          "name": "Validated feature shipped",
+          "passed": false
+        }
+      ],
+      "findings": [
+        "Stage/model previews and selected collision record structures inspected."
+      ],
+      "remaining": [
+        "Selected record codecs do not establish a complete editable stage format.",
+        "Complete stage reimport, triggers, collisions and gameplay regression remain."
+      ],
+      "evidence": [
+        "work/ghidra-character-2026-10-02/type12_record_codec_test.json",
+        "work/v27.12/source/StageVerification.cs"
+      ],
+      "state": "research",
+      "percent": 33
+    }
+  ]
+}</script>
+<script>
+const data=JSON.parse(document.getElementById('discovery-data').textContent);
+const map=document.getElementById('map'), detail=document.getElementById('detail');
+const label=d=>d.percent===null?'Unmeasured':d.percent+'%';
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+function show(index){const d=data.sections[index];for(const [i,b] of [...map.children].entries())b.setAttribute('aria-pressed',String(i===index));const status=d.state==='issue'?'Known game regression unresolved':d.state==='unknown'?'Broad scope · milestones not established':'Research verified in stated scopes · game regression pending';detail.innerHTML='<h2>'+esc(d.name)+'</h2><div class="scope">'+esc(d.scope)+'</div><div class="state '+esc(d.state)+'">'+status+'</div><div class="pct">'+label(d)+' <span class="caption">'+d.gates.filter(g=>g.passed).length+'/6 modding milestones</span></div><h3>Milestone checklist</h3><ul class="gates">'+d.gates.map(g=>'<li><span>'+esc(g.name)+'</span><strong class="'+(g.passed?'':'open')+'">'+(g.passed?'PASSED':'OPEN')+'</strong></li>').join('')+'</ul><h3>Established findings</h3><ul>'+d.findings.map(f=>'<li>'+esc(f)+'</li>').join('')+'</ul><h3>Still unresolved</h3><ul>'+d.remaining.map(f=>'<li>'+esc(f)+'</li>').join('')+'</ul><details><summary>Evidence references</summary>'+d.evidence.map(f=>'<code>'+esc(f)+'</code>').join('')+'</details>';}
+data.sections.forEach((d,i)=>{const b=document.createElement('button');b.type='button';b.className='tile';b.setAttribute('aria-pressed','false');b.setAttribute('aria-label',d.name+': '+label(d)+' of modding milestones');b.title=d.scope+' — '+label(d)+' of checklist; '+d.remaining[0];b.innerHTML='<span class="name">'+esc(d.name)+'</span><span class="pct">'+label(d)+'</span><span class="caption">'+d.gates.filter(g=>g.passed).length+' / 6 modding milestones</span><span class="cells" aria-hidden="true">'+d.gates.map(g=>'<span class="cell '+(g.passed?'pass':d.state==='unknown'?'':'open')+'"></span>').join('')+'</span>';b.addEventListener('mouseenter',()=>show(i));b.addEventListener('focus',()=>show(i));b.addEventListener('click',()=>show(i));b.addEventListener('keydown',e=>{const moves={ArrowRight:1,ArrowLeft:-1,ArrowDown:3,ArrowUp:-3};if(e.key in moves){e.preventDefault();const n=Math.max(0,Math.min(data.sections.length-1,i+moves[e.key]));map.children[n].focus();}});map.appendChild(b);});show(5);
+</script></body></html>

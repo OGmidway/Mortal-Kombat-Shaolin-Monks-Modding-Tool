@@ -1,5 +1,7 @@
 # Engine research: verified findings and remaining work
 
+October 2026 update: [separate discovery maps](RESEARCH_MAPS.md) and [experimental native SFD import](MOVIES.md) are available in Studio 0.27.13. Game playback validation remains open.
+
 [Home](../README.md) · [Roadmap](ROADMAP.md)
 
 Status at Studio 0.26.0: research results below are not a deployed game patch. Studio's UI/settings update does not raise game memory, polygon or texture limits.
