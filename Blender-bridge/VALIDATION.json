@@ -1,0 +1,94 @@
+{
+  "regression-checks.json": {
+    "PerTriangleLimit": true,
+    "RemovedWeightLimit": true,
+    "NativePrecision": true,
+    "AdjacentTriangles": true,
+    "Deterministic": true,
+    "OriginalWeightsUnchanged": true,
+    "FailureRollback": true,
+    "UnappliedModifiersRejected": true,
+    "ExplicitTriangulation": true,
+    "NoDuplicatePreparedMeshes": true
+  },
+  "reduction-fixture-4.json": {
+    "Version": [
+      4,
+      2,
+      22
+    ],
+    "SourcePreserved": true,
+    "RigPreserved": true,
+    "SurfaceBoundEnforced": true,
+    "FailureRollback": true,
+    "ButtonsAndDiscard": true,
+    "Result": {
+      "Method": "Blender geometric edge collapse on copies; optional equal-weight seam welding; bidirectional vertex/face-center surface samples.",
+      "TriangleTarget": 700,
+      "AllowedSurfaceChangePercent": 2,
+      "TotalTrianglesAfter": 700,
+      "CombinedBudgetMet": true,
+      "NativeWeightCleanupApplied": false,
+      "GameplayTested": false,
+      "Meshes": [
+        {
+          "SourceMesh": "Sphere",
+          "PreviewMesh": "Sphere_Reduced",
+          "VerticesBefore": 922,
+          "TrianglesBefore": 1840,
+          "VerticesAfter": 352,
+          "TrianglesAfter": 700,
+          "AllocatedTriangleBudget": 700,
+          "BudgetMet": true,
+          "SampledSurfaceChangePercent": 0.27634628853365184,
+          "SampledSurfaceChangeWorldUnits": 0.019145837053656578,
+          "MaximumBoneInfluences": 1,
+          "IncompatibleNativeTriangles": 0,
+          "UVLayers": 1,
+          "Materials": 1
+        }
+      ],
+      "OriginalMeshesAndRigUnchanged": true
+    }
+  },
+  "reduction-user-5.json": {
+    "Version": [
+      5,
+      2,
+      2
+    ],
+    "SourcePreserved": true,
+    "RigPreserved": true,
+    "SurfaceBoundEnforced": true,
+    "FailureRollback": true,
+    "ButtonsAndDiscard": true,
+    "Result": {
+      "Method": "Blender geometric edge collapse on copies; optional equal-weight seam welding; bidirectional vertex/face-center surface samples.",
+      "TriangleTarget": 3700,
+      "AllowedSurfaceChangePercent": 2,
+      "TotalTrianglesAfter": 3698,
+      "CombinedBudgetMet": true,
+      "NativeWeightCleanupApplied": false,
+      "GameplayTested": false,
+      "Meshes": [
+        {
+          "SourceMesh": "Prepared Scorpion character",
+          "PreviewMesh": "Scorpion reduction preview",
+          "VerticesBefore": 7884,
+          "TrianglesBefore": 11055,
+          "VerticesAfter": 2693,
+          "TrianglesAfter": 3698,
+          "AllocatedTriangleBudget": 3700,
+          "BudgetMet": true,
+          "SampledSurfaceChangePercent": 0.35132970909704075,
+          "SampledSurfaceChangeWorldUnits": 0.29338788986206055,
+          "MaximumBoneInfluences": 6,
+          "IncompatibleNativeTriangles": 254,
+          "UVLayers": 1,
+          "Materials": 2
+        }
+      ],
+      "OriginalMeshesAndRigUnchanged": true
+    }
+  }
+}

@@ -170,3 +170,12 @@ Studio 0.27.13 uses redder crimson accents, white Home instructions, a matching 
 Choose **Settings > Appearance > Interface Scale** (70–125%). Changes preview immediately; Save keeps them. Fullscreen retains your chosen size and adds working room. **Settings > Application > Refresh Windows Application Icon** requests a Windows cache refresh if Explorer shows the old gold dragon; both EXEs embed the black/crimson icon.
 
 Studio 0.27.13 integrates Community Workshop into the main window. Shared GitHub sign-in, settings and background playback remain available. UI scale remains under Settings > Appearance.
+
+
+## Blender Bridge 0.25.2
+
+[Download the bridge](https://github.com/OGmidway/Mortal-Kombat-Shaolin-Monks-Modding-Tool/releases/tag/bridge-v0.25.2) · [Character workflow](docs/CHARACTER_START_HERE.md)
+
+Reduce new character meshes on preview copies using a combined triangle budget and sampled surface-deviation limit. Review before/after counts, UV seams, silhouette and joint poses; discard previews to restore originals. Optional equal-weight seam welding and separate native weight cleanup are included. Install this Blender add-on separately; Studio's application updater stays on its existing release channel.
+
+Tested with Blender 4.2.22 and 5.2.2, including source/rig preservation and failure rollback. Sampled surface checks do not certify animation or game playback; native batching can add vertices. This does not raise game memory limits.
