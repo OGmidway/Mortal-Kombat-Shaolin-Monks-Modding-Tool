@@ -172,10 +172,9 @@ Choose **Settings > Appearance > Interface Scale** (70–125%). Changes preview 
 Studio 0.27.13 integrates Community Workshop into the main window. Shared GitHub sign-in, settings and background playback remain available. UI scale remains under Settings > Appearance.
 
 
-## Blender Bridge 0.25.2
 
-[Download the bridge](https://github.com/OGmidway/Mortal-Kombat-Shaolin-Monks-Modding-Tool/releases/tag/bridge-v0.25.2) · [Character workflow](docs/CHARACTER_START_HERE.md)
+## Blender Bridge 0.26.0
 
-Reduce new character meshes on preview copies using a combined triangle budget and sampled surface-deviation limit. Review before/after counts, UV seams, silhouette and joint poses; discard previews to restore originals. Optional equal-weight seam welding and separate native weight cleanup are included. Install this Blender add-on separately; Studio's application updater stays on its existing release channel.
+[Download the bridge](https://github.com/OGmidway/Mortal-Kombat-Shaolin-Monks-Modding-Tool/releases/tag/bridge-v0.26.0) · [Character workflow](docs/CHARACTER_START_HERE.md)
 
-Tested with Blender 4.2.22 and 5.2.2, including source/rig preservation and failure rollback. Sampled surface checks do not certify animation or game playback; native batching can add vertices. This does not raise game memory limits.
+Retarget authored character weights with editable bone matches and reversible previews. Optional proportion fitting requires aligned rest poses. Compact steps cover retargeting, geometry reduction, textures and export. Tested in Blender 4.2.22 and 5.2.2; game playback and character-specific attachment handling still require validation. Install the Blender add-on separately; Studio remains on its existing update channel.

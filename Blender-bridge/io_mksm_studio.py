@@ -1,7 +1,7 @@
-bl_info = {'name': 'MKSM Studio Bridge', 'author': 'OG Midway', 'version': (0, 25, 2), 'blender': (4, 2, 0), 'location': '3D View > Sidebar > MKSM', 'description': 'Import original MKSM rigs and export shape edits or replacement meshes for MKSM Studio', 'category': 'Import-Export'}
+bl_info = {'name': 'MKSM Studio Bridge', 'author': 'OG Midway', 'version': (0, 26, 0), 'blender': (4, 2, 0), 'location': '3D View > Sidebar > MKSM', 'description': 'Import original MKSM rigs and export shape edits or replacement meshes for MKSM Studio', 'category': 'Import-Export'}
 import bpy
 from bpy_extras.io_utils import ImportHelper, ExportHelper
-from bpy.props import StringProperty, BoolProperty, IntProperty, FloatProperty
+from bpy.props import StringProperty, BoolProperty, IntProperty, FloatProperty, PointerProperty, CollectionProperty
 import os
 import json
 import subprocess
@@ -32,6 +32,8 @@ class MKSM_OT_import(bpy.types.Operator, ImportHelper):
                     if len(actions)==1:
                         for track in ad.nla_tracks:track.mute=True
                         ad.action=actions[0]
+        game_rigs = [o for o in context.selected_objects if o.type=='ARMATURE' and o.get('mksm_source_sha256')]
+        if len(game_rigs)==1:context.scene.mksm_target_rig=game_rigs[0]
         snapshot = str(Path(self.filepath).with_suffix('.original.pme2'))
         if Path(snapshot).is_file():
             context.scene.mksm_native_source = snapshot
@@ -413,6 +415,252 @@ class MKSM_OT_reduce_report(bpy.types.Operator):
     def execute(self, context): return {'FINISHED'}
 
 
+def _mksm_bone_suggestion(name, target_names):
+    """Conservative aliases; ambiguous root/cloth bones require user mapping."""
+    import re
+    if name in target_names: return [(name, 1.0)]
+    key = re.sub(r'[^a-z0-9]', '', name.split(':')[-1].lower())
+    aliases = {'hips':'pelvis','pelvis':'pelvis','spine':'abdomen','spine2':'chest','chest':'chest',
+               'neck':'neck','head':'head'}
+    if key == 'spine1' and {'abdomen','chest'} <= target_names:
+        return [('abdomen', .5), ('chest', .5)]
+    if name.startswith('F_') and 'head' in target_names: return [('head', 1.0)]
+    if key in aliases and aliases[key] in target_names: return [(aliases[key],1.0)]
+    for side, long_side in [('l','left'),('r','right')]:
+        for source, dest in [('shoulder','clavicle'),('arm','shoulder'),('upperarm','shoulder'),
+                             ('armroll','bicep'),('forearm','forearm'),('lowerarm','forearm'),
+                             ('forearmroll','forearm'),('hand','hand'),('upleg','thigh'),
+                             ('uplegroll','thigh'),('thigh','thigh'),('leg','calf'),
+                             ('legroll','calf'),('calf','calf'),('foot','foot'),('toebase','toe')]:
+            if key in (long_side+source,side+source,source+side,'valvebipedbip01'+side+source):
+                target = side+'_'+dest
+                return [(target,1.0)] if target in target_names else []
+        valve = 'valvebipedbip01'+side+'finger'
+        if key.startswith(valve):
+            suffix = key[len(valve):]
+            if suffix and suffix[0] in '01234':
+                digit = 'thumb' if suffix[0]=='0' else 'finger' if suffix[0] in '12' else 'pinky'
+                target = side+'_'+digit+('00' if len(suffix)==1 else '01')
+                return [(target,1.0)] if target in target_names else []
+        for digit, dest in [('thumb','thumb'),('index','finger'),('middle','finger'),('ring','pinky'),('pinky','pinky')]:
+            prefix=long_side+'hand'+digit
+            if key.startswith(prefix) and key[len(prefix):] in ('1','2','3','4'):
+                target=side+'_'+dest+('00' if key[len(prefix):]=='1' else '01')
+                return [(target,1.0)] if target in target_names else []
+    return []
+
+
+def _mksm_retarget_copies(context, originals, source_rig, target_rig, mapping, fit):
+    import math, statistics, bmesh
+    from mathutils import Vector, Matrix
+    if not originals: raise ValueError('Select your new character meshes.')
+    if not source_rig or not target_rig or source_rig == target_rig:
+        raise ValueError('Choose separate source and original game skeletons.')
+    if source_rig.type != 'ARMATURE' or target_rig.type != 'ARMATURE' or not target_rig.get('mksm_source_sha256'):
+        raise ValueError('The destination must be an original MKSM Studio skeleton.')
+    for rig in (source_rig, target_rig):
+        if abs(rig.matrix_world.determinant()) < 1e-12: raise ValueError('A skeleton has zero scale.')
+        if rig.data.pose_position != 'REST' and any(abs(b.matrix_basis[i][j]-(1 if i==j else 0))>1e-5 for b in rig.pose.bones for i in range(4) for j in range(4)):
+            raise ValueError('Set both skeletons to Rest Position before retargeting. Existing poses are not changed.')
+    used = set(); source_rows = {}
+    for obj in originals:
+        arms = [m for m in obj.modifiers if m.type == 'ARMATURE']
+        if len(arms)!=1 or arms[0].object != source_rig:
+            raise ValueError(f'{obj.name}: bind this mesh to the chosen source skeleton first.')
+        if obj.data.shape_keys or any(m.type!='ARMATURE' and (m.show_viewport or m.show_render) for m in obj.modifiers):
+            raise ValueError(f'{obj.name}: apply mesh modifiers and intended shape keys first.')
+        rows=[]
+        for v in obj.data.vertices:
+            if any(not math.isfinite(c) for c in v.co): raise ValueError('Non-finite source coordinates.')
+            row={obj.vertex_groups[g.group].name:g.weight for g in v.groups if g.weight>0 and obj.vertex_groups[g.group].name in source_rig.data.bones}
+            if not row: raise ValueError(f'{obj.name}: vertex {v.index} has no source bone weights.')
+            if any(not math.isfinite(w) for w in row.values()):raise ValueError('Non-finite source weights.')
+            total=sum(row.values());row={k:w/total for k,w in row.items()}
+            used.update(row);rows.append(row)
+        source_rows[obj.name]=rows
+    missing=sorted(name for name in used if not mapping.get(name))
+    if missing: raise ValueError('Map these weighted bones first: '+', '.join(missing[:10])+(' ...' if len(missing)>10 else ''))
+    for name in used:
+        row=mapping[name]
+        if any(target not in target_rig.data.bones or not math.isfinite(weight) or weight<=0 for target,weight in row):
+            raise ValueError(f'{name}: choose valid destination bones and positive weights.')
+        if abs(sum(w for _,w in row)-1)>1e-5: raise ValueError(f'{name}: mapped weights must sum to 1.')
+    mapping=dict(mapping)
+    for bone in source_rig.data.bones:
+        if bone.name not in mapping:
+            suggestion=_mksm_bone_suggestion(bone.name,set(target_rig.data.bones.keys()))
+            if suggestion:mapping[bone.name]=suggestion
+    source_heads={b.name:source_rig.matrix_world@b.head_local for b in source_rig.data.bones}
+    target_heads={b.name:target_rig.matrix_world@b.head_local for b in target_rig.data.bones}
+    # Helpers mapped to the same bone share an anchor with their ancestor.
+    # Facial/roll helpers must not collapse independently onto the target head.
+    primary={}
+    for name in sorted(source_rig.data.bones.keys(),key=lambda n:0 if _mksm_bone_suggestion(n,set(target_heads))==mapping.get(n) else 1):
+        row=mapping.get(name,[])
+        if len(row)==1 and row[0][1]==1:primary.setdefault(row[0][0],name)
+    anchors={}
+    def anchor(name):
+        if name in anchors:return anchors[name]
+        parent=source_rig.data.bones[name].parent
+        if not parent and len(mapping.get(name,[]))==1 and primary.get(mapping[name][0][0],name)!=name:
+            result=primary[mapping[name][0][0]]
+        elif parent and mapping.get(parent.name)==mapping.get(name): result=anchor(parent.name)
+        else:result=name
+        anchors[name]=result;return result
+    for name in used:anchor(name)
+    scale=1.0
+    if fit:
+        ratios=[]
+        pairs=[('pelvis','head'),('l_shoulder','l_forearm'),('r_shoulder','r_forearm'),('l_thigh','l_calf'),('r_thigh','r_calf')]
+        for a,b in pairs:
+            if a not in primary or b not in primary:continue
+            source_delta=source_heads[primary[b]]-source_heads[primary[a]]
+            target_delta=target_heads[b]-target_heads[a]
+            if min(source_delta.length,target_delta.length)<1e-6:continue
+            angle=math.degrees(source_delta.angle(target_delta))
+            if angle>25:raise ValueError(f'Rest poses differ around {a} ({angle:.0f} degrees). Align the source rest pose with the game skeleton, or fit manually and disable Fit Proportions.')
+            ratios.append(target_delta.length/source_delta.length)
+        if len(ratios)<2:raise ValueError('Fit Proportions needs at least two mapped main-body segments. Complete pelvis/head and limb mapping, or fit manually.')
+        scale=statistics.median(ratios)
+        if not math.isfinite(scale) or not .0001<scale<10000:raise ValueError('Invalid source-to-game scale.')
+    offsets={name:sum((target_heads[n]*w for n,w in mapping[anchor(name)]),Vector())-source_heads[anchor(name)]*scale for name in used}
+    collection=bpy.data.collections.new('MKSM Retarget Preview');context.scene.collection.children.link(collection)
+    copies=[];report=[]
+    try:
+        for original in originals:
+            obj=original.copy();obj.data=original.data.copy();copies.append(obj);collection.objects.link(obj)
+            obj.name=original.name+'_MKSM';obj.hide_viewport=False;obj.hide_select=False;obj.hide_render=False;obj.hide_set(False)
+            world=original.matrix_world.copy();obj.parent=None;obj.matrix_world=Matrix.Identity(4)
+            obj.modifiers.clear();obj.vertex_groups.clear()
+            for key in list(obj.keys()):
+                if key.startswith('mksm_'):del obj[key]
+            for attr in list(obj.data.attributes):
+                if attr.name.startswith('_MKSM_'):obj.data.attributes.remove(attr)
+            obj['mksm_source_sha256']=target_rig['mksm_source_sha256'];obj['mksm_vertex_type']=2
+            rows=[];max_move=0
+            for v,source_row in zip(obj.data.vertices,source_rows[original.name]):
+                point=world@v.co
+                fitted=point*scale+sum((offsets[n]*w for n,w in source_row.items()),Vector()) if fit else point
+                if any(not math.isfinite(c) for c in fitted):raise ValueError('Invalid fitted coordinate.')
+                max_move=max(max_move,(fitted-point*scale).length);v.co=fitted
+                mapped={}
+                for source,w in source_row.items():
+                    for target,fraction in mapping[source]:mapped[target]=mapped.get(target,0)+w*fraction
+                for target,value in mapped.items():
+                    group=obj.vertex_groups.get(target) or obj.vertex_groups.new(name=target)
+                    group.add([v.index],value,'REPLACE')
+                rows.append(set(mapped))
+            bm=bmesh.new()
+            try:
+                bm.from_mesh(obj.data);bmesh.ops.recalc_face_normals(bm,faces=list(bm.faces));bm.to_mesh(obj.data)
+            finally:bm.free()
+            obj.data.update();obj.data.calc_loop_triangles()
+            modifier=obj.modifiers.new('MKSM Game Skeleton','ARMATURE');modifier.object=target_rig
+            obj.parent=target_rig;obj.matrix_parent_inverse=target_rig.matrix_world.inverted();obj.matrix_basis=Matrix.Identity(4)
+            conflicts=sum(len(set().union(*(rows[i] for i in triangle.vertices)))>3 for triangle in obj.data.loop_triangles)
+            report.append({'SourceMesh':original.name,'PreviewMesh':obj.name,'Vertices':len(obj.data.vertices),'Triangles':len(obj.data.loop_triangles),
+                           'MaximumFitOffset':max_move,'IncompatibleNativeTriangles':conflicts})
+        collection['mksm_retarget_sources']=json.dumps([{'name':o.name,'hidden':o.hide_get(),'render':o.hide_render} for o in originals])
+        return copies,collection,{'SourceRig':source_rig.name,'GameRig':target_rig.name,'Scale':scale,'FitProportions':fit,
+                                 'BoneMap':{n:mapping[n] for n in sorted(used)},'Meshes':report,'OriginalsUnchanged':True,
+                                 'NativeWeightCleanupApplied':False,'GameTested':False}
+    except Exception:
+        _mksm_remove_cleanup(copies,collection);raise
+
+
+class MKSM_RetargetMap(bpy.types.PropertyGroup):
+    source_name: StringProperty(name='Source bone')
+    target_name: StringProperty(name='Game bone')
+    second_target: StringProperty(name='Optional second bone')
+    second_weight: FloatProperty(name='Second bone share',default=.5,min=.01,max=.99)
+
+
+class MKSM_UL_retarget_map(bpy.types.UIList):
+    def draw_item(self, context, layout, data, item, icon, active_data, active_propname, index):
+        row=layout.row(align=True);row.label(text=item.source_name,icon='BONE_DATA' if item.target_name else 'ERROR')
+        rig=context.scene.mksm_target_rig
+        if rig:row.prop_search(item,'target_name',rig.data,'bones',text='')
+        else:row.prop(item,'target_name',text='')
+
+
+class MKSM_OT_match_bones(bpy.types.Operator):
+    bl_idname='mksm.match_bones';bl_label='Match Bones';bl_options={'REGISTER','UNDO'}
+    def execute(self,context):
+        scene=context.scene;source=scene.mksm_source_rig;target=scene.mksm_target_rig
+        if not source or not target or source==target:
+            self.report({'ERROR'},'Choose source and game skeletons first.');return {'CANCELLED'}
+        selected=[o for o in context.selected_objects if o.type=='MESH']
+        used={o.vertex_groups[g.group].name for o in selected for v in o.data.vertices for g in v.groups if g.weight>0 and o.vertex_groups[g.group].name in source.data.bones}
+        if not used:self.report({'ERROR'},'Select weighted source meshes first.');return {'CANCELLED'}
+        previous={r.source_name:(r.target_name,r.second_target,r.second_weight) for r in scene.mksm_bone_map} if scene.mksm_map_source==source.name and scene.mksm_map_target==target.name else {}
+        scene.mksm_bone_map.clear()
+        for name in sorted(used):
+            row=scene.mksm_bone_map.add();row.source_name=name
+            suggestion=_mksm_bone_suggestion(name,set(target.data.bones.keys()))
+            if name in previous:
+                row.target_name,row.second_target,row.second_weight=previous[name]
+            elif suggestion:
+                row.target_name=suggestion[0][0]
+                if len(suggestion)>1:row.second_target=suggestion[1][0];row.second_weight=suggestion[1][1]
+        scene.mksm_map_source=source.name;scene.mksm_map_target=target.name
+        missing=sum(not r.target_name for r in scene.mksm_bone_map)
+        self.report({'INFO'},f'{len(used)-missing}/{len(used)} bones matched. {missing} need review. Check left/right and helper bones.');return {'FINISHED'}
+
+
+class MKSM_OT_retarget_preview(bpy.types.Operator):
+    bl_idname='mksm.retarget_preview';bl_label='Create Retarget Preview';bl_options={'REGISTER','UNDO'}
+    def execute(self,context):
+        scene=context.scene
+        if context.object and context.object.mode!='OBJECT':self.report({'ERROR'},'Switch to Object Mode.');return {'CANCELLED'}
+        if not scene.mksm_source_rig or not scene.mksm_target_rig or scene.mksm_map_source!=scene.mksm_source_rig.name or scene.mksm_map_target!=scene.mksm_target_rig.name:
+            self.report({'ERROR'},'Click Match Bones for the selected skeletons first.');return {'CANCELLED'}
+        mapping={r.source_name:([(r.target_name,1-r.second_weight),(r.second_target,r.second_weight)] if r.second_target else [(r.target_name,1)]) if r.target_name else [] for r in scene.mksm_bone_map}
+        originals=[o for o in context.selected_objects if o.type=='MESH']
+        try:copies,collection,report=_mksm_retarget_copies(context,originals,scene.mksm_source_rig,scene.mksm_target_rig,mapping,scene.mksm_retarget_fit)
+        except Exception as ex:self.report({'ERROR'},str(ex));return {'CANCELLED'}
+        for obj in originals:obj.hide_set(True);obj.hide_render=True
+        _mksm_select(context,copies)
+        block=bpy.data.texts.new('MKSM Retarget Report');block.write(json.dumps(report,indent=2));scene.mksm_retarget_report=block.name
+        conflicts=sum(r['IncompatibleNativeTriangles'] for r in report['Meshes'])
+        self.report({'INFO'},f'Preview created. {conflicts} native weight conflicts; check shoulders, elbows, hips and head before export.');return {'FINISHED'}
+
+
+class MKSM_OT_retarget_discard(bpy.types.Operator):
+    bl_idname='mksm.retarget_discard';bl_label='Discard Retarget Preview';bl_options={'REGISTER','UNDO'}
+    def execute(self,context):
+        groups={c for o in context.selected_objects for c in o.users_collection if 'mksm_retarget_sources' in c}
+        if not groups:self.report({'ERROR'},'Select a retarget preview mesh.');return {'CANCELLED'}
+        sources=[]
+        for group in groups:
+            for row in json.loads(group['mksm_retarget_sources']):
+                obj=context.scene.objects.get(row['name'])
+                if obj:obj.hide_set(row['hidden']);obj.hide_render=row['render'];sources.append(obj)
+            _mksm_remove_cleanup(list(group.objects),group)
+        _mksm_select(context,[o for o in sources if not o.hide_get()]);return {'FINISHED'}
+
+
+class MKSM_OT_retarget_report(bpy.types.Operator):
+    bl_idname='mksm.retarget_report';bl_label='Retarget Report'
+    def invoke(self,context,event):
+        if not bpy.data.texts.get(context.scene.mksm_retarget_report):self.report({'ERROR'},'Create a retarget preview first.');return {'CANCELLED'}
+        return context.window_manager.invoke_props_dialog(self,width=540)
+    def draw(self,context):
+        report=json.loads(bpy.data.texts[context.scene.mksm_retarget_report].as_string())
+        _mksm_lines(self.layout,f"{report['SourceRig']} -> {report['GameRig']}",f"Fit scale: {report['Scale']:.4f}")
+        for row in report['Meshes']:_mksm_lines(self.layout,row['PreviewMesh'],f"{row['Vertices']} vertices; {row['IncompatibleNativeTriangles']} native weight conflicts.")
+        _mksm_lines(self.layout,'Original meshes and skeletons unchanged. Preview shoulders, elbows, hips and head.',
+                    'Review original head and special-move attachments separately. Retargeting does not remove or restore native records.',
+                    'Full mapping in Text Editor: '+context.scene.mksm_retarget_report)
+    def execute(self,context):return {'FINISHED'}
+
+
+def _mksm_game_rigs(context):
+    target = getattr(context.scene, 'mksm_target_rig', None)
+    if target and target.name in context.scene.objects and target.type == 'ARMATURE' and target.get('mksm_source_sha256'):
+        return [target]
+    return [o for o in context.scene.objects if o.type == 'ARMATURE' and o.get('mksm_source_sha256')]
+
+
 class MKSM_OT_cleanup_preview(bpy.types.Operator):
     bl_idname = 'mksm.cleanup_preview'
     bl_label = 'Preview cleaned weights on a copy'
@@ -422,7 +670,7 @@ class MKSM_OT_cleanup_preview(bpy.types.Operator):
         if context.object and context.object.mode != 'OBJECT':
             self.report({'ERROR'}, 'Switch to Object Mode first.'); return {'CANCELLED'}
         originals = [o for o in context.selected_objects if o.type == 'MESH']
-        rigs = [o for o in context.scene.objects if o.type == 'ARMATURE' and o.get('mksm_source_sha256')]
+        rigs = _mksm_game_rigs(context)
         if not originals or len(rigs) != 1:
             self.report({'ERROR'}, 'Select the new body meshes in a scene with one original game skeleton.'); return {'CANCELLED'}
         try:
@@ -463,7 +711,7 @@ class MKSM_OT_replacement(bpy.types.Operator, ExportHelper):
         if context.object and context.object.mode != 'OBJECT':
             self.report({'ERROR'}, 'Switch to Object Mode before exporting.')
             return {'CANCELLED'}
-        rigs = [o for o in context.scene.objects if o.type == 'ARMATURE' and o.get('mksm_source_sha256')]
+        rigs = _mksm_game_rigs(context)
         if len(rigs) != 1:
             self.report({'ERROR'}, 'Use one original Studio armature per replacement scene.')
             return {'CANCELLED'}
@@ -765,7 +1013,7 @@ def _mksm_prepare_textures(context):
     import numpy as np
     if context.object and context.object.mode != 'OBJECT': raise ValueError('Switch to Object Mode first.')
     scene = context.scene
-    rigs = [o for o in scene.objects if o.type == 'ARMATURE' and o.get('mksm_source_sha256')]
+    rigs = _mksm_game_rigs(context)
     if len(rigs) != 1: raise ValueError('Use one original Studio skeleton in this scene.')
     rig = rigs[0]; originals = [o for o in context.selected_objects if o.type == 'MESH']
     if not originals: raise ValueError('Select your NEW body meshes first. Leave the dragon and other parts unselected.')
@@ -1024,107 +1272,70 @@ def _mksm_lines(layout, *lines):
         for part in textwrap.wrap(line, width=width): col.label(text=part)
 
 class MKSM_PT_bridge(bpy.types.Panel):
-    bl_label = 'MKSM Bridge 0.25.2 - Start here'
-    bl_idname = 'MKSM_PT_bridge'
-    bl_space_type = 'VIEW_3D'
-    bl_region_type = 'UI'
-    bl_category = 'MKSM'
-    def draw(self, context):
-        box = self.layout.box()
-        box.label(text='1. Open the ORIGINAL game model', icon='IMPORT')
-        _mksm_lines(box, 'Studio: choose who you want to replace.',
-                    'Load their textures. Click Save for Blender.',
-                    'Keep all exported files in one folder.')
-        box.operator('mksm.import_model', icon='IMPORT')
-        rigs = [o for o in context.scene.objects if o.type == 'ARMATURE' and o.get('mksm_source_sha256')]
-        box.label(text='Original skeleton: ' + (rigs[0].name if len(rigs) == 1 else 'load ONE original model'), icon='ARMATURE_DATA')
-        self.layout.operator('mksm.start_here', icon='HELP')
-        _mksm_lines(self.layout, 'Open the section you need below.', 'Author: OG Midway. Contributors: RelaxDirk & Z mods')
+    bl_label='MKSM Bridge 0.26.0';bl_idname='MKSM_PT_bridge';bl_space_type='VIEW_3D';bl_region_type='UI';bl_category='MKSM'
+    def draw(self,context):
+        self.layout.operator('mksm.import_model',text='Open Game Character',icon='IMPORT')
+        self.layout.operator('mksm.start_here',text='Workflow Help',icon='HELP')
+        self.layout.label(text='By OG Midway')
+        self.layout.label(text='Contributors: RelaxDirk · Z mods')
+
 
 class MKSM_PT_character(bpy.types.Panel):
-    bl_label = '2-6. Put a NEW character in the game'
-    bl_idname = 'MKSM_PT_character'
-    bl_parent_id = 'MKSM_PT_bridge'
-    bl_space_type = 'VIEW_3D'
-    bl_region_type = 'UI'
-    bl_category = 'MKSM'
-    def draw(self, context):
-        box = self.layout.box()
-        box.label(text='2. Bring in YOUR new character')
-        _mksm_lines(box, 'Use Blender: File > Import.',
-                    'Fit the new body over the original body.',
-                    'Keep the new body as separate objects.',
-                    'Keep the original skeleton unchanged.',
-                    'Keep needed extras, such as the dragon.')
-        box = self.layout.box()
-        box.label(text='3. Make it move with the game bones')
-        _mksm_lines(box, 'Transfer weights from the old body.',
-                    'New body: Armature modifier > original rig.',
-                    'Pose a few bones. Check the new body moves.',
-                    'Return to rest pose before export.',
-                    'This bridge does NOT transfer weights for you.')
-        box = self.layout.box()
-        box.label(text='Optional: reduce replacement geometry', icon='MOD_DECIM')
-        box.prop(context.scene, 'mksm_reduction_triangles')
-        box.prop(context.scene, 'mksm_reduction_deviation')
-        box.prop(context.scene, 'mksm_reduction_weld')
-        box.operator('mksm.reduce_preview', icon='MOD_DECIM')
-        row = box.row(align=True)
-        row.operator('mksm.reduce_report', icon='TEXT')
-        row.operator('mksm.reduce_discard', text='Discard preview', icon='TRASH')
-        _mksm_lines(box, 'Select your new meshes. Budget covers their combined triangles.',
-                    'Creates copies; original meshes and rig stay unchanged.',
-                    'Check silhouette, textures and several joint poses.',
-                    'If rejected: raise triangle budget or allowed surface change.',
-                    'Select the preview for texture setup or character export.',
-                    'Native batches/UV seams add vertices. Verify compiled counts in Studio.')
-        box = self.layout.box()
-        box.label(text='4. Set up the textures')
-        _mksm_lines(box, 'Already mapped to game materials? Skip this.',
-                    'Otherwise, select only the NEW body.',
-                    'Leave the dragon and other kept parts unselected.')
-        box.prop(context.scene, 'mksm_texture_count')
-        _mksm_lines(box, '0 = automatic: use more slots for better detail.',
-                    '2 or 3 = combine images into that many textures.')
-        box.operator('mksm.prepare_textures', icon='TEXTURE')
-        box.operator('mksm.prepare_report', icon='TEXT')
-        _mksm_lines(box, 'Check the copied body. Texture must look right.',
-                    'Black, blurry or wrong? Stop and fix it.',
-                    'Original meshes and bone weights stay unchanged.',
-                    'Unselected game meshes keep their texture slots.',
-                    'It does not raise game texture limits.')
-        box = self.layout.box()
-        box.label(text='5. Export ONE of these ways', icon='EXPORT')
-        box.prop(context.scene, 'mksm_auto_cleanup')
-        box.prop(context.scene, 'mksm_cleanup_max_loss')
-        box.operator('mksm.cleanup_preview', icon='MOD_VERTEX_WEIGHT')
-        box.operator('mksm.cleanup_report', icon='TEXT')
-        _mksm_lines(box, 'Reduced polygons? Apply Decimate first.',
-                    'Keep the Armature modifier.',
-                    'Cleanup only changes copies, never your original.',
-                    'Check poses: removing weights can change movement.',
-                    'Preview copy ready? Use Export selected character.')
-        _mksm_lines(box, 'Used Set up game textures above?')
-        box.operator('mksm.export_prepared', icon='EXPORT')
-        _mksm_lines(box, 'Exports the prepared body + game skeleton.',
-                    'Need the dragon or other skinned extras?',
-                    'Select prepared body AND those parts below.',
-                    'Or: set up materials yourself, then select',
-                    'the NEW body + every needed skinned extra.')
-        op = box.operator('mksm.export_replacement', text='Export selected character (.glb)', icon='EXPORT')
-        op.selected_only = True
-        selected = [o for o in context.selected_objects if o.type == 'MESH']
-        box.label(text=f'Selected mesh objects: {len(selected)}')
-        _mksm_lines(box, 'Do not select the old body as well.',
-                    'Save the GLB. No need to rename it to BIN.')
-        box = self.layout.box()
-        box.label(text='6. Back in MKSM Studio')
-        _mksm_lines(box, 'Choose the SAME original character + textures.',
-                    'Import character > 1. Choose character.',
-                    'Pick your GLB. Keep material images enabled.',
-                    'Review the model, textures and staged edits.',
-                    'Build ISO > save a NEW ISO > test in PCSX2.',
-                    'A good preview does not prove it works in game.')
+    bl_label='1. Retarget Character';bl_idname='MKSM_PT_character';bl_parent_id='MKSM_PT_bridge';bl_space_type='VIEW_3D';bl_region_type='UI';bl_category='MKSM'
+    def draw(self,context):
+        scene=context.scene;layout=self.layout
+        layout.prop(scene,'mksm_source_rig');layout.prop(scene,'mksm_target_rig')
+        layout.operator('mksm.match_bones',icon='ARMATURE_DATA')
+        if scene.mksm_bone_map:
+            missing=sum(not r.target_name for r in scene.mksm_bone_map)
+            layout.label(text=f'{len(scene.mksm_bone_map)-missing}/{len(scene.mksm_bone_map)} matched · {missing} to review',icon='ERROR' if missing else 'CHECKMARK')
+            layout.template_list('MKSM_UL_retarget_map','',scene,'mksm_bone_map',scene,'mksm_bone_map_index',rows=4)
+            if 0<=scene.mksm_bone_map_index<len(scene.mksm_bone_map):
+                row=scene.mksm_bone_map[scene.mksm_bone_map_index]
+                layout.prop(scene,'mksm_show_blend_map',text='Blend Two Game Bones',icon='TRIA_DOWN' if scene.mksm_show_blend_map else 'TRIA_RIGHT',emboss=False)
+                if scene.mksm_show_blend_map and scene.mksm_target_rig:
+                    layout.prop_search(row,'second_target',scene.mksm_target_rig.data,'bones',text='Second Bone')
+                    if row.second_target:layout.prop(row,'second_weight',text='Second Share')
+        layout.prop(scene,'mksm_retarget_fit')
+        layout.operator('mksm.retarget_preview',icon='MOD_ARMATURE')
+        row=layout.row(align=True);row.operator('mksm.retarget_report',text='Report',icon='TEXT');row.operator('mksm.retarget_discard',text='Discard',icon='TRASH')
+        _mksm_lines(layout,'Select source meshes. Match bones, then preview movement. Already on game rig? Skip this step.')
+
+
+class MKSM_PT_geometry(bpy.types.Panel):
+    bl_label='2. Reduce Geometry';bl_idname='MKSM_PT_geometry';bl_parent_id='MKSM_PT_bridge';bl_space_type='VIEW_3D';bl_region_type='UI';bl_category='MKSM';bl_options={'DEFAULT_CLOSED'}
+    def draw(self,context):
+        layout=self.layout;scene=context.scene
+        layout.prop(scene,'mksm_reduction_triangles',text='Triangle Budget')
+        layout.prop(scene,'mksm_reduction_deviation',text='Surface Change (%)')
+        layout.prop(scene,'mksm_reduction_weld',text='Reconnect Matching Seams')
+        layout.operator('mksm.reduce_preview',text='Create Reduction Preview',icon='MOD_DECIM')
+        row=layout.row(align=True);row.operator('mksm.reduce_report',text='Report',icon='TEXT');row.operator('mksm.reduce_discard',text='Discard',icon='TRASH')
+        _mksm_lines(layout,'Check silhouette and joints. Final game counts can be higher than Blender counts.')
+
+
+class MKSM_PT_materials(bpy.types.Panel):
+    bl_label='3. Prepare Textures';bl_idname='MKSM_PT_materials';bl_parent_id='MKSM_PT_bridge';bl_space_type='VIEW_3D';bl_region_type='UI';bl_category='MKSM';bl_options={'DEFAULT_CLOSED'}
+    def draw(self,context):
+        layout=self.layout
+        layout.prop(context.scene,'mksm_texture_count',text='Texture Slots (0 = Auto)')
+        layout.operator('mksm.prepare_textures',text='Prepare Game Textures',icon='TEXTURE')
+        layout.operator('mksm.prepare_report',text='Texture Report',icon='TEXT')
+        _mksm_lines(layout,'Select new body only. Keep required native extras separate. Already mapped? Skip.')
+
+
+class MKSM_PT_export_character(bpy.types.Panel):
+    bl_label='4. Check & Export';bl_idname='MKSM_PT_export_character';bl_parent_id='MKSM_PT_bridge';bl_space_type='VIEW_3D';bl_region_type='UI';bl_category='MKSM';bl_options={'DEFAULT_CLOSED'}
+    def draw(self,context):
+        layout=self.layout;scene=context.scene
+        layout.prop(scene,'mksm_auto_cleanup',text='Clean Weights on Export')
+        layout.prop(scene,'mksm_cleanup_max_loss',text='Max Weight Removed (%)')
+        layout.operator('mksm.cleanup_preview',text='Preview Weight Cleanup',icon='MOD_VERTEX_WEIGHT')
+        layout.operator('mksm.cleanup_report',text='Weight Report',icon='TEXT')
+        op=layout.operator('mksm.export_replacement',text='Export Selected Character (.glb)',icon='EXPORT');op.selected_only=True
+        layout.operator('mksm.export_prepared',text='Export Prepared Body (.glb)',icon='EXPORT')
+        _mksm_lines(layout,'Select new body + needed skinned extras. Check original head and spear/dragon parts in Studio. Import Character, then test in game.')
+
 
 class MKSM_PT_native(bpy.types.Panel):
     bl_label = 'Optional: game-format export (.mksmcharacter)'
@@ -1180,8 +1391,19 @@ class MKSM_PT_other(bpy.types.Panel):
                     'Changed length or keys? Use Blender timing.',
                     'Preview > Add animation to project > Build ISO.')
 
-classes=(MKSM_OT_reduce_preview,MKSM_OT_reduce_discard,MKSM_OT_reduce_report,MKSM_OT_cleanup_preview,MKSM_OT_cleanup_report,MKSM_OT_import,MKSM_OT_export,MKSM_OT_replacement,MKSM_OT_object,MKSM_OT_native_character,MKSM_OT_animation,MKSM_OT_prepare,MKSM_OT_prepare_textures,MKSM_OT_prepared_export,MKSM_OT_prepare_report,MKSM_OT_start_here,MKSM_PT_bridge,MKSM_PT_character,MKSM_PT_native,MKSM_PT_other)
+classes=(MKSM_RetargetMap,MKSM_UL_retarget_map,MKSM_OT_match_bones,MKSM_OT_retarget_preview,MKSM_OT_retarget_discard,MKSM_OT_retarget_report,MKSM_OT_reduce_preview,MKSM_OT_reduce_discard,MKSM_OT_reduce_report,MKSM_OT_cleanup_preview,MKSM_OT_cleanup_report,MKSM_OT_import,MKSM_OT_export,MKSM_OT_replacement,MKSM_OT_object,MKSM_OT_native_character,MKSM_OT_animation,MKSM_OT_prepare,MKSM_OT_prepare_textures,MKSM_OT_prepared_export,MKSM_OT_prepare_report,MKSM_OT_start_here,MKSM_PT_bridge,MKSM_PT_character,MKSM_PT_geometry,MKSM_PT_materials,MKSM_PT_export_character,MKSM_PT_native,MKSM_PT_other)
 def register():
+    # Register the PropertyGroup before the CollectionProperty references it.
+    bpy.utils.register_class(MKSM_RetargetMap)
+    bpy.types.Scene.mksm_source_rig = PointerProperty(name='Source Skeleton', type=bpy.types.Object, poll=lambda self,obj:obj.type=='ARMATURE')
+    bpy.types.Scene.mksm_target_rig = PointerProperty(name='Game Skeleton', type=bpy.types.Object, poll=lambda self,obj:obj.type=='ARMATURE' and bool(obj.get('mksm_source_sha256')))
+    bpy.types.Scene.mksm_bone_map = CollectionProperty(type=MKSM_RetargetMap)
+    bpy.types.Scene.mksm_bone_map_index = IntProperty(default=0)
+    bpy.types.Scene.mksm_map_source = StringProperty()
+    bpy.types.Scene.mksm_map_target = StringProperty()
+    bpy.types.Scene.mksm_retarget_fit = BoolProperty(name='Fit Proportions', description='Optional joint-guided fitting for similarly aligned rest poses. Creates preview copies. Disable if you fitted the model manually. Check joints and overlapping clothing', default=False)
+    bpy.types.Scene.mksm_show_blend_map = BoolProperty(default=False)
+    bpy.types.Scene.mksm_retarget_report = StringProperty()
     bpy.types.Scene.mksm_reduction_triangles = IntProperty(name='Triangle budget (selected meshes)', description='Combined target across selected replacement meshes. Native batching and UV seams can add exported vertices; verify final counts in Studio', default=4000, min=4, max=1000000)
     bpy.types.Scene.mksm_reduction_deviation = FloatProperty(name='Allowed surface change (%)', description='Reject if sampled bidirectional vertex/face-center distance exceeds this fraction of the source bounding-box diagonal. Not a guarantee for animation or textures', default=1.0, min=0.01, max=25, precision=2)
     bpy.types.Scene.mksm_reduction_weld = BoolProperty(name='Reconnect equal-weight seams', description='Optional: weld effectively coincident vertices only when bone weights agree. UV/material boundaries remain per face corner. Inspect seams after reduction', default=False)
@@ -1193,11 +1415,14 @@ def register():
     bpy.types.Scene.mksm_template_glb = StringProperty(name='Destination Studio GLB', subtype='FILE_PATH')
     bpy.types.Scene.mksm_prepared_id = StringProperty()
     bpy.types.Scene.mksm_prepare_report = StringProperty()
-    for cls in classes:bpy.utils.register_class(cls)
+    for cls in classes:
+        if cls != MKSM_RetargetMap: bpy.utils.register_class(cls)
     bpy.types.Scene.mksm_animation_manifest = StringProperty(name='Animation source manifest', subtype='FILE_PATH')
     bpy.types.Scene.mksm_studio_exe = StringProperty(name='Studio application', subtype='FILE_PATH', description='MKSM Studio.exe compiles native PME2 and game texture data')
     bpy.types.Scene.mksm_native_source = StringProperty(name='Untouched game model (.original.pme2)', subtype='FILE_PATH', description='Choose the ORIGINAL Shaolin Monks .original.pme2 saved by Studio. Not your replacement GLB, BIN, or Blender file. Keep the matching textures companion beside it.')
 def unregister():
+    for name in ('mksm_source_rig','mksm_target_rig','mksm_bone_map','mksm_bone_map_index','mksm_map_source','mksm_map_target','mksm_retarget_fit','mksm_show_blend_map','mksm_retarget_report'):
+        delattr(bpy.types.Scene,name)
     del bpy.types.Scene.mksm_reduction_triangles
     del bpy.types.Scene.mksm_reduction_deviation
     del bpy.types.Scene.mksm_reduction_weld
