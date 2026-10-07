@@ -1,3 +1,11 @@
+## Studio 0.27.14
+
+- Fixed blank Workshop cards after resizing, scrolling and refreshing. Divider dragging previews the new width; cards reflow when released. The model camera stays steady.
+- Workshop checks for new listings in the background after opening it: every 30 seconds signed in, every 2 minutes as a guest. Failed requests retain the library and back off. Selection, scroll anchor and unchanged previews survive refresh. Download totals refresh separately every 5 minutes, or on manual Refresh.
+- Announcements check at startup, on returning to the app and every 10 seconds. Publishing updates the publisher's view immediately. GitHub caching and network conditions can still delay other clients; older Studio versions retain their old intervals. Messages remain once-per-publication and can be reopened.
+- Background SFD/movie is off by default, including a one-time reset of the old default. The dragon and particles remain. Enable video in Settings if desired. Disabled media releases its decoder; muted menu music is not opened.
+- Character replacement adds **Original head / hat / attachments…**. Explicitly hide unwanted original rigid parts while retaining skeleton and skinned surfaces. Selection persists in GLB/package exports and can be changed. Review the preview and test in game; this does not claim to fix every head texture or unsupported attachment.
+
 # Community Workshop
 
 [Home](../README.md) · [Characters](CHARACTER_START_HERE.md)
@@ -59,7 +67,7 @@ Use **Create / Upload Mod Pack** to share several mapped replacements. With your
 
 In the private source build, OG Midway's verified owner account can use **Publish Announcement** in the sidebar. Choose Message of the Day or Patch Notes, type a title and message, preview it, then **Publish to All Builds**. Other accounts cannot publish. The public build has no publisher control.
 
-New messages display once on the next launch, or within two minutes while the app is active and no editing dialog is open. Close the message after reading; its ID is saved. The sidebar button remains available to review it. Offline checks never block editing. A newer publication replaces the current announcement and gets a new notification ID.
+New messages display once on the next launch, or normally within 10 seconds (network and GitHub caching can delay delivery) while the app is active and no editing dialog is open. Close the message after reading; its ID is saved. The sidebar button remains available to review it. Offline checks never block editing. A newer publication replaces the current announcement and gets a new notification ID.
 
 Use arrow keys to scroll message text, Enter or Space on Continue to dismiss, and Esc to go back. Settings uses Tab/Shift+Tab to move, Space to activate the focused control, and Enter to save.
 

@@ -34,7 +34,9 @@ You do not need to mount or unpack the ISO to begin. You do need your own game f
 
 This is an independent, experimental modding tool. The best-tested workflows use the researched **USA PS2 revision**. Support for one resource or revision does not establish support for every version of the game.
 
-## 2. Current release: 0.27.13
+## 2. Current release: 0.27.14
+
+**Workshop stability and faster announcements.** Background listing checks retain your selection and preview; divider resizing no longer continually resets the model camera. [Patch notes](CHANGELOG.md) · [Windows, handheld and experimental Winlator options](docs/PLATFORMS.md).
 
 **New: saved-project Workshop sharing and experimental native-size SFD movie import.** Open Movies & Cutscenes, export the original movie, check an already-created replacement SFD, then stage/save/build it. FFmpeg and ffprobe are required for import checks. Native game playback remains unverified. [Movie guide](docs/MOVIES.md).
 
@@ -42,7 +44,7 @@ Clean red-and-black interface, integrated title bar, GitHub avatar, refreshed Wo
 
 **Community Workshop:** opens inside the main Studio workspace. Use Home to return to the start page; returning to Workshop preserves search, sorting, selection and scroll position. Browse character replacements, download their files, follow updates for version comparisons on refresh, and publish your own native character packages through GitHub. Creator uploads appear without an approval queue. OGmidway's authenticated owner account can remove any listing; other creators manage only their own. [Workshop guide](docs/COMMUNITY_WORKSHOP.md).
 
-**Opening movie included:** the converted opening movie is bundled and starts on first launch. The default movie needs no ISO extraction or FFmpeg. Saved off/volume choices are preserved; selecting another movie previews it immediately.
+**Background movie is off by default:** the dragon and particles remain visible. Version 0.27.14 turns the previous video default off once; you can enable it again in Settings. Disabled video releases its decoder. The optional bundled movie needs no ISO extraction or FFmpeg.
 
 **An archive-focused MKSM interface:** aged-metal frames, bundled MK4 title lettering, responsive archive cards and automatic scaling on large windows. Home is available from the left navigation and the library. Instructions and file details keep a readable standard font.
 

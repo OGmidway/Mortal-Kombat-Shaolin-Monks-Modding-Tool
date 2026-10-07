@@ -1,3 +1,17 @@
+# MKSM Studio 0.27.14 — Workshop stability and faster announcements
+
+- Fixed blank Workshop cards after resizing, scrolling and refreshing. Divider dragging previews the new width; cards reflow when released. The model camera stays steady.
+- Workshop checks for new listings in the background after opening it: every 30 seconds signed in, every 2 minutes as a guest. Failed requests retain the library and back off. Selection, scroll anchor and unchanged previews survive refresh. Download totals refresh separately every 5 minutes, or on manual Refresh.
+- Announcements check at startup, on returning to the app and every 10 seconds. Publishing updates the publisher's view immediately. GitHub caching and network conditions can still delay other clients; older Studio versions retain their old intervals. Messages remain once-per-publication and can be reopened.
+- Background SFD/movie is off by default, including a one-time reset of the old default. The dragon and particles remain. Enable video in Settings if desired. Disabled media releases its decoder; muted menu music is not opened.
+- Character replacement adds **Original head / hat / attachments…**. Explicitly hide unwanted original rigid parts while retaining skeleton and skinned surfaces. Selection persists in GLB/package exports and can be changed. Review the preview and test in game; this does not claim to fix every head texture or unsupported attachment.
+- Separate experimental extracted Windows x64 package and low-power/software-rendering launchers for portable/Winlator testing. Windows handhelds use the Windows build. No native Android build; Winlator/ARM compatibility and performance are unverified.
+- Public and private-source updates retain separate signed channels. Blender bridge is unchanged.
+
+Validation: both builds compile; 140 resize/refresh cycles with 2,000 listings; shrinking/empty lists; unchanged preview retention; mocked live polling, no overlapping fetch, offline retention/backoff; native Scorpion attachment suppression/restoration, skeleton preservation and saved-package roundtrip; media defaults and explicit opt-in. No new in-game compatibility claim.
+
+---
+
 # MKSM Studio 0.27.13 — Experimental SFD Movie Import
 
 - **Movies & Cutscenes:** inventory and export the original SFD movies directly from your ISO.

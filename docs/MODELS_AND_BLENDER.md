@@ -117,3 +117,8 @@ This workflow imports new texture artwork and UV mapping; it does not provide ge
 ## Weapons and rigid objects
 
 Use **Import weapon / object…** for supported unskinned type-0 models. Blender Bridge **0.23 and later** has **Save Weapon / Object for Studio**. This path can rebuild topology without a character armature, or copy an existing game model and its textures. See [Weapons and objects](WEAPONS_AND_OBJECTS.md) for the 0443-over-0121 workflow and current limits.
+
+
+## Original attachments in 0.27.14
+
+In the replacement review, choose **Original head / hat / attachments…**. Check only original rigid parts that your new mesh replaces. Leave required weapons and other parts unchecked. The choice persists in exported packages. Preview and test in game; unsupported/skinned attachments are not automatically removed.

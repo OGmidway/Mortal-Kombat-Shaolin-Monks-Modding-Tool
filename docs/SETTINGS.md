@@ -1,3 +1,11 @@
+## Studio 0.27.14
+
+- Fixed blank Workshop cards after resizing, scrolling and refreshing. Divider dragging previews the new width; cards reflow when released. The model camera stays steady.
+- Workshop checks for new listings in the background after opening it: every 30 seconds signed in, every 2 minutes as a guest. Failed requests retain the library and back off. Selection, scroll anchor and unchanged previews survive refresh. Download totals refresh separately every 5 minutes, or on manual Refresh.
+- Announcements check at startup, on returning to the app and every 10 seconds. Publishing updates the publisher's view immediately. GitHub caching and network conditions can still delay other clients; older Studio versions retain their old intervals. Messages remain once-per-publication and can be reopened.
+- Background SFD/movie is off by default, including a one-time reset of the old default. The dragon and particles remain. Enable video in Settings if desired. Disabled media releases its decoder; muted menu music is not opened.
+- Character replacement adds **Original head / hat / attachments…**. Explicitly hide unwanted original rigid parts while retaining skeleton and skinned surfaces. Selection persists in GLB/package exports and can be changed. Review the preview and test in game; this does not claim to fix every head texture or unsupported attachment.
+
 # Settings and the new home screen
 
 [Home](../README.md) · [Updates](UPDATES_AND_HELP.md)
@@ -20,7 +28,7 @@
 
 ## Opening movie
 
-The converted opening movie is included and starts automatically on a fresh launch. A missing previous movie path falls back to that bundled default. You can still prepare `Front/Movies/opening.sfd` from your own game folder or ISO. Conversion uses a local FFmpeg executable and runs outside the UI thread. If FFmpeg is missing, use **Choose FFmpeg converter**, then **Choose background movie** and select the SFD. You can also choose an MP4 or WMV directly. [FFmpeg's official download page](https://ffmpeg.org/download.html) links Windows builds. FFmpeg is a separate optional dependency, not included in Studio's EXE or updater.
+The converted opening movie is included but disabled by default. Enable background video explicitly to play it. A missing previous movie path falls back to that bundled default. You can still prepare `Front/Movies/opening.sfd` from your own game folder or ISO. Conversion uses a local FFmpeg executable and runs outside the UI thread. If FFmpeg is missing, use **Choose FFmpeg converter**, then **Choose background movie** and select the SFD. You can also choose an MP4 or WMV directly. [FFmpeg's official download page](https://ffmpeg.org/download.html) links Windows builds. FFmpeg is a separate optional dependency, not included in Studio's EXE or updater.
 
 Converted video is cached locally. The original game file stays unchanged. Choose **Opening movie audio** to hear its soundtrack, including with the video picture disabled. Only one background audio source plays at a time. Playback depends on Windows media support; if video cannot play, the dragon background remains usable.
 
