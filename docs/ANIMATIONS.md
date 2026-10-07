@@ -1,3 +1,7 @@
+## Studio 0.27.15 preview timing
+
+Animation Lab previews use a fixed 60 FPS clock, independent of the Export/import FPS selector. The selector retains its previous 30 FPS default and controls file transfer timing only. Actual rendering depends on hardware and workload. Existing saved animations are not rewritten.
+
 # Animation Lab
 
 [Home](../README.md) · [Godot 4](GODOT.md) · [Blender setup](MODELS_AND_BLENDER.md) · [Validation](VALIDATION.md) · [Roadmap](ROADMAP.md)

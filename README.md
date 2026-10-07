@@ -34,7 +34,9 @@ You do not need to mount or unpack the ISO to begin. You do need your own game f
 
 This is an independent, experimental modding tool. The best-tested workflows use the researched **USA PS2 revision**. Support for one resource or revision does not establish support for every version of the game.
 
-## 2. Current release: 0.27.14
+## 2. Current release: 0.27.15
+
+**Animation previews are fixed at 60 FPS.** Export/import FPS remains a separate setting. Actual rendering performance depends on hardware.
 
 **Workshop stability and faster announcements.** Background listing checks retain your selection and preview; divider resizing no longer continually resets the model camera. [Patch notes](CHANGELOG.md) · [Windows, handheld and experimental Winlator options](docs/PLATFORMS.md).
 

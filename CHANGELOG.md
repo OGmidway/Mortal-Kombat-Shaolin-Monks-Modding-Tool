@@ -1,3 +1,13 @@
+# MKSM Studio 0.27.15 — 60 FPS animation preview
+
+Animation Lab preview playback now uses a fixed 60 FPS clock and targets 60 refreshes per second. The preview stays at 60 FPS when an animation is selected, another bank is loaded, or export/import FPS is changed.
+
+The separate **Export/import FPS** selector retains its existing values and 30 FPS default. Existing GLB export and import timing is unchanged; this patch does not retime saved animation data. Actual rendered frame rate depends on hardware and load.
+
+Includes the 0.27.14 Workshop stability, live-refresh and media-default fixes. Blender bridge 0.26.0 is retained. Experimental portable/Winlator compatibility remains unverified.
+
+---
+
 # MKSM Studio 0.27.14 — Workshop stability and faster announcements
 
 - Fixed blank Workshop cards after resizing, scrolling and refreshing. Divider dragging previews the new width; cards reflow when released. The model camera stays steady.
