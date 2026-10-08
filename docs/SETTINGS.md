@@ -1,3 +1,7 @@
+## Discord activity in 0.27.16
+
+**Application > Show MKSM Studio activity in Discord** is enabled by default. It connects locally to Discord desktop and shares only Studio branding. Disable it to clear the activity. Discord must be running and its own Activity Privacy setting must allow sharing. No bot or Discord credentials are required. Connection failures do not block Studio; it retries in the background. Android/Winlator presence is unverified.
+
 ## Studio 0.27.14
 
 - Fixed blank Workshop cards after resizing, scrolling and refreshing. Divider dragging previews the new width; cards reflow when released. The model camera stays steady.

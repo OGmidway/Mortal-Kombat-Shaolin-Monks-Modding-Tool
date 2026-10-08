@@ -1,3 +1,15 @@
+# MKSM Studio 0.27.16 — Discord activity and multi-file Workshop uploads
+
+- Discord Rich Presence shows MKSM Studio and its crimson dragon artwork while Studio is open. Requires Discord desktop, Activity Privacy enabled, and the application's `mksm_studio` art asset. Settings > Application > Show MKSM Studio activity in Discord turns sharing off. Presence contains generic Studio branding, never file paths, project names or game data. No bot token or Discord login is stored by Studio.
+- Upload Mod / Files accepts multiple mods at once. The publish form also has Add Related Files and Remove Selected Related File, so a mod or existing mod pack can include textures, readmes, audio, images and other supported companions.
+- One listing delivers one ZIP containing every selected file. Download Files also extracts a verified Files folder. Files retain their names and contents; duplicate filenames are rejected. Up to 100 files, 200 MB compressed, 384 MB unpacked. Saved projects are converted to supported mod packs before sharing.
+- File collections do not automatically merge or apply mods. Open an included mod pack normally to review destination IDs and apply it. Existing single-file uploads and direct mod-pack installation remain available. Attach all required files again for each new version. Collections require Studio 0.27.16 or newer.
+- Fixed 60 FPS animation preview and Blender bridge 0.26.0 are retained. Portable/Winlator builds remain experimental; Discord presence was tested with Windows desktop Discord, not Android.
+
+Validation: public/private builds; bundle byte-for-byte extraction, malformed/checksum/path and duplicate-file rejection; schema validation; local Discord protocol handshake, activity, ping and clearing; live Discord desktop acknowledged the configured application and test activity was cleared afterward. No live Workshop test listing was published.
+
+---
+
 # MKSM Studio 0.27.15 — 60 FPS animation preview
 
 Animation Lab preview playback now uses a fixed 60 FPS clock and targets 60 refreshes per second. The preview stays at 60 FPS when an animation is selected, another bank is loaded, or export/import FPS is changed.

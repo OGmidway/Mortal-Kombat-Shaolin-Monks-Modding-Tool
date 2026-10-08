@@ -2,9 +2,9 @@
 
 | Device | Download | Status |
 |---|---|---|
-| Windows x64 desktop/laptop | `MKSM-Studio-0.27.15-win-x64.zip` or EXE | Primary Windows build |
+| Windows x64 desktop/laptop | `MKSM-Studio-0.27.16-win-x64.zip` or EXE | Primary Windows build |
 | Windows x64 handheld | Same Windows build; use Settings > Low-Power Visuals | Desktop interface; keyboard/mouse or equivalent input needed |
-| Android with Winlator | `MKSM-Studio-0.27.15-portable-experimental-win-x64.zip` | Experimental Windows compatibility test, **not verified on Android** |
+| Android with Winlator | `MKSM-Studio-0.27.16-portable-experimental-win-x64.zip` | Experimental Windows compatibility test, **not verified on Android** |
 | Windows ARM | x64 build through Windows emulation | Untested |
 | Native Android/iOS/Linux | None | No native build |
 

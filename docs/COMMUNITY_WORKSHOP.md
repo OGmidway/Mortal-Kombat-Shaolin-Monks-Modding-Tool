@@ -1,3 +1,7 @@
+## Related files in 0.27.16
+
+Choose **Upload Mod / Files**, select multiple mods, or choose **Add Related Files** in the publish form. Review the filenames before publishing. A collection downloads as `files.zip`; Studio also extracts its verified contents to a new `Files` folder. Existing packs inside it keep their destination data but are applied separately. The bundle is a download collection, not a combined installation plan. Include all required companions again for new versions. Duplicate filenames must be renamed first. Maximum 100 files, 200 MB compressed, 384 MB unpacked. Supported companions: native BIN/PME2, GLB, character/pack files, PNG/JPG/DDS/TGA, TXT/MD, WAV/ADX and SFD. Saved projects are converted to compatible packs.
+
 ## Studio 0.27.14
 
 - Fixed blank Workshop cards after resizing, scrolling and refreshing. Divider dragging previews the new width; cards reflow when released. The model camera stays steady.

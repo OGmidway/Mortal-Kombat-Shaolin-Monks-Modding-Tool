@@ -34,7 +34,9 @@ You do not need to mount or unpack the ISO to begin. You do need your own game f
 
 This is an independent, experimental modding tool. The best-tested workflows use the researched **USA PS2 revision**. Support for one resource or revision does not establish support for every version of the game.
 
-## 2. Current release: 0.27.15
+## 2. Current release: 0.27.16
+
+**Discord activity and multi-file Workshop uploads.** Show Studio in Discord, and publish a mod or pack with all its related files in one download. [Patch notes](CHANGELOG.md).
 
 **Animation previews are fixed at 60 FPS.** Export/import FPS remains a separate setting. Actual rendering performance depends on hardware.
 
