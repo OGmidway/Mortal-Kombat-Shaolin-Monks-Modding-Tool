@@ -16,4 +16,4 @@ The current patch definitions recognize two exact recomp builds and their suppor
 
 Use Studio's model, texture and supported audio replacement workflows, then **Build Game ISO** to create a separate modded Xbox ISO. Asset compatibility still depends on the native format and game revision. The experimental **Patch Xbox ISO** recipe changes Xbox executable instructions on disc; it is not a substitute for patching a recomp's precompiled Windows code. PS2 PNACH codes are not automatically portable to Xbox.
 
-Public Studio does not include the private Export Game Data feature or its research-reader module. No game files are included with Studio.
+No game files are included with Studio.

@@ -1,14 +1,13 @@
-# MKSM Studio 0.27.16 — Discord activity and multi-file Workshop uploads
+# MKSM Studio release notes
 
-## 0.28.2 — Public build correction and Xbox recomp patches
+## 0.28.2 — Xbox recomp patches
 
-- Removed public 0.28.1 and its downloads. Replace it with 0.28.2.
-- Public builds exclude the private Export Game Data UI, CLI and research readers at compile time. A mandatory compiled-assembly check prevents their accidental inclusion.
 - Xbox Recomp Patches: disable HDR and/or reduce glossy reflections in supported recomp EXEs, save a separate copy, preserve unrelated modifications, and restore these settings into a new copy. Shared materials can affect scenery. Combined preset tested on Scorpion; not a complete gameplay regression.
 - Xbox ISO building supports eligible model, texture and sound replacements. Rendering patches target the recomp EXE and need no ISO rebuild.
 - Public 0.27.16 requires a one-time manual upgrade due to its older update signing key.
-- Both release manifests are signed; package and uploaded-asset hashes verified. Recomp patch engine passed 37 checks.
+- Release signatures and package hashes verified. Recomp patch engine passed 37 checks.
 
+## 0.27.16 — Discord activity and multi-file Workshop uploads
 
 - Discord Rich Presence shows MKSM Studio and its crimson dragon artwork while Studio is open. Requires Discord desktop, Activity Privacy enabled, and the application's `mksm_studio` art asset. Settings > Application > Show MKSM Studio activity in Discord turns sharing off. Presence contains generic Studio branding, never file paths, project names or game data. No bot token or Discord login is stored by Studio.
 - Upload Mod / Files accepts multiple mods at once. The publish form also has Add Related Files and Remove Selected Related File, so a mod or existing mod pack can include textures, readmes, audio, images and other supported companions.

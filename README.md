@@ -40,7 +40,7 @@ This is an independent, experimental modding tool. The best-tested workflows use
 
 Both rendering options together reproduce the Scorpion preset tested in-game by OG Midway. Reflection changes can also affect scenery; this is not a character-only effect or a full-game compatibility guarantee. PS2 PNACH codes are not automatically translated to Xbox or recomp patches.
 
-**Public 0.28.1 was withdrawn. Use 0.28.2.** Public builds exclude the private Export Game Data feature and its research exporter code. Public 0.27.16 users need one manual download because that version trusts an older update signing key. [Download 0.28.2](https://github.com/OGmidway/Mortal-Kombat-Shaolin-Monks-Modding-Tool/releases/tag/v0.28.2).
+**Use the latest release.** Version 0.27.16 users need a one-time manual download to upgrade. [Download 0.28.2](https://github.com/OGmidway/Mortal-Kombat-Shaolin-Monks-Modding-Tool/releases/tag/v0.28.2).
 
 ### Also included
 
@@ -154,7 +154,7 @@ See the [full checklist](docs/FEATURES.md) for individual controls and supported
 
 ## 6. Previous builds and version history
 
-**[Browse Previous Builds](docs/PREVIOUS_BUILDS.md)** for older Windows downloads, their release notes and known reasons to prefer the current version. Published files generally remain in their original GitHub releases; withdrawn releases such as public 0.28.1 are removed; the archive index is refreshed during release packaging. The newest stable release remains the target of **Check for updates**.
+**[Browse Previous Builds](docs/PREVIOUS_BUILDS.md)** for older Windows downloads, their release notes and known reasons to prefer the current version. Available downloads and release notes are listed in the archive index. The newest stable release remains the target of **Check for updates**.
 
 Older builds are for comparison/recovery. They can lack later native-format fixes. Extract an older ZIP into a separate folder and keep backups of your projects. Local updater cleanup removes generated backup EXEs after a successful update; it does not remove the GitHub build archive.
 
