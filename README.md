@@ -6,7 +6,7 @@
 
 **MKSM Studio — by OG Midway**
 
-<sub>Contributors: RelaxDirk · Z mods</sub>
+<sub>Contributors: RelaxDirk · Z mods · ChatGPT / Codex (AI assistance)</sub>
 
 Explore the game. Work with its characters and animations. Build a separate modded ISO to test your changes.
 
@@ -28,13 +28,21 @@ Modding percentages count six explicit validation milestones. Engine reconstruct
 
 ## 1. What is MKSM Studio?
 
-MKSM Studio is a Windows application for researching and modifying **Mortal Kombat: Shaolin Monks for PlayStation 2**. Open your own game ISO directly, browse supported resources, preview textured characters and their original skeletons, play native animations, export rigged GLB data for Blender and compatible 3D tools/engines, and collect supported edits in a project. Build ISO writes a **new ISO** and can launch it in PCSX2.
+MKSM Studio is a Windows application for researching and modifying **Mortal Kombat: Shaolin Monks for PlayStation 2 and Xbox**. Open your own game ISO directly, browse supported resources, preview textured characters and their original skeletons, play native animations, export rigged GLB data for Blender and compatible 3D tools/engines, and collect supported edits in a project. Build ISO writes a **new ISO** with supported replacement models, textures and audio. PS2 builds can optionally launch in PCSX2. Xbox recomp rendering patches are applied separately to a supported Windows recomp EXE.
 
 You do not need to mount or unpack the ISO to begin. You do need your own game files. The download does not contain the game, a BIOS, character assets, or an emulator.
 
 This is an independent, experimental modding tool. The best-tested workflows use the researched **USA PS2 revision**. Support for one resource or revision does not establish support for every version of the game.
 
-## 2. Current release: 0.27.16
+## 2. Current release: 0.28.2
+
+**Now supports Xbox workflows and supported Xbox recomp builds.** Build a separate modded Xbox ISO with supported replacement models, textures and sounds. For rendering changes, open **Home → Xbox Recomp Patches**, select a supported recomp EXE, review compatibility, choose **Disable HDR** and/or **Reduce glossy reflections**, and save a new EXE. These EXE patches need no ISO rebuild. The original stays untouched; unknown builds are refused.
+
+Both rendering options together reproduce the Scorpion preset tested in-game by OG Midway. Reflection changes can also affect scenery; this is not a character-only effect or a full-game compatibility guarantee. PS2 PNACH codes are not automatically translated to Xbox or recomp patches.
+
+**Public 0.28.1 was withdrawn. Use 0.28.2.** Public builds exclude the private Export Game Data feature and its research exporter code. Public 0.27.16 users need one manual download because that version trusts an older update signing key. [Download 0.28.2](https://github.com/OGmidway/Mortal-Kombat-Shaolin-Monks-Modding-Tool/releases/tag/v0.28.2).
+
+### Also included
 
 **Discord activity and multi-file Workshop uploads.** Show Studio in Discord, and publish a mod or pack with all its related files in one download. [Patch notes](CHANGELOG.md).
 
@@ -62,9 +70,9 @@ Custom **SFD conversion requires FFmpeg**; MP4/WMV can be selected directly. The
 
 **Character memory fixes remain experimental research, not enabled in this release.** A successful Studio preview does not guarantee an oversized replacement will load in game. [Verified findings and remaining work](docs/ENGINE_RESEARCH.md).
 
-### Existing Blender workflow (Bridge 0.25.2)
+### Existing Blender workflow
 
-**New to character swaps? [Start with the simple Blender guide](docs/CHARACTER_START_HERE.md).** [Blender Bridge 0.25.2](https://github.com/OGmidway/Mortal-Kombat-Shaolin-Monks-Modding-Tool/releases/download/v0.27.13/MKSM-Blender-Bridge-0.25.2.zip) adds **Set up game textures (keep more detail)**. Automatic mode uses multiple original slots; choose two or three atlases if you want fewer textures. Original weights stay unchanged, and textures used by kept native meshes are protected. Install the add-on separately; The application is now 0.27.13.
+**New to character swaps? [Start with the simple Blender guide](docs/CHARACTER_START_HERE.md).** [Blender Bridge 0.25.2](https://github.com/OGmidway/Mortal-Kombat-Shaolin-Monks-Modding-Tool/releases/download/v0.27.13/MKSM-Blender-Bridge-0.25.2.zip) adds **Set up game textures (keep more detail)**. Automatic mode uses multiple original slots; choose two or three atlases if you want fewer textures. Original weights stay unchanged, and textures used by kept native meshes are protected. Install the add-on separately; see the Bridge 0.26.0 section below for its newer retargeting workflow.
 
 **New in Bridge 0.25.1:** optional **Clean weights on export**, plus **Preview cleaned weights on a copy** and a weight-change report. This handles triangles that touch more than three bones after topology changes. Originals stay untouched. A per-vertex removal limit prevents unexpectedly large changes; default 25%. This does not fix or bypass game memory limits. [Cleanup steps](docs/CHARACTER_START_HERE.md#reduced-polygons-or-changed-geometry).
 
@@ -79,12 +87,12 @@ The weapon/object visibility fix, hex transfer, animation imports and character 
 ## 3. Download and open
 
 1. Open **[Releases](https://github.com/OGmidway/Mortal-Kombat-Shaolin-Monks-Modding-Tool/releases/latest)**.
-2. Download **MKSM-Studio-0.27.13-win-x64.zip** (or the newest equivalent Windows ZIP).
+2. Download **MKSM-Studio-0.28.2-win-x64.zip** (or the newest equivalent Windows ZIP).
 3. Extract the entire ZIP into a regular folder you can write to, such as `Documents/MKSM Studio`. Do not run it from inside the ZIP.
 4. Double-click **MKSM Studio.exe**, recognizable by its black/crimson dragon icon.
-5. Click **Open game ISO** and select your Shaolin Monks PS2 ISO.
+5. Click **Open game ISO** and select your Shaolin Monks PS2 or Xbox ISO.
 
-The Windows x64 runtime is included. Blender and PCSX2 are optional, separate applications. Download **MKSM-Blender-Bridge-0.25.1.zip** separately for the Blender editing workflow.
+The Windows x64 runtime is included. Blender and PCSX2 are optional, separate applications. Download the **Blender Bridge 0.26.0** separately for the Blender editing workflow.
 
 **Use the Windows download under release Assets.** GitHub's automatic **Source code (zip/tar.gz)** downloads contain this documentation repository, not the application.
 
@@ -92,6 +100,7 @@ The Windows x64 runtime is included. Blender and PCSX2 are optional, separate ap
 
 | I want to… | Start here |
 |---|---|
+| Patch supported Xbox recomp rendering settings | [Xbox recomp patches](docs/XBOX_RECOMP_PATCHES.md) |
 | Follow simple steps to put a new character in-game | [Character swaps: start here](docs/CHARACTER_START_HERE.md) |
 | Learn the interface and camera controls | [Getting started](docs/GETTING_STARTED.md) |
 | See what works now | [Feature checklist](docs/FEATURES.md) |
@@ -145,7 +154,7 @@ See the [full checklist](docs/FEATURES.md) for individual controls and supported
 
 ## 6. Previous builds and version history
 
-**[Browse Previous Builds](docs/PREVIOUS_BUILDS.md)** for older Windows downloads, their release notes and known reasons to prefer the current version. Published files stay in their original GitHub releases; the archive index is refreshed during release packaging. The newest stable release remains the target of **Check for updates**.
+**[Browse Previous Builds](docs/PREVIOUS_BUILDS.md)** for older Windows downloads, their release notes and known reasons to prefer the current version. Published files generally remain in their original GitHub releases; withdrawn releases such as public 0.28.1 are removed; the archive index is refreshed during release packaging. The newest stable release remains the target of **Check for updates**.
 
 Older builds are for comparison/recovery. They can lack later native-format fixes. Extract an older ZIP into a separate folder and keep backups of your projects. Local updater cleanup removes generated backup EXEs after a successful update; it does not remove the GitHub build archive.
 
@@ -157,7 +166,7 @@ This public repository contains documentation and release downloads. **The main 
 
 ## 8. Credits and support
 
-**Author: OG Midway.** Contributors: RelaxDirk and Z mods. See [Credits and notices](docs/CREDITS.md) for research references, runtime licenses and dragon artwork attribution.
+**Author: OG Midway.** Contributors: RelaxDirk and Z mods. **AI assistance: ChatGPT / Codex.** See [Credits and notices](docs/CREDITS.md) for research references, runtime licenses and dragon artwork attribution.
 
 For a useful bug report, include the tool version, game region/revision, resource ID, steps to reproduce, and exact error. Share a screenshot or text report where helpful; do not upload an ISO, BIOS or extracted game archive. See [support details](docs/UPDATES_AND_HELP.md#reporting-a-problem).
 
@@ -183,4 +192,4 @@ Studio 0.27.13 integrates Community Workshop into the main window. Shared GitHub
 
 [Download the bridge](https://github.com/OGmidway/Mortal-Kombat-Shaolin-Monks-Modding-Tool/releases/tag/bridge-v0.26.0) · [Character workflow](docs/CHARACTER_START_HERE.md)
 
-Retarget authored character weights with editable bone matches and reversible previews. Optional proportion fitting requires aligned rest poses. Compact steps cover retargeting, geometry reduction, textures and export. Tested in Blender 4.2.22 and 5.2.2; game playback and character-specific attachment handling still require validation. Install the Blender add-on separately; Studio remains on its existing update channel.
+Retarget authored character weights with editable bone matches and reversible previews. Optional proportion fitting requires aligned rest poses. Compact steps cover retargeting, geometry reduction, textures and export. Tested in Blender 4.2.22 and 5.2.2; game playback and character-specific attachment handling still require validation. Install the Blender add-on separately; Studio and the bridge retain separate version numbers and downloads.
