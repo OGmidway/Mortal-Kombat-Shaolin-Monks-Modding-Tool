@@ -1,5 +1,15 @@
 # MKSM Studio release notes
 
+## 0.28.3 — Workshop and update fixes
+
+- Fixed public Workshop access being blocked by the update check.
+- Restored public update checking, downloading and installation entry points.
+- Fixed Studio executable recognition during update verification.
+- Refreshed release documentation and in-app patch notes.
+- Public 0.28.2 and earlier need a manual upgrade to this release.
+
+Validation: live version checks and all 29 Workshop listings loaded in both channels; builds and package checks passed. Automatic installation has not been tested end to end.
+
 ## 0.28.2 — Xbox recomp patches
 
 - Xbox Recomp Patches: disable HDR and/or reduce glossy reflections in supported recomp EXEs, save a separate copy, preserve unrelated modifications, and restore these settings into a new copy. Shared materials can affect scenery. Combined preset tested on Scorpion; not a complete gameplay regression.
