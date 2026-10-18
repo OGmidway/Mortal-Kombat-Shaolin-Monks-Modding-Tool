@@ -1,5 +1,14 @@
 # MKSM Studio release notes
 
+## 0.28.4 — Xbox Workshop model imports
+
+- Compatible GLBs use cross-version conversion when imported or prepared for Workshop upload.
+- Fixed grouped-model matching when repeated native rigs share one exported armature.
+- Bone, bind-pose, material and native draw-batch checks remain enforced. Select the corresponding destination model and texture set; IDs can differ across platforms.
+- Includes 0.28.3 Workshop/update fixes. Public 0.28.2 and earlier need a manual upgrade.
+
+Validation: 47 checks on a Workshop model from PS2 6772 to Xbox 6914, including unchanged geometry/UV/image buffers, preserved skeletons, package loading, reverse conversion and invalid-input rejection. Compiles to 4,082 triangles with four texture images. In-game playback and every Workshop listing remain unverified.
+
 ## 0.28.3 — Workshop and update fixes
 
 - Fixed public Workshop access being blocked by the update check.

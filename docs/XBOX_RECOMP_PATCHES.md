@@ -1,6 +1,6 @@
 # Xbox recomp patches
 
-[Home](../README.md) · [Download Studio 0.28.3](https://github.com/OGmidway/Mortal-Kombat-Shaolin-Monks-Modding-Tool/releases/tag/v0.28.3)
+[Home](../README.md) · [Download Studio 0.28.4](https://github.com/OGmidway/Mortal-Kombat-Shaolin-Monks-Modding-Tool/releases/tag/v0.28.4)
 
 1. Open **Home → Xbox Recomp Patches**.
 2. Browse to your supported Windows Xbox recomp EXE and choose **Review EXE**.

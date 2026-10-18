@@ -34,13 +34,13 @@ You do not need to mount or unpack the ISO to begin. You do need your own game f
 
 This is an independent, experimental modding tool. The best-tested workflows use the researched **USA PS2 revision**. Support for one resource or revision does not establish support for every version of the game.
 
-## 2. Current release: 0.28.3
+## 2. Current release: 0.28.4
 
 **Now supports Xbox workflows and supported Xbox recomp builds.** Build a separate modded Xbox ISO with supported replacement models, textures and sounds. For rendering changes, open **Home → Xbox Recomp Patches**, select a supported recomp EXE, review compatibility, choose **Disable HDR** and/or **Reduce glossy reflections**, and save a new EXE. These EXE patches need no ISO rebuild. The original stays untouched; unknown builds are refused.
 
 Both rendering options together reproduce the Scorpion preset tested in-game by OG Midway. Reflection changes can also affect scenery; this is not a character-only effect or a full-game compatibility guarantee. PS2 PNACH codes are not automatically translated to Xbox or recomp patches.
 
-**Workshop and update fix:** 0.28.3 restores public Workshop access and updater entry points. Users on 0.28.2 or earlier should download and extract the latest Windows ZIP manually. [Download 0.28.3](https://github.com/OGmidway/Mortal-Kombat-Shaolin-Monks-Modding-Tool/releases/tag/v0.28.3).
+**Workshop model compatibility:** 0.28.4 adds conversion for compatible PS2/Xbox Workshop GLBs and fixes shared-skeleton matching. Select the corresponding destination model and texture set; resource IDs can differ between platforms. Includes the Workshop and updater fixes. Users on 0.28.2 or earlier should download and extract the latest Windows ZIP manually. [Download 0.28.4](https://github.com/OGmidway/Mortal-Kombat-Shaolin-Monks-Modding-Tool/releases/tag/v0.28.4).
 
 ### Also included
 
@@ -87,7 +87,7 @@ The weapon/object visibility fix, hex transfer, animation imports and character 
 ## 3. Download and open
 
 1. Open **[Releases](https://github.com/OGmidway/Mortal-Kombat-Shaolin-Monks-Modding-Tool/releases/latest)**.
-2. Download **MKSM-Studio-0.28.3-win-x64.zip** (or the newest equivalent Windows ZIP).
+2. Download **MKSM-Studio-0.28.4-win-x64.zip** (or the newest equivalent Windows ZIP).
 3. Extract the entire ZIP into a regular folder you can write to, such as `Documents/MKSM Studio`. Do not run it from inside the ZIP.
 4. Double-click **MKSM Studio.exe**, recognizable by its black/crimson dragon icon.
 5. Click **Open game ISO** and select your Shaolin Monks PS2 or Xbox ISO.

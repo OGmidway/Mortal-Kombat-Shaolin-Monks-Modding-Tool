@@ -106,3 +106,9 @@ Drag the thin crimson divider between mod cards and preview left/right. Drag the
 Studio 0.27.13 and later check signed release metadata before opening Workshop and performing online operations. Update to the latest release for your public or private-source channel. If the version check cannot finish, reconnect and retry. Local project editing and downloaded packs remain available. Previously distributed older builds cannot be remotely disabled by this client-side policy.
 
 Widen the mod library with its center divider to get two or more compact card columns. Narrow widths use one column. Only visible rows and nearby cards are realized; off-screen cards are recycled.
+
+## Using character downloads on Xbox
+
+Studio 0.28.4 converts compatible GLB and character-package mappings against the selected destination model. Open your Xbox ISO, select the corresponding 3D model and matching texture set, then use the character replacement importer. PS2 and Xbox resource numbers may differ: the tested PS2 6772 model corresponds to Xbox 6914 and texture set 6913.
+
+Conversion preserves the GLB geometry, UVs and embedded images while rebuilding native data for the destination. It requires compatible skeletons and native layouts; it is not automatic retargeting between unrelated characters. Review the preview and test a separately built ISO. Raw native files and whole mod packs are not universally portable across platforms.
