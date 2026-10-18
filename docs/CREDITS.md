@@ -10,6 +10,8 @@
 
 RelaxDirk and Z mods.
 
+**ChatGPT / Codex** — AI assistance. OG Midway directs the project and performs hands-on modding and gameplay testing.
+
 ## Interface fonts
 
 Bundled font collection is sourced from [Mortal Kombat Warehouse's font page](https://www.mortalkombatwarehouse.com/site/fonts/). Font creators credited by that page include Murdoink, Paolo Baglioni, Dennis Ferrand, F-Rott, AthemWulf and the listed font designers. Original game designs and third-party fonts retain their respective ownership and terms. Font choices include MK1–4, Mythologies, Deadly Alliance, Armageddon, MK title, MKX, MK11 and MK1 (2023) styles, plus the supplied Fatality and menu fonts. A distinct MK9 font is not verified or bundled.
